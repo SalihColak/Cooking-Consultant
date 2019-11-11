@@ -23,7 +23,7 @@ public class ActivityMain extends AppCompatActivity {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new RezeptFragment(),"Rezept");
+        adapter.addFragment(new RezeptFragment(),"Rezeptsuche");
         adapter.addFragment(new EinkaufFragment(),"Einkaufsliste");
         adapter.addFragment(new KochlexikonFragment(),"Kochlexikon");
 
