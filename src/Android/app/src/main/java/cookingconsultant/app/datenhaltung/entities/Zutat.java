@@ -4,18 +4,18 @@ public class Zutat {
 
     private Integer zutid;
     private String name;
-    private String beschreibung;
     private String bild;
+    private String einheit;
 
     public Zutat(Integer zutid){
         this.zutid = zutid;
     }
 
-    public Zutat(Integer zutid, String name, String beschreibung, String bild) {
+    public Zutat(Integer zutid, String name, String einheit ,String bild) {
         this.zutid = zutid;
         this.name = name;
-        this.beschreibung = beschreibung;
         this.bild = bild;
+        this.einheit = einheit;
     }
 
     public Integer getZutid() {
@@ -34,19 +34,19 @@ public class Zutat {
         this.name = name;
     }
 
-    public String getBeschreibung() {
-        return beschreibung;
-    }
-
-    public void setBeschreibung(String beschreibung) {
-        this.beschreibung = beschreibung;
-    }
-
     public String getBild() {
         return bild;
     }
 
     public void setBild(String bild) {
         this.bild = bild;
+    }
+
+    public String getEinheit() {
+        return einheit;
+    }
+
+    public void setEinheit(String einheit) {
+        this.einheit = einheit;
     }
 }

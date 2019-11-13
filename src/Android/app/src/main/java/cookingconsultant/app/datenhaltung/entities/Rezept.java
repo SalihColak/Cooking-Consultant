@@ -5,6 +5,7 @@ import java.util.List;
 public class Rezept {
 
     private Integer rezid;
+    private String name;
     private List<String> schritte;
     private String art;
     private String anlass;
@@ -17,8 +18,9 @@ public class Rezept {
         this.rezid = rezid;
     }
 
-    public Rezept(Integer rezid, List<String> schritte, String art, String anlass, String praeferenz, String bild) {
+    public Rezept(Integer rezid, String name ,List<String> schritte, String art, String anlass, String praeferenz, String bild) {
         this.rezid = rezid;
+        this.name = name;
         this.schritte = schritte;
         this.art = art;
         this.anlass = anlass;
@@ -72,6 +74,14 @@ public class Rezept {
 
     public void setBild(String bild) {
         this.bild = bild;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Zutat> getZutaten() {
