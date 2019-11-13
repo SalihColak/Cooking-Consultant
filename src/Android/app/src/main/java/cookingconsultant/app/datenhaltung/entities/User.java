@@ -10,8 +10,10 @@ public class User {
     private String name;
     private String vorname;
     private String geschlecht;
-    private LocalDate geburtsdatum;
+    private String geburtsdatum;
     private boolean admin;
+    private String passwort;
+    private String email;
 
     private List<Einkaufsliste> einkaufslisten;
 
@@ -19,7 +21,7 @@ public class User {
         this.userid = userid;
     }
 
-    public User(Integer userid, String titel, String name, String vorname, String geschlecht, LocalDate geburtsdatum, boolean admin) {
+    public User(Integer userid, String titel, String name, String vorname, String geschlecht, String geburtsdatum, boolean admin, String email) {
         this.userid = userid;
         this.titel = titel;
         this.name = name;
@@ -27,6 +29,7 @@ public class User {
         this.geschlecht = geschlecht;
         this.geburtsdatum = geburtsdatum;
         this.admin = admin;
+        this.email = email;
     }
 
     public Integer getUserid() {
@@ -69,11 +72,11 @@ public class User {
         this.geschlecht = geschlecht;
     }
 
-    public LocalDate getGeburtsdatum() {
+    public String getGeburtsdatum() {
         return geburtsdatum;
     }
 
-    public void setGeburtsdatum(LocalDate geburtsdatum) {
+    public void setGeburtsdatum(String geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
 
@@ -91,5 +94,21 @@ public class User {
 
     public void setEinkaufslisten(List<Einkaufsliste> einkaufslisten) {
         this.einkaufslisten = einkaufslisten;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

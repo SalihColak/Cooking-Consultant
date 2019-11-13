@@ -11,8 +11,10 @@ public class UserGrenz {
     private String name;
     private String vorname;
     private String geschlecht;
-    private LocalDate geburtsdatum;
+    private String geburtsdatum;
     private boolean admin;
+    private String passwort;
+    private String email;
 
     private List<EinkaufslisteGrenz> einkaufslisten;
 
@@ -20,7 +22,7 @@ public class UserGrenz {
         this.userid = userid;
     }
 
-    public UserGrenz(Integer userid, String titel, String name, String vorname, String geschlecht, LocalDate geburtsdatum, boolean admin) {
+    public UserGrenz(Integer userid, String titel, String name, String vorname, String geschlecht, String geburtsdatum, boolean admin, String email) {
         this.userid = userid;
         this.titel = titel;
         this.name = name;
@@ -28,6 +30,7 @@ public class UserGrenz {
         this.geschlecht = geschlecht;
         this.geburtsdatum = geburtsdatum;
         this.admin = admin;
+        this.email = email;
     }
 
     public Integer getUserid() {
@@ -70,11 +73,11 @@ public class UserGrenz {
         this.geschlecht = geschlecht;
     }
 
-    public LocalDate getGeburtsdatum() {
+    public String getGeburtsdatum() {
         return geburtsdatum;
     }
 
-    public void setGeburtsdatum(LocalDate geburtsdatum) {
+    public void setGeburtsdatum(String geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
 
