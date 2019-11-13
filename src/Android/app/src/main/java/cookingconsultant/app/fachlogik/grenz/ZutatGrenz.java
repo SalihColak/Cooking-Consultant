@@ -4,17 +4,17 @@ public class ZutatGrenz {
 
     private Integer zutid;
     private String name;
-    private String beschreibung;
+    private String einheit;
     private String bild;
 
     public ZutatGrenz(Integer zutid){
         this.zutid = zutid;
     }
 
-    public ZutatGrenz(Integer zutid, String name, String beschreibung, String bild) {
+    public ZutatGrenz(Integer zutid, String name, String einheit, String bild) {
         this.zutid = zutid;
         this.name = name;
-        this.beschreibung = beschreibung;
+        this.einheit = einheit;
         this.bild = bild;
     }
 
@@ -34,12 +34,12 @@ public class ZutatGrenz {
         this.name = name;
     }
 
-    public String getBeschreibung() {
-        return beschreibung;
+    public String getEinheit() {
+        return einheit;
     }
 
-    public void setBeschreibung(String beschreibung) {
-        this.beschreibung = beschreibung;
+    public void setEinheit(String einheit) {
+        this.einheit = einheit;
     }
 
     public String getBild() {

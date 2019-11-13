@@ -6,6 +6,7 @@ import java.util.List;
 public class RezeptGrenz {
 
     private Integer rezid;
+    private String name;
     private List<String> schritte;
     private String art;
     private String anlass;
@@ -18,13 +19,23 @@ public class RezeptGrenz {
         this.rezid = rezid;
     }
 
-    public RezeptGrenz(Integer rezid, List<String> schritte, String art, String anlass, String praeferenz, String bild) {
+    public RezeptGrenz(Integer rezid, String name, List<String> schritte, String art, String anlass, String praeferenz, String bild, List<ZutatGrenz> zutaten) {
         this.rezid = rezid;
+        this.name = name;
         this.schritte = schritte;
         this.art = art;
         this.anlass = anlass;
         this.praeferenz = praeferenz;
         this.bild = bild;
+        this.zutaten = zutaten;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getRezid() {

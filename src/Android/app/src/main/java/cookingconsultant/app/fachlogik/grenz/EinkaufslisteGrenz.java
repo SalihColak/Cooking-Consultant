@@ -2,23 +2,24 @@ package cookingconsultant.app.fachlogik.grenz;
 
 import java.util.List;
 
-import cookingconsultant.app.datenhaltung.entities.Zutat;
 
 public class EinkaufslisteGrenz {
 
     private Integer einkid;
     private String zustand;
 
-    private List<Zutat> zutaten;
+    private List<ZutatGrenz> zutaten;
     private UserGrenz user;
 
     public EinkaufslisteGrenz(Integer einkid){
         this.einkid = einkid;
     }
 
-    public EinkaufslisteGrenz(Integer einkid, String zustand) {
+    public EinkaufslisteGrenz(Integer einkid, String zustand, List<ZutatGrenz> zutaten, UserGrenz user) {
         this.einkid = einkid;
         this.zustand = zustand;
+        this.zutaten = zutaten;
+        this.user = user;
     }
 
     public Integer getEinkid() {
@@ -29,11 +30,11 @@ public class EinkaufslisteGrenz {
         this.einkid = einkid;
     }
 
-    public List<Zutat> getZutaten() {
+    public List<ZutatGrenz> getZutaten() {
         return zutaten;
     }
 
-    public void setZutaten(List<Zutat> zutaten) {
+    public void setZutaten(List<ZutatGrenz> zutaten) {
         this.zutaten = zutaten;
     }
 
