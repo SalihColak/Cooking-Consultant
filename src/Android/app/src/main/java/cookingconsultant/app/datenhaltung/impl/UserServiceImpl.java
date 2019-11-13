@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByID(Integer userid) throws IOException, JSONException {
-        URL myurl = null;
+        /*URL myurl = null;
         myurl = new URL(URL_GET_USER_BY_ID);
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
         httpURLConnection.connect();
@@ -70,12 +70,13 @@ public class UserServiceImpl implements UserService {
         EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
         user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
         user.setAdmin(jobj.getBoolean("admin"));
-        return user;
+        return user;*/
+        return new User(userid,"Herr","Mustermann","Max","maennlich","1997/03/14",true,"max.mustermann@th-koeln.de");
     }
 
     @Override
     public User getUserByLogin(String email, String password) throws IOException, JSONException {
-        URL myurl = null;
+        /*URL myurl = null;
         myurl = new URL(URL_GET_USER_BY_LOGIN);
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
         httpURLConnection.connect();
@@ -113,6 +114,7 @@ public class UserServiceImpl implements UserService {
         EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
         user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
         user.setAdmin(jobj.getBoolean("admin"));
-        return user;
+        return user;*/
+        return new User(3,"Herr","Mustermann","Max","maennlich","1997/03/14",true,email);
     }
 }
