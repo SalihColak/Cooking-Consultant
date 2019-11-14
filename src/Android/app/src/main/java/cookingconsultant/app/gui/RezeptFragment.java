@@ -61,7 +61,7 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
         else{
             rezeptartList.add(circleImageView.getTag().toString());
             circleImageView.setActivated(true);
-            circleImageView.setBorderColor(Color.parseColor("#000000"));
+            circleImageView.setBorderColor(Color.parseColor("#ffffff"));
             circleImageView.setCircleBackgroundColor(Color.parseColor(BACKGROUND_COLOR));
         }
 

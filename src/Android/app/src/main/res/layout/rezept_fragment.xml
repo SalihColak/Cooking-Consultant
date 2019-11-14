@@ -215,7 +215,10 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-condensed-light" />
 
-            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="500dp"></View>
+
         </LinearLayout>
 
 
@@ -225,9 +228,11 @@
         android:id="@+id/rezepte_suchen_id"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-
+        android:background="@drawable/btn_round"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
         android:text="Jetzt Suchen"
         android:textSize="22sp" />
 

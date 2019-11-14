@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="COOKING CONSULTANT"
-            android:textColor="@color/appname"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"/>
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         app:tabGravity="fill"
         app:tabMode="scrollable"
-        app:tabTextColor="@color/tabtextcolor"
+        app:tabTextColor="@color/white"
         android:background="@color/colorPrimary"
         app:tabIndicatorColor="@color/tabindicatorcolor"></com.google.android.material.tabs.TabLayout>
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#6BAD67</color>
     <color name="colorPrimaryDark">#6BAD67</color>
     <color name="colorAccent">#6BAD67</color>
     <color name="white">#ffffff</color>
     <color name="tabtextcolor">#000000</color>
     <color name="appname">#4E4E4E</color>
     <color name="transparent">#00000000</color>
-    <color name="tabindicatorcolor">#2196F3</color>
+    <color name="tabindicatorcolor">#FFFFFF</color>
     <color name="tablayout">#67F039</color>
 </resources>
