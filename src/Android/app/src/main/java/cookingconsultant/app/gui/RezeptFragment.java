@@ -21,7 +21,7 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
     View view;
 
     private List<String> rezeptartList = new ArrayList<>();
-    private final String BACKGROUND_COLOR = "#2c7582";
+    private final String BACKGROUND_COLOR = "#6BAD67";
 
     @Nullable
     @Override
@@ -56,10 +56,12 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
             rezeptartList.remove(circleImageView.getTag().toString());
             circleImageView.setActivated(false);
             circleImageView.setCircleBackgroundColor(Color.parseColor("#E4E4E4"));
+            circleImageView.setBorderColor(Color.parseColor("#E4E4E4"));
         }
         else{
             rezeptartList.add(circleImageView.getTag().toString());
             circleImageView.setActivated(true);
+            circleImageView.setBorderColor(Color.parseColor("#000000"));
             circleImageView.setCircleBackgroundColor(Color.parseColor(BACKGROUND_COLOR));
         }
 

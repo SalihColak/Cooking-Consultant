@@ -1,174 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <TextView
-        android:id="@+id/rezeptart_id"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rezeptarten"
-        android:textSize="20sp"
-        android:textColor="@color/tabtextcolor"/>
-
-    <HorizontalScrollView
+    <ScrollView
+        android:layout_above="@id/rezepte_suchen_id"
+        android:id="@+id/scrollview_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:tag="fruehstueck"
-                    android:id="@+id/fruehstueck_id"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/fruehstueck"
-                    app:civ_circle_background_color="#E4E4E4"
-                    android:layout_gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Frühstück"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:tag="brunch"
-                    android:id="@+id/brunch_id"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/brunch"
-                    app:civ_circle_background_color="#E4E4E4"
-                    android:layout_gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Brunch"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:tag="kafeetafel"
-                android:id="@+id/kafeetafel_id"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:src="@drawable/kaffetafel"
-                app:civ_circle_background_color="#E4E4E4"
-                android:layout_gravity="center"/>
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/rezeptart_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kaffeetafel"
-                android:layout_gravity="center"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="Rezeptarten"
+                android:textColor="@color/appname"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-light"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="9">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="7dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/fruehstueck_id"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/fruehstueck"
+                        android:tag="fruehstueck"
+                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_width="1sp"
+                        app:civ_border_color="@color/transparent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Frühstück" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="7dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/brunch_id"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/brunch"
+                        android:tag="brunch"
+                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_width="1sp"
+                        app:civ_border_color="@color/transparent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Brunch" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="7dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/kafeetafel_id"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/kaffetafel"
+                        android:tag="kafeetafel"
+                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_width="1sp"
+                        app:civ_border_color="@color/transparent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Kaffeetafel" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="9">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="7dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/mittagessen_id"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/mittagessen"
+                        android:tag="mittagessen"
+                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_width="1sp"
+                        app:civ_border_color="@color/transparent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Mittagessen" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="7dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/snack_id"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/snack"
+                        android:tag="snack"
+                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_width="1sp"
+                        app:civ_border_color="@color/transparent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Snack" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="7dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/abendessen_id"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/abendessen"
+                        android:tag="abendessen"
+                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_width="1sp"
+                        app:civ_border_color="@color/transparent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Abendessen" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rezeptanlass_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Rezeptanlass"
+                android:textColor="@color/appname"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-light" />
+
+            
         </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:tag="mittagessen"
-                    android:id="@+id/mittagessen_id"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/mittagessen"
-                    app:civ_circle_background_color="#E4E4E4"
-                    android:layout_gravity="center"/>
+    </ScrollView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mittagessen"
-                    android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/rezepte_suchen_id"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:tag="snack"
-                    android:id="@+id/snack_id"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/snack"
-                    app:civ_circle_background_color="#E4E4E4"
-                    android:layout_gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Snack"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:tag="abendessen"
-                    android:id="@+id/abendessen_id"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/abendessen"
-                    app:civ_circle_background_color="#E4E4E4"
-                    android:layout_gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Abendessen"
-                    android:layout_gravity="center"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
+        android:text="Jetzt Suchen"
+        android:textSize="22sp" />
 
 
 
-</LinearLayout>
+</RelativeLayout>

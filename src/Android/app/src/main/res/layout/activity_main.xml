@@ -10,17 +10,19 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         app:elevation="0dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@color/colorPrimary">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cooking Consultant"
-            android:textColor="#333"
+            android:text="COOKING CONSULTANT"
+            android:textColor="@color/appname"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,7 +32,6 @@
         android:layout_height="wrap_content"
         app:tabGravity="fill"
         app:tabMode="scrollable"
-        app:elevation="1dp"
         app:tabTextColor="@color/tabtextcolor"
         android:background="@color/colorPrimary"
         app:tabIndicatorColor="@color/tabindicatorcolor"></com.google.android.material.tabs.TabLayout>
