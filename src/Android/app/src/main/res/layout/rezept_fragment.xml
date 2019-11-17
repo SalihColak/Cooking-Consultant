@@ -234,6 +234,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
         android:text="Jetzt Suchen"
+        android:onClick="searchRezepte"
         android:textSize="22sp" />
 
 

@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabGravity="fill"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabTextColor="@color/white"
         android:background="@color/colorPrimary"
         app:tabIndicatorColor="@color/tabindicatorcolor"></com.google.android.material.tabs.TabLayout>

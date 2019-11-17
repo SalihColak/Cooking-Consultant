@@ -54,4 +54,9 @@ public class EinkaufslisteServiceImpl implements EinkaufslisteService {
         }
         return false;
     }
+
+    @Override
+    public boolean addEinkaufsliste(Einkaufsliste einkaufsliste) {
+        return true;
+    }
 }

@@ -9,4 +9,9 @@
     <color name="transparent">#00000000</color>
     <color name="tabindicatorcolor">#FFFFFF</color>
     <color name="tablayout">#67F039</color>
+    <color name="card_background0">#FF7D7D</color>
+    <color name="card_background1">#FCE8C9</color>
+    <color name="card_background2">#B1FA84</color>
+    <color name="card_background3">#3AADDA</color>
+    <color name="card_background4">#FFEEBE</color>
 </resources>

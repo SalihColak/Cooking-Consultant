@@ -11,6 +11,8 @@ public class Rezept {
     private String anlass;
     private String praeferenz;
     private String bild;
+    private String kochzeit;
+    private String beschreibung;
 
     private List<Zutat> zutaten;
 
@@ -18,7 +20,7 @@ public class Rezept {
         this.rezid = rezid;
     }
 
-    public Rezept(Integer rezid, String name ,List<String> schritte, String art, String anlass, String praeferenz, String bild) {
+    public Rezept(Integer rezid, String name, String beschreibung , List<String> schritte, String art, String anlass, String praeferenz, String kochzeit, String bild) {
         this.rezid = rezid;
         this.name = name;
         this.schritte = schritte;
@@ -26,6 +28,16 @@ public class Rezept {
         this.anlass = anlass;
         this.praeferenz = praeferenz;
         this.bild = bild;
+        this.kochzeit = kochzeit;
+        this.beschreibung = beschreibung;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
     }
 
     public Integer getRezid() {
@@ -90,5 +102,13 @@ public class Rezept {
 
     public void setZutaten(List<Zutat> zutaten) {
         this.zutaten = zutaten;
+    }
+
+    public String getKochzeit() {
+        return kochzeit;
+    }
+
+    public void setKochzeit(String kochzeit) {
+        this.kochzeit = kochzeit;
     }
 }

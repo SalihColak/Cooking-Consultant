@@ -77,4 +77,18 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         }
         return false;
     }
+
+    @Override
+    public boolean addEinkaufsliste(EinkaufslisteGrenz einkaufslisteGrenz) throws IOException, JSONException {
+        Einkaufsliste einkaufsliste = new Einkaufsliste(einkaufslisteGrenz.getEinkid(),einkaufslisteGrenz.getZustand());
+        List<Zutat> zutatList = new ArrayList<>();
+        for(ZutatGrenz zutatGrenz : einkaufslisteGrenz.getZutaten()){
+            zutatList.add(new Zutat(zutatGrenz.getZutid(),zutatGrenz.getName(),zutatGrenz.getEinheit(),zutatGrenz.getBild()));
+        }
+        einkaufsliste.setZutaten(zutatList);
+        if(einkaufslisteService.addEinkaufsliste(einkaufsliste)){
+            return true;
+        }
+        return false;
+    }
 }

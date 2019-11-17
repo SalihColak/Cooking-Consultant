@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_rezept_anzeige_id"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:elevation="0dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_marginLeft="18dp"
+            android:src="@drawable/ic_arrow_back_white_24dp"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="finish"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COOKING CONSULTANT"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-condensed"/>
+
+        <ImageView
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_add_shopping_cart_white_24dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addCart"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/image_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/toolbar_rezept_anzeige_id">
+
+        <ImageView
+            android:id="@+id/rezept_image_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/nudel"
+            android:scaleType="centerCrop"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/description_layout_id"
+        android:layout_below="@id/image_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_weight="40"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/rezept_anzeige_name_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Asiatische Nudel mit gelber Curry Sauce" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="25dp"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/card_background4"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:padding="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Beschreibung"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/beschreibung_rezept"
+                                android:padding="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht" />
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="44"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/rezepte_suchen_id"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_round"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:text="Kochvorgang Starten"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package cookingconsultant.app.gui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -67,8 +68,7 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
 
         Toast.makeText(getContext(),rezeptartList.toString(),Toast.LENGTH_SHORT).show();
 
-        /*if(circleImageView.isActivated()){
-            Toast.makeText(getContext(),v.getTag().toString()+" ist ausgewaehlt.",Toast.LENGTH_SHORT).show();
-        }*/
     }
+
+
 }

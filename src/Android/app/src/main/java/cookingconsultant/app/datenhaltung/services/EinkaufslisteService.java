@@ -13,4 +13,5 @@ public interface EinkaufslisteService {
     public List<Einkaufsliste> getEinkaufslistenByUserID(Integer userid)throws IOException, JSONException;
     public boolean deleteEinkaufslisteByID(Integer einkid)throws IOException, JSONException;
     public boolean changeZustandEinkaufslisteByID(Integer einkid, String neuerZustand)throws IOException, JSONException;
+    public boolean addEinkaufsliste(Einkaufsliste einkaufsliste)throws IOException, JSONException;
 }

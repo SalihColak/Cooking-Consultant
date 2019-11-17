@@ -1,4 +1,4 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.adapter;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

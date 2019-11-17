@@ -12,6 +12,8 @@ public class RezeptGrenz {
     private String anlass;
     private String praeferenz;
     private String bild;
+    private String kochzeit;
+    private String beschreibung;
 
     private List<ZutatGrenz> zutaten;
 
@@ -19,7 +21,7 @@ public class RezeptGrenz {
         this.rezid = rezid;
     }
 
-    public RezeptGrenz(Integer rezid, String name, List<String> schritte, String art, String anlass, String praeferenz, String bild, List<ZutatGrenz> zutaten) {
+    public RezeptGrenz(Integer rezid, String name,String beschreibung ,List<String> schritte, String art, String anlass, String praeferenz,String kochzeit, String bild, List<ZutatGrenz> zutaten) {
         this.rezid = rezid;
         this.name = name;
         this.schritte = schritte;
@@ -28,6 +30,16 @@ public class RezeptGrenz {
         this.praeferenz = praeferenz;
         this.bild = bild;
         this.zutaten = zutaten;
+        this.kochzeit = kochzeit;
+        this.beschreibung = beschreibung;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
     }
 
     public String getName() {
@@ -94,4 +106,11 @@ public class RezeptGrenz {
         this.zutaten = zutaten;
     }
 
+    public String getKochzeit() {
+        return kochzeit;
+    }
+
+    public void setKochzeit(String kochzeit) {
+        this.kochzeit = kochzeit;
+    }
 }

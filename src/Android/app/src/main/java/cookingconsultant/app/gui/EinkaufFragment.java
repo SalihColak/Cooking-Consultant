@@ -20,4 +20,5 @@ public class EinkaufFragment extends Fragment {
         view = inflater.inflate(R.layout.einkauf_fragment,container,false);
         return view;
     }
+
 }

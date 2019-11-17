@@ -13,5 +13,6 @@ public interface EinkaufslisteVerwaltung {
     public List<EinkaufslisteGrenz> getEinkaufslistenByUserID(Integer userid) throws IOException, JSONException;
     public boolean deleteEinkaufslisteByID(Integer einkid) throws IOException, JSONException;
     public boolean changeZustandEinkaufslisteByID(Integer einkid, String neuerZustand) throws IOException, JSONException;
+    public boolean addEinkaufsliste(EinkaufslisteGrenz einkaufslisteGrenz) throws IOException, JSONException;
 
 }
