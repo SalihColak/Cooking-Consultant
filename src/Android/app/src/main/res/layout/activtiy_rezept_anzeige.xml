@@ -158,7 +158,8 @@
                 android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:text="Kochvorgang Starten"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:onClick="startKochvorgang"/>
 
         </LinearLayout>
 

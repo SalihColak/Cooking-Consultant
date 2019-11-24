@@ -66,6 +66,12 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
 
     }
 
+    public void startKochvorgang(View view) {
+        Intent intent = new Intent(this,ActivityKochvorgang.class);
+        intent.putExtra("rezid",rezeptGrenz.getRezid());
+        startActivity(intent);
+    }
+
 
     private class LoadRezept extends AsyncTask<Integer,Void,RezeptGrenz>{
 
@@ -126,7 +132,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
             }
             EinkaufslisteVerwaltung einkaufslisteVerwaltung = new EinkaufslisteVerwaltungImpl();
             try {
-                if(einkaufslisteVerwaltung.addEinkaufsliste(new EinkaufslisteGrenz(null,"bearbeitung",rezeptGrenz.getZutaten(),userGrenz))){
+                if(einkaufslisteVerwaltung.addEinkaufsliste(new EinkaufslisteGrenz(null,"bearbeitung",rezeptGrenz.getZutaten(),userGrenz,rezeptGrenz))){
                     return true;
                 }
             } catch (IOException e) {

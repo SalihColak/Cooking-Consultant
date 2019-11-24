@@ -13,22 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.fachlogik.grenz.RezeptGrenz;
+import cookingconsultant.app.gui.services.OnNoteListener;
 
 public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder> {
 
-    private OnNoteListerner onNoteListerner;
+    private OnNoteListener onNoteListener;
     private List<RezeptGrenz> list;
     private Context mContext;
 
-    public RezeptAdapter(Context context, List<RezeptGrenz>list, OnNoteListerner onNoteListerner){
+    public RezeptAdapter(Context context, List<RezeptGrenz>list, OnNoteListener onNoteListener){
         mContext = context;
         this.list = list;
-        this.onNoteListerner = onNoteListerner;
+        this.onNoteListener = onNoteListener;
     }
 
     @NonNull
@@ -36,7 +36,7 @@ public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View view = layoutInflater.inflate(R.layout.rezepte_anzeige_list_adapter,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view,onNoteListerner);
+        ViewHolder viewHolder = new ViewHolder(view,onNoteListener);
 
         return viewHolder;
     }
@@ -49,7 +49,7 @@ public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder
         CardView cardView = holder.rezept_background;
         TextView kochzeit = holder.item_kochzeit;
         String bild = list.get(position).getBild();
-        Picasso.get().load("http://10.49.223.106/"+bild).into(image);
+        Picasso.get().load(R.string.ip_server+bild).into(image);
         name.setText(list.get(position).getName());
         kochzeit.setText(list.get(position).getKochzeit());
 
@@ -77,26 +77,22 @@ public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder
         private CardView rezept_background;
         private ImageView item_image;
         private TextView item_name,item_kochzeit;
-        private OnNoteListerner onNoteListerner;
+        private OnNoteListener onNoteListener;
 
-            public ViewHolder(@NonNull View itemView, OnNoteListerner onNoteListerner) {
+            public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
                 super(itemView);
                 item_kochzeit = itemView.findViewById(R.id.kochzeit_id);
                 rezept_background = itemView.findViewById(R.id.cardview_parent_id);
                 item_image = itemView.findViewById(R.id.rezept_bild_id);
                 item_name = itemView.findViewById(R.id.rezept_name_id);
 
-                this.onNoteListerner = onNoteListerner;
+                this.onNoteListener = onNoteListener;
                 itemView.setOnClickListener(this);
             }
 
         @Override
         public void onClick(View v) {
-            onNoteListerner.onNoteClick(getAdapterPosition());
+            onNoteListener.onNoteClick(getAdapterPosition());
         }
-    }
-
-    public interface OnNoteListerner{
-         void onNoteClick(int position);
     }
 }
