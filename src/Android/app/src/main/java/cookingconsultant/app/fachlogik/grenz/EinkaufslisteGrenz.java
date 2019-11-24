@@ -10,16 +10,26 @@ public class EinkaufslisteGrenz {
 
     private List<ZutatGrenz> zutaten;
     private UserGrenz user;
+    private RezeptGrenz rezept;
 
     public EinkaufslisteGrenz(Integer einkid){
         this.einkid = einkid;
     }
 
-    public EinkaufslisteGrenz(Integer einkid, String zustand, List<ZutatGrenz> zutaten, UserGrenz user) {
+    public EinkaufslisteGrenz(Integer einkid, String zustand, List<ZutatGrenz> zutaten, UserGrenz user, RezeptGrenz rezept) {
         this.einkid = einkid;
         this.zustand = zustand;
         this.zutaten = zutaten;
         this.user = user;
+        this.rezept = rezept;
+    }
+
+    public RezeptGrenz getRezept() {
+        return rezept;
+    }
+
+    public void setRezept(RezeptGrenz rezept) {
+        this.rezept = rezept;
     }
 
     public Integer getEinkid() {

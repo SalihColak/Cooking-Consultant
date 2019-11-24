@@ -22,9 +22,10 @@ import cookingconsultant.app.fachlogik.grenz.RezeptGrenz;
 import cookingconsultant.app.fachlogik.impl.RezeptVerwaltungImpl;
 import cookingconsultant.app.fachlogik.services.RezeptVerwaltung;
 import cookingconsultant.app.gui.adapter.RezeptAdapter;
+import cookingconsultant.app.gui.services.OnNoteListener;
 
 
-public class ActivityRezept extends AppCompatActivity implements RezeptAdapter.OnNoteListerner {
+public class ActivityRezept extends AppCompatActivity implements OnNoteListener {
 
     List<RezeptGrenz> rezeptList;
     private RezeptVerwaltung rezeptVerwaltung;
@@ -58,30 +59,6 @@ public class ActivityRezept extends AppCompatActivity implements RezeptAdapter.O
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        /*rezeptList = new ArrayList<>();
-
-
-        RezeptGrenz rezeptGrenz = new RezeptGrenz(2);
-        rezeptGrenz.setName("Asiatische Nudeln");
-        rezeptGrenz.setKochzeit("15min");
-        rezeptGrenz.setBild(""+R.drawable.nudel);
-        RezeptGrenz rezeptGrenz1 = new RezeptGrenz(3);
-        rezeptGrenz1.setName("Lahmacun - scharf");
-        rezeptGrenz1.setKochzeit("30min");
-        rezeptGrenz1.setBild(""+R.drawable.abendessen);
-        RezeptGrenz rezeptGrenz2 = new RezeptGrenz(2);
-        rezeptGrenz2.setName("Steak nach Spanischer Art");
-        rezeptGrenz2.setKochzeit("1h 30min");
-        rezeptGrenz2.setBild(""+R.drawable.mittagessen);
-        RezeptGrenz rezeptGrenz3 = new RezeptGrenz(2);
-        rezeptGrenz3.setName("Burger spezial - mit Jallapenos");
-        rezeptGrenz3.setKochzeit("45min");
-        rezeptGrenz3.setBild(""+R.drawable.snack);
-        rezeptList.add(rezeptGrenz);
-        rezeptList.add(rezeptGrenz1);
-        rezeptList.add(rezeptGrenz2);
-        rezeptList.add(rezeptGrenz3);*/
 
         RezeptAdapter rezeptAdapter = new RezeptAdapter(this,rezeptList,this);
         recyclerView.setAdapter(rezeptAdapter);

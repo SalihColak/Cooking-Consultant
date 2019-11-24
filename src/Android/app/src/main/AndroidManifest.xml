@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".gui.ActivityRezept"></activity>
         <activity android:name=".gui.ActivityRezeptAnzeige"></activity>
+        <activity android:name=".gui.ActivityKochvorgang"></activity>
     </application>
 
 </manifest>

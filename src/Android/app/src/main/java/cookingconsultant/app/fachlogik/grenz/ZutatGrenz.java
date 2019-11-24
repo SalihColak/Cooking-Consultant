@@ -50,4 +50,8 @@ public class ZutatGrenz {
         this.bild = bild;
     }
 
+    @Override
+    public String toString(){
+        return this.name;
+    }
 }

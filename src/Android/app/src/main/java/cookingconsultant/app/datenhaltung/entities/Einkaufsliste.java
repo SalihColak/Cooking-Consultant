@@ -8,6 +8,7 @@ public class Einkaufsliste {
     private String zustand;
 
     private List<Zutat> zutaten;
+    private Rezept rezept;
     private User user;
 
     public Einkaufsliste(Integer einkid){
@@ -49,5 +50,13 @@ public class Einkaufsliste {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Rezept getRezept() {
+        return rezept;
+    }
+
+    public void setRezept(Rezept rezept) {
+        this.rezept = rezept;
     }
 }
