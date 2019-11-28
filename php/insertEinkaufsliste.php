@@ -7,19 +7,19 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$zustand = $_POST['zustand'];
-$userid = $_POST['userid'];
-$rezid = $_POST['rezid'];
+$zustand = $_GET['zustand'];
+$userid = $_GET['userid'];
+$rezid = $_GET['rezid'];
 
-$sql = "Insert into einkaufsliste (zustand, userid, rezid) values ('$zustand', '$userid', $'rezid')";
+//Example: http://localhost/insertEinkaufsliste.php?zustand=zustand&userid=1&rezid=2
+$sql = "INSERT INTO einkaufsliste (zustand, userid, rezid) VALUES ('$zustand', $userid, $rezid)";
  
-// Confirm there are results
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich eingefuegt
+	echo "Erfolgreich eingefuegt!" . "<br>" . "Die ID lautet: " . mysqli_insert_id($con);
 }else
 {
-	echo Fehler beim Einfuegen
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections

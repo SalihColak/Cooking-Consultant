@@ -7,25 +7,25 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
  
-$name = $_POST['name'];
-$schritte = $_POST['schritte'];
-$menge = $_POST['menge'];
-$kochzeit = $_POST['kochzeit'];
-$art = $_POST['art'];
-$anlass = $_POST['anlass'];
-$praeferenz = $_POST['praeferenz'];
-$bild = $_POST['bild'];
-$beschreibung = $_POST['beschreibung'];
+$name = $_GET['name'];
+$schritte = $_GET['schritte'];
+$menge = $_GET['menge'];
+$kochzeit = $_GET['kochzeit'];
+$art = $_GET['art'];
+$anlass = $_GET['anlass'];
+$praeferenz = $_GET['praeferenz'];
+$bild = $_GET['bild'];
+$beschreibung = $_GET['beschreibung'];
 
-$sql = "Insert into rezept (name, schritte, menge, kochzeit, art, anlass, praeferenz, bild, beschreibung) values ($'name', $'schritte', $'menge', $'kochzeit', $'art', $'anlass', $'praeferenz', $'bild', $'beschreibung')";
+//Example: http://localhost/insertRezept.php?name=name&schritte=schritte&menge=menge&kochzeit=10&art=BRUNCH&anlass=ESSEN%20ZU%20ZWEIT&praeferenz=ASIATISCH&bild=bild&beschreibung=beschreibung
+$sql = "INSERT INTO rezept (name, schritte, menge, kochzeit, art, anlass, praeferenz, bild, beschreibung) VALUES ('$name', '$schritte', '$menge', $kochzeit, '$art', '$anlass', '$praeferenz', '$bild', '$beschreibung')";
  
-// Confirm there are results
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich eingefuegt
+	echo "Erfolgreich eingefuegt!" . "<br>" . "Die ID lautet: " . mysqli_insert_id($con);
 }else
 {
-	echo Fehler beim Einfuegen
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections

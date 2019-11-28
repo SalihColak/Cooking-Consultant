@@ -7,15 +7,15 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$zutid = $_POST['zutid'];
+$zutid = $_GET['zutid'];
 
-$sql = "SELECT * FROM zutat where zutid='$zutid'";
- 
-// Confirm there are results
+//Example: http://localhost/getZutatByID.php?zutid=2
+$sql = "SELECT * FROM zutat where zutid = $zutid";
+
 if ($result = mysqli_query($con, $sql))
 {
 	// We have results, create an array to hold the results
-        // and an array to hold the data
+	// and an array to hold the data
 	$resultArray = array();
 	$tempArray = array();
  
@@ -29,6 +29,9 @@ if ($result = mysqli_query($con, $sql))
  
 	// Encode the array to JSON and output the results
 	echo json_encode($resultArray);
+}else
+{
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections

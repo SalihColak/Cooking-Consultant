@@ -7,18 +7,49 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
  
-$userid = $_POST['userid'];
+$userid = $_GET['userid'];
 
-$sql = "delete from benutzer where userid = $'userid'";
- 
-// Confirm there are results
+/**	Example: http://localhost/deleteBenutzer.php?userid=1
+*	Löscht alle Verbindungen des Benutzers zu Rezepten
+*	Löscht alle Verbindungen der Einkaufslisten des Benutzers zu Zutaten
+*	Löscht alle Verbindunngen des Benutzers zu Einkaufslisten
+*	Löscht alle Einkaufslisten des Benutzers
+*	Löscht den Benutzer
+*/
+$sql = "DELETE FROM benutzer2rezept WHERE userid = $userid";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM einkaufsliste2zutat WHERE einkid IN (SELECT einkid FROM benutzer2einkaufsliste WHERE userid = $userid)";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "<br>" . "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM benutzer2einkaufsliste WHERE userid = $userid";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "<br>" . "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM einkaufsliste WHERE userid = $userid";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "<br>" . "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM benutzer WHERE userid = $userid";
+
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich geloescht
-}else
+	echo "Erfolgreich geloescht!";
+}else 
 {
-	echo Fehler beim Loeschen
+	echo "<br>" . "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
+ 
  
 // Close connections
 mysqli_close($con);

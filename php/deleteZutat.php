@@ -7,17 +7,31 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
  
-$zutid = $_POST['zutid'];
+$zutid = $_GET['zutid'];
 
-$sql = "delete from zutat where zutid = $'zutid'";
- 
-// Confirm there are results
+/**	Example: http://localhost/deleteZutat.php?zutid=3
+*  	Löscht alle Verbindungen der Zutat zu Rezepten und Einkaufslisten
+*	Löscht die Zutat
+*/
+$sql = "DELETE FROM rezept2zutat WHERE zutid = $zutid";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM einkaufsliste2zutat WHERE zutid = $zutid";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM zutat WHERE zutid = $zutid";
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich geloescht
-}else
+	echo "Erfolgreich geloescht!";
+}else 
 {
-	echo Fehler beim Loeschen
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections
