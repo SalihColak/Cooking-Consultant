@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 24. Nov 2019 um 23:56
+-- Erstellungszeit: 29. Nov 2019 um 14:54
 -- Server-Version: 10.4.8-MariaDB
 -- PHP-Version: 7.3.11
 
@@ -58,8 +58,7 @@ CREATE TABLE `benutzer` (
 --
 
 INSERT INTO `benutzer` (`userid`, `titel`, `name`, `vorname`, `geschlecht`, `geburtsdatum`, `email`, `passwort`, `admin`) VALUES
-(1, 'Herr', 'Admin', 'Admin', 'm', '1991-01-01', 'admin.syp14@email.de', '123', 1),
-(2, 'Frau', 'User', 'User', 'w', '1991-02-02', 'user.syp14@email.de', '456', 0);
+(3, 'Herr', 'name', 'vorname', 'm', '1900-01-01', 'email', 'pass', 0);
 
 -- --------------------------------------------------------
 
@@ -123,7 +122,7 @@ CREATE TABLE `rezept` (
   `menge` mediumtext NOT NULL,
   `kochzeit` int(11) NOT NULL,
   `art` enum('FRUEHSTUECK','BRUNCH','MITTAGESSEN','KAFFEETAFEL','ABENDESSEN','SNACK') NOT NULL,
-  `anlass` enum('FAMILIENESSEN','ESSEN MIT FREUNDEN','FEIER','KINDERGEBURTSTAG','GEBURTSTAG','ESSEN ZU ZWEIT','FREUNDE') NOT NULL,
+  `anlass` enum('FAMILIENESSEN','FEIER','KINDERGEBURTSTAG','GEBURTSTAG','ESSEN ZU ZWEIT','FREUNDE') DEFAULT NULL,
   `praeferenz` enum('ITALIENISCH','ASIATISCH','ORIENTALISCH','TUERKISCH','DEUTSCH','AMERIKANISCH','INDISCH','HAUSMANNSKOST','INTERNATIONAL') NOT NULL,
   `bild` varchar(40) NOT NULL,
   `beschreibung` mediumtext NOT NULL
@@ -134,7 +133,7 @@ CREATE TABLE `rezept` (
 --
 
 INSERT INTO `rezept` (`rezid`, `name`, `schritte`, `menge`, `kochzeit`, `art`, `anlass`, `praeferenz`, `bild`, `beschreibung`) VALUES
-(1, 'name', 'schritte', 'menge', 110, 'SNACK', 'FEIER', 'INDISCH', 'bild', 'beschreibung');
+(2, 'name', 'schritte', 'menge', 10, 'BRUNCH', 'ESSEN ZU ZWEIT', 'ASIATISCH', 'bild', 'beschreibung');
 
 -- --------------------------------------------------------
 
@@ -160,6 +159,14 @@ CREATE TABLE `zutat` (
   `einheit` varchar(40) NOT NULL,
   `bild` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `zutat`
+--
+
+INSERT INTO `zutat` (`zutid`, `name`, `einheit`, `bild`) VALUES
+(5, 'name', 'einheit', 'bild'),
+(6, 'test', 'test', 'test');
 
 --
 -- Indizes der exportierten Tabellen
@@ -237,55 +244,55 @@ ALTER TABLE `zutat`
 -- AUTO_INCREMENT für Tabelle `beitrag`
 --
 ALTER TABLE `beitrag`
-  MODIFY `beitid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `beitid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `benutzer`
 --
 ALTER TABLE `benutzer`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT für Tabelle `benutzer2einkaufsliste`
 --
 ALTER TABLE `benutzer2einkaufsliste`
-  MODIFY `ben2einid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ben2einid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT für Tabelle `benutzer2rezept`
 --
 ALTER TABLE `benutzer2rezept`
-  MODIFY `ben2rezid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ben2rezid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `einkaufsliste`
 --
 ALTER TABLE `einkaufsliste`
-  MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT für Tabelle `einkaufsliste2zutat`
 --
 ALTER TABLE `einkaufsliste2zutat`
-  MODIFY `ein2zutid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ein2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `rezept`
 --
 ALTER TABLE `rezept`
-  MODIFY `rezid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rezid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `rezept2zutat`
 --
 ALTER TABLE `rezept2zutat`
-  MODIFY `rez2zutid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rez2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `zutat`
 --
 ALTER TABLE `zutat`
-  MODIFY `zutid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints der exportierten Tabellen
