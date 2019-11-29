@@ -57,6 +57,7 @@ nav {
 .projects li:hover,
 .products li:hover {
   background-color: rgb(105, 192, 99);
+  pointer-events: all;
 }
 
 .dropdown button,
@@ -67,6 +68,10 @@ nav {
   text-decoration: none;
   font-size: 18px;
   cursor: pointer;
+}
+
+.dropdown button:focus {
+  outline: none !important;
 }
 
 .dropdown button:hover,

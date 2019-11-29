@@ -1,0 +1,39 @@
+{{define "headerAdmin"}}
+<section class="hero gruen">
+      <div class="hero-body headEnd">
+        <div class="container center has-text-white">
+          <span class="icon is-large">
+            <i class="fas fa-utensil-spoon fas fa-5x"></i>
+          </span>
+          <p class="is-size-1 has-text-right texthead">Cooking Consultant</p>
+        </div>
+        <nav>
+          <div class="dropdown">
+            <button><a href="#" class="home">Home</a></button>
+            <div class="projects">
+              <button>Nutzer <img src="./images/down.svg" alt="down" /></button>
+              <ul>
+                <li><a href="#">Nutzer anlegen</a></li>
+                <li><a href="#">Alle Nutzer anzeigen</a></li>
+              </ul>
+            </div>
+            <div class="products">
+              <button>Rezept <img src="./images/down.svg" alt="down" /></button>
+              <ul>
+                <li><a href="/rezeptEintragen">Rezept anlegen</a></li>
+                <li><a href="/alleRezepte">Alle Rezepte anzeigen</a></li>
+              </ul>
+            </div>
+            <div class="products">
+              <button>Beitrag <img src="./images/down.svg" alt="down" /></button>
+              <ul>
+                <li><a href="#">Beitrag anlegen</a></li>
+                <li><a href="#">Alle Beiträge anzeigen</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    {{end}}

@@ -1,0 +1,83 @@
+nav {
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.dropdown {
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+  background-color: #6bad67;
+}
+
+.poducts,
+.projects {
+  position: relative;
+}
+
+.projects ul,
+.products ul {
+  position: absolute;
+  background: #f5f5f5;
+  margin-top: 10px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+.projects a,
+.products a {
+  color: black;
+  text-decoration: none;
+}
+
+.projects li,
+.products li {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects li:hover,
+.products li:hover {
+  background-color: rgb(105, 192, 99);
+  pointer-events: all;
+}
+
+.dropdown button,
+.home {
+  background: none;
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.dropdown button:hover,
+.home:hover {
+  color: rgb(226, 226, 226);
+}
+
+.projects button:focus + ul,
+.products button:focus + ul {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+}
