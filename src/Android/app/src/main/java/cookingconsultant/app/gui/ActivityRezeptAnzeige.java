@@ -103,7 +103,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
         @Override
         protected void onPostExecute(RezeptGrenz rezeptGrenz) {
             ImageView bild = (ImageView) findViewById(R.id.rezept_image_id);
-            Picasso.get().load("http://10.49.223.106/"+rezeptGrenz.getBild()).into(bild);
+            Picasso.get().load(getString(R.string.ip_server)+"/"+rezeptGrenz.getBild()).into(bild);
         }
     }
 

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Cooking Consultant</string>
-    <string name="ip_server">http://10.49.223.106/</string>
+    <string name="ip_server">http://10.49.223.166</string>
 </resources>

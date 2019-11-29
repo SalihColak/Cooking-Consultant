@@ -30,6 +30,7 @@ import cookingconsultant.app.gui.services.OnNoteListener;
 
 public class ActivityMain extends AppCompatActivity {
 
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
@@ -68,11 +69,6 @@ public class ActivityMain extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-    }
-
-    public void searchRezepte(View view){
-        Intent intent = new Intent(this,ActivityRezept.class);
-        startActivity(intent);
     }
 
     @Override

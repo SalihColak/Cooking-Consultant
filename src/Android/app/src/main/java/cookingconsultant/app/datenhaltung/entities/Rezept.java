@@ -13,6 +13,7 @@ public class Rezept {
     private String bild;
     private String kochzeit;
     private String beschreibung;
+    private String menge;
 
     private List<Zutat> zutaten;
 
@@ -20,7 +21,7 @@ public class Rezept {
         this.rezid = rezid;
     }
 
-    public Rezept(Integer rezid, String name, String beschreibung , List<String> schritte, String art, String anlass, String praeferenz, String kochzeit, String bild) {
+    public Rezept(Integer rezid, String name, String beschreibung , List<String> schritte, String art, String anlass, String praeferenz, String kochzeit, String bild, String menge) {
         this.rezid = rezid;
         this.name = name;
         this.schritte = schritte;
@@ -30,6 +31,15 @@ public class Rezept {
         this.bild = bild;
         this.kochzeit = kochzeit;
         this.beschreibung = beschreibung;
+        this.menge = menge;
+    }
+
+    public String getMenge() {
+        return menge;
+    }
+
+    public void setMenge(String menge) {
+        this.menge = menge;
     }
 
     public String getBeschreibung() {

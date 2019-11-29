@@ -38,7 +38,7 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
                     zutatGrenzList.add(new ZutatGrenz(zutat.getZutid(),zutat.getName(),zutat.getEinheit(),zutat.getBild()));
                 }
                 rezeptGrenzList.add(new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),
-                        rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList));
+                        rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList,rezept.getMenge()));
             }
         }
         return rezeptGrenzList;
@@ -54,7 +54,7 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
                 zutatGrenzList.add(new ZutatGrenz(zutat.getZutid(),zutat.getName(),zutat.getEinheit(),zutat.getBild()));
             }
             return new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),
-                    rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList);
+                    rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList,rezept.getMenge());
         }
         return null;
     }

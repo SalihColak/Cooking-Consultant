@@ -124,12 +124,16 @@ public class ActivityKochvorgang extends AppCompatActivity {
             }
             schritte = rezeptGrenz.getSchritte();
             maxSchritte = schritte.size();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
             if(!schritte.isEmpty()){
                 schrittText.setText(schritte.get(0));
             }
             progressBar.setMax(maxSchritte);
             progressBar.setProgress(progress);
-            return null;
         }
     }
 }

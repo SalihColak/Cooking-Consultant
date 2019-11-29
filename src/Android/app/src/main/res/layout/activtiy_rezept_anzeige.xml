@@ -99,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="25dp"
                 app:cardCornerRadius="15dp"
-                app:cardBackgroundColor="@color/card_background4"
+                app:cardBackgroundColor="@color/card_background5"
                 >
 
                 <LinearLayout
@@ -124,13 +124,14 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:gravity="center">
 
                             <TextView
                                 android:id="@+id/beschreibung_rezept"
-                                android:padding="10dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:padding="10dp"
                                 android:text="Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht.Das ist ein Template für eine Beschreibung. Dies sind Zeilen um das Feld etws zu füllen mal sehen was passiert wenn ich immer weter scgreibe um zu sehen wie es ausseiht" />
 
                         </LinearLayout>

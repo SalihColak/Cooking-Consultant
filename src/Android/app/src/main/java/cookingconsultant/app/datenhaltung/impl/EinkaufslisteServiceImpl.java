@@ -22,7 +22,7 @@ public class EinkaufslisteServiceImpl implements EinkaufslisteService {
 
     @Override
     public List<Einkaufsliste> getEinkaufslistenByUserID(Integer userid) {
-        User testUser = new User(1,"Herr","Colak","Salih","m","19/10/1998",true,"s@gmail.com");
+        /*User testUser = new User(1,"Herr","Colak","Salih","m","19/10/1998",true,"s@gmail.com");
 
         List<Einkaufsliste> mockList = new ArrayList<>();
         List<Zutat> mockListZutat = new ArrayList<>();
@@ -51,7 +51,8 @@ public class EinkaufslisteServiceImpl implements EinkaufslisteService {
         mockList.add(mock1);
         mockList.add(mock2);
         mockList.add(mock3);
-        return mockList;
+        return mockList;*/
+        return new ArrayList<>();
     }
 
     @Override

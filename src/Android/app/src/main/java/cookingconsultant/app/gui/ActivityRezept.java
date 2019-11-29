@@ -1,6 +1,7 @@
 package cookingconsultant.app.gui;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -34,6 +35,10 @@ public class ActivityRezept extends AppCompatActivity implements OnNoteListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rezept);
+
+        LoadRezepte loadRezepte = new LoadRezepte();
+        loadRezepte.execute();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_id);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -42,28 +47,33 @@ public class ActivityRezept extends AppCompatActivity implements OnNoteListener 
                 finish();
             }
         });
+    }
 
+    private class LoadRezepte extends AsyncTask<Void,Void,Void>{
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_rezepte_id);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager layoutManager = linearLayoutManager;
-        recyclerView.setLayoutManager(layoutManager);
+        @Override
+        protected Void doInBackground(Void... voids) {
+            rezeptVerwaltung = new RezeptVerwaltungImpl();
 
-
-        rezeptVerwaltung = new RezeptVerwaltungImpl();
-
-        try {
-            rezeptList = rezeptVerwaltung.getRezeptByQuery("blabla suche");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+            try {
+                rezeptList = rezeptVerwaltung.getRezeptByQuery("blabla suche");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
-        RezeptAdapter rezeptAdapter = new RezeptAdapter(this,rezeptList,this);
-        recyclerView.setAdapter(rezeptAdapter);
-
-
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            RecyclerView recyclerView = findViewById(R.id.recycler_view_rezepte_id);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            RecyclerView.LayoutManager layoutManager = linearLayoutManager;
+            recyclerView.setLayoutManager(layoutManager);
+            RezeptAdapter rezeptAdapter = new RezeptAdapter(getApplicationContext(),rezeptList,ActivityRezept.this);
+            recyclerView.setAdapter(rezeptAdapter);
+        }
     }
 
     @Override

@@ -49,7 +49,7 @@ public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder
         CardView cardView = holder.rezept_background;
         TextView kochzeit = holder.item_kochzeit;
         String bild = list.get(position).getBild();
-        Picasso.get().load(R.string.ip_server+bild).into(image);
+        Picasso.get().load(mContext.getString(R.string.ip_server)+"/"+bild).into(image);
         name.setText(list.get(position).getName());
         kochzeit.setText(list.get(position).getKochzeit());
 
@@ -69,6 +69,7 @@ public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
+        if (list== null)return 0;
         return list.size();
     }
 

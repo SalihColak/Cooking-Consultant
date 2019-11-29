@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cookingconsultant.app.datenhaltung.entities.Einkaufsliste;
+import cookingconsultant.app.datenhaltung.entities.Rezept;
 import cookingconsultant.app.datenhaltung.entities.User;
 import cookingconsultant.app.datenhaltung.entities.Zutat;
 import cookingconsultant.app.datenhaltung.impl.EinkaufslisteServiceImpl;
 import cookingconsultant.app.datenhaltung.services.EinkaufslisteService;
 import cookingconsultant.app.fachlogik.grenz.EinkaufslisteGrenz;
+import cookingconsultant.app.fachlogik.grenz.RezeptGrenz;
 import cookingconsultant.app.fachlogik.grenz.UserGrenz;
 import cookingconsultant.app.fachlogik.grenz.ZutatGrenz;
 import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
@@ -37,7 +39,9 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
             for(Zutat zutat : zutatList){
                 zutatGrenzList.add(new ZutatGrenz(zutat.getZutid(),zutat.getName(),zutat.getEinheit(),zutat.getBild()));
             }
-            return new EinkaufslisteGrenz(einkaufsliste.getEinkid(),einkaufsliste.getZustand(),zutatGrenzList,userGrenz);
+            Rezept rezept = einkaufsliste.getRezept();
+            RezeptGrenz rezeptGrenz = new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList,rezept.getMenge());
+            return new EinkaufslisteGrenz(einkaufsliste.getEinkid(),einkaufsliste.getZustand(),zutatGrenzList,userGrenz,rezeptGrenz);
         }
         return null;
     }
@@ -56,7 +60,9 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
                 for(Zutat zutat : zutatList){
                     zutatGrenzList.add(new ZutatGrenz(zutat.getZutid(),zutat.getName(),zutat.getEinheit(),zutat.getBild()));
                 }
-                einkaufslisteGrenzList.add(new EinkaufslisteGrenz(einkaufsliste.getEinkid(),einkaufsliste.getZustand(),zutatGrenzList,userGrenz));
+                Rezept rezept = einkaufsliste.getRezept();
+                RezeptGrenz rezeptGrenz = new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList,rezept.getMenge());
+                einkaufslisteGrenzList.add(new EinkaufslisteGrenz(einkaufsliste.getEinkid(),einkaufsliste.getZustand(),zutatGrenzList,userGrenz,rezeptGrenz));
             }
         }
         return einkaufslisteGrenzList;
@@ -81,10 +87,13 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
     @Override
     public boolean addEinkaufsliste(EinkaufslisteGrenz einkaufslisteGrenz) throws IOException, JSONException {
         Einkaufsliste einkaufsliste = new Einkaufsliste(einkaufslisteGrenz.getEinkid(),einkaufslisteGrenz.getZustand());
+        RezeptGrenz rezeptGrenz = einkaufslisteGrenz.getRezept();
         List<Zutat> zutatList = new ArrayList<>();
         for(ZutatGrenz zutatGrenz : einkaufslisteGrenz.getZutaten()){
             zutatList.add(new Zutat(zutatGrenz.getZutid(),zutatGrenz.getName(),zutatGrenz.getEinheit(),zutatGrenz.getBild()));
         }
+        einkaufsliste.setRezept(new Rezept(rezeptGrenz.getRezid(),rezeptGrenz.getName(),rezeptGrenz.getBeschreibung(),rezeptGrenz.getSchritte(),rezeptGrenz.getArt(),rezeptGrenz.getAnlass(),rezeptGrenz.getPraeferenz(),rezeptGrenz.getKochzeit(),rezeptGrenz.getBild(),rezeptGrenz.getMenge()));
+
         einkaufsliste.setZutaten(zutatList);
         if(einkaufslisteService.addEinkaufsliste(einkaufsliste)){
             return true;
