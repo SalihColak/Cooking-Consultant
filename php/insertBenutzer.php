@@ -7,25 +7,24 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
  
-$titel = $_POST['titel'];
-$name = $_POST['name'];
-$vorname = $_POST['vorname'];
-$geschlecht = $_POST['geschlecht'];
-$geburtsdatum = $_POST['geburtsdatum'];
-$email = $_POST['email'];
-$passwort = $_POST['passwort'];
-$admin = $_POST['admin'];
+$titel = $_GET['titel'];
+$name = $_GET['name'];
+$vorname = $_GET['vorname'];
+$geschlecht = $_GET['geschlecht'];
+$geburtsdatum = $_GET['geburtsdatum'];
+$email = $_GET['email'];
+$passwort = $_GET['passwort'];
+$admin = $_GET['admin'];
 
-// Select all of our stocks from table 'stock_tracker'
-$sql = "Insert into benutzer (titel, name, vorname, geschlecht, geburtsdatum, email, passwort, admin) values ('$titel', $'name', $'vorname', $'geschlecht', $'geburtsdatum', $'email', $'passwort', $'admin'";
+//Example: http://localhost/insertBenutzer.php?titel=Herr&name=name&vorname=vorname&geschlecht=m&geburtsdatum=1900-01-01&email=email&passwort=pass&admin=0
+$sql = "INSERT INTO benutzer (titel, name, vorname, geschlecht, geburtsdatum, email, passwort, admin) VALUES ('$titel', '$name', '$vorname', '$geschlecht', '$geburtsdatum', '$email', '$passwort', $admin)";
  
-// Confirm there are results
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich eingefuegt
+	echo "Erfolgreich eingefuegt!" . "<br>" . "Die ID lautet: " . mysqli_insert_id($con);
 }else
 {
-	echo Fehler beim Einfuegen
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections

@@ -7,18 +7,18 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
  
-$rezid = $_POST['rezid'];
-$zutid = $_POST['zutid'];
+$rezid = $_GET['rezid'];
+$zutid = $_GET['zutid'];
 
-$sql = "Insert into rezept2zutat (rezid, zutid) values ('$rezid', $'zutid')";
+//Example: http://localhost/insertRezept2Zutat.php?rezid=2&zutid=2
+$sql = "INSERT INTO rezept2zutat (rezid, zutid) VALUES ($rezid, $zutid)";
  
-// Confirm there are results
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich eingefuegt
+	echo "Erfolgreich eingefuegt!" . "<br>" . "Die ID lautet: " . mysqli_insert_id($con);
 }else
 {
-	echo Fehler beim Einfuegen
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections

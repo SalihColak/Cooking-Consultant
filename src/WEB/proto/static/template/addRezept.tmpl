@@ -1,0 +1,206 @@
+{{define "addRezept"}}
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+    <section class="section has-background-light">
+      <div class="container gruenControl">
+        <div class="columns">
+          <div class="column">
+            <div class="notification has-background-white">
+              <form action="/addRezept" method="post">
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Name:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <input
+                      name="name"
+                      type="text"
+                      class="input is-rounded"
+                      type="text"
+                      placeholder="Pfannkuchen"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Art:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <div class="select is-rounded is-fullwidth">
+                      <select name="art">
+                        <option value="FRUEHSTUECK">Frühstück</option>
+                        <option value="BRUNCH">Brunch</option>
+                        <option value="MITTAGESSEN">Mittagessen</option>
+                        <option value="KAFFEETAFEL">Kaffeetafel</option>
+                        <option value="ABENDESSEN">Abendessen</option>
+                        <option value="SNACK">Snack</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Anlass:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <div class="select is-rounded is-fullwidth">
+                      <select name="anlass">
+                        <option value="FAMILIENESSEN">Familienessen</option>
+                        <option value="ESSEN MIT FREUNDEN"
+                          >Essen mit Freunden</option
+                        >
+                        <option value="FEIER">Feier</option>
+                        <option value="KINDERGEBURTSTAG"
+                          >Kindergeburtstag</option
+                        >
+                        <option value="GEBURTSTAG">Geburtstag</option>
+                        <option value="ESSEN ZU ZWEIT">Essen zu Zweit</option>
+                        <option value="FREUNDE">Freunde</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Präferenz:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <div class="select is-rounded is-fullwidth">
+                      <select name="praeferenz">
+                        <option value="ITALIENISCH">Italienisch</option>
+                        <option value="ASIATISCH">Asiatisch</option>
+                        <option value="ORIENTALISCH">Orientalisch</option>
+                        <option value="TUERKISCH">Türkisch</option>
+                        <option value="DEUTSCH">Deutscg</option>
+                        <option value="AMERIKANISCH">Amerikanisch</option>
+                        <option value="INDISCH">Indisch</option>
+                        <option value="HAUSMANNSKOST">Hausmannskost</option>
+                        <option value="INTERNATIONAL">International</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                    <div class="column is-3">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Kochzeit in Minuten:</div>
+                      </div>
+                    </div>
+                    <div class="column is-7">
+                      <input
+                        name="zeit"
+                        type="text"
+                        class="input is-rounded"
+                        type="text"
+                        placeholder="60"
+                        required
+                      />
+                    </div>
+                  </div>
+                <div class="columns">
+                    <div class="column is-3">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Beschreibung:</div>
+                      </div>
+                    </div>
+                    <div class="column is-7">
+                            <textarea class="textarea" name="beschreibung" placeholder="Kurzbeschreibung des Rezeptes" rows="3" id="bechreibung"></textarea>
+                      </textarea>
+                    </div>
+                  </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Anzahl Zutaten:</div>
+                    </div>
+                  </div>
+                  <div class="column is-5">
+                    <input
+                      type="text"
+                      class="input is-rounded"
+                      id="member"
+                      name="member"
+                      placeholder="Maximal 20 Zutaten"
+                    />
+                  </div>
+                  <div class="column is-1">
+                    <button
+                      class="button is-rounded gruen has-text-white"
+                      type="button"
+                      onclick="addFields()"
+                    >
+                      Erzeugen
+                    </button>
+                  </div>
+                  <div
+                    class="column is-2 is-offset-1 small"
+                    id="erzeugen"
+                  ></div>
+                </div>
+                <div id="start"></div>
+                <!--Feld-->
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Anzahl Schritte:</div>
+                    </div>
+                  </div>
+                  <div class="column is-5">
+                    <input
+                      type="text"
+                      class="input is-rounded"
+                      id="memberText"
+                      name="memberText"
+                      placeholder="Maximal 10 Schritte"
+                    />
+                  </div>
+                  <div class="column is-1">
+                    <button
+                      class="button is-rounded gruen has-text-white"
+                      type="button"
+                      onclick="addTextarea()"
+                    >
+                      Erzeugen
+                    </button>
+                  </div>
+                  <div
+                    class="column is-2 is-offset-1 small"
+                    id="erzeugenText"
+                  ></div>
+                </div>
+                <div id="startText"></div>
+
+                <!--Feld Ende-->
+                <div class="columns has-text-centered is-vcentered">
+                    <div class="column">
+                      <button
+                        class="button is-rounded gruen has-text-white"
+                        type="submit"
+                      >
+                        Absenden
+                      </button>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    
+  </body>
+  <script src="script/addFielf.js"></script>
+</html>
+{{ end }}

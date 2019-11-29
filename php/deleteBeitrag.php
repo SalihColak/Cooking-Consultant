@@ -6,18 +6,18 @@ if (mysqli_connect_errno())
 {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
- 
-$beitid = $_POST['beitid'];
 
-$sql = "delete from beitrag where beitid = $'beitid'";
+//Example: http://localhost/deleteBeitrag.php?beitid=2
+$beitid = $_GET['beitid'];
+
+$sql = "DELETE FROM beitrag WHERE beitid = $beitid";
  
-// Confirm there are results
 if ($result = mysqli_query($con, $sql))
 {
-	echo Erfolgreich geloescht
-}else
+	echo "Erfolgreich geloescht!";
+}else 
 {
-	echo Fehler beim Loeschen
+	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
  
 // Close connections
