@@ -7,12 +7,13 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
  
-$beitid = $_GET['beitid'];
-$titel = $_GET['titel'];
-$kategorie = $_GET['kategorie'];
-$inhalt = $_GET['inhalt'];
+$zutid = $_GET['zutid'];
+$name = $_GET['name'];
+$einheit = $_GET['einheit'];
+$bild = $_GET['bild'];
 
-$sql = "UPDATE beitrag SET titel = '$titel', kategorie = '$kategorie', inhalt = '$inhalt' WHERE beitid = $beitid";
+//Example: http://localhost/updateZutat.php?zutid=5&name=upName&einheit=upEinheit&bild=upBild
+$sql = "UPDATE zutat SET name = '$name', einheit = '$einheit', bild = '$bild' WHERE zutid = $zutid";
 
 if ($result = mysqli_query($con, $sql))
 {
