@@ -11,10 +11,11 @@ $art = $_GET['art'];
 $anlass = $_GET['anlass'];
 $praeferenz = $_GET['praeferenz'];
 
-/**	Example http://localhost/getRezeptByArtAnlassPraeferenz.php?art=SNACK&anlass=FEIER&praeferenz=INDISCH
+/**	http://localhost/getRezeptByArtAnlassPraeferenz.php?art=%27SNACK%27,%20%27BRUNCH%27&anlass=%27FEIER%27,%20%27GEBURTSTAG%27&praeferenz=%27DEUTSCH%27,%20%27ASIATISCH%27
 *	Suche fuer die App: Nach Art, Anlass und Praeferenz
+*	Einfache Anfuehrungszeichen muessen selbst angegeben werden!
 */
-$sql = "SELECT * FROM rezept WHERE art = '$art' AND anlass = '$anlass' AND praeferenz = '$praeferenz'";
+$sql = "SELECT * FROM rezept WHERE art IN ($art) AND anlass IN ($anlass) AND praeferenz IN ($praeferenz)";
  
 // Confirm there are results
 if ($result = mysqli_query($con, $sql))
