@@ -14,13 +14,16 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
-import org.w3c.dom.Text;
-
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import cookingconsultant.app.R;
@@ -33,17 +36,25 @@ import cookingconsultant.app.fachlogik.impl.UserVerwaltungImpl;
 import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
 import cookingconsultant.app.fachlogik.services.RezeptVerwaltung;
 import cookingconsultant.app.fachlogik.services.UserVerwaltung;
+import cookingconsultant.app.gui.adapter.RezeptZutatenAdapter;
 
 public class ActivityRezeptAnzeige extends AppCompatActivity {
 
     private int rezid;
     private RezeptGrenz rezeptGrenz;
+    private List<String> mengeList;
+    private int portion = 1;
+    TextView portionText;
+    RecyclerView recyclerView;
+    RezeptZutatenAdapter rezeptAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activtiy_rezept_anzeige);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rezept_anzeige_id);
+
+        portionText = findViewById(R.id.portion_id);
 
         rezid = getIntent().getIntExtra("rezid",-1);
         if(rezid !=-1){
@@ -72,6 +83,27 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addPortion(View view) {
+        if(portion<50){
+            portion++;
+            portionText.setText(portion+" Portionen");
+            setMenge();
+        }
+    }
+
+    public void removePortion(View view) {
+        if (portion>1){
+            portion--;
+            if(portion == 1){
+                portionText.setText(portion+" Portion");
+            }
+            else{
+                portionText.setText(portion+" Portionen");
+            }
+            setMenge();
+        }
+    }
+
 
     private class LoadRezept extends AsyncTask<Integer,Void,RezeptGrenz>{
 
@@ -93,7 +125,6 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
 
 
             if(rezeptGrenz!=null){
-
                 name.setText(rezeptGrenz.getName());
                 beschreibung.setText(rezeptGrenz.getBeschreibung());
             }
@@ -102,9 +133,28 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(RezeptGrenz rezeptGrenz) {
+            String mengeArray[] = rezeptGrenz.getMenge().split(";");
+            mengeList = Arrays.asList(mengeArray);
+
             ImageView bild = (ImageView) findViewById(R.id.rezept_image_id);
             Picasso.get().load(getString(R.string.ip_server)+"/"+rezeptGrenz.getBild()).into(bild);
+
+            recyclerView = findViewById(R.id.rv_zutaten);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            RecyclerView.LayoutManager layoutManager = linearLayoutManager;
+            recyclerView.setLayoutManager(layoutManager);
+            rezeptAdapter = new RezeptZutatenAdapter(mengeList,rezeptGrenz.getZutaten(),getApplicationContext());
+            recyclerView.setAdapter(rezeptAdapter);
         }
+    }
+
+    private void setMenge() {
+        List<String> mengeListNew = new ArrayList<>();
+        for(String menge : mengeList){
+            mengeListNew.add("" + portion * Integer.parseInt(menge));
+        }
+        rezeptAdapter.setMengeList(mengeListNew);
+        rezeptAdapter.notifyDataSetChanged();
     }
 
     public void finish(View view){

@@ -22,7 +22,7 @@ public class RezeptGrenz {
         this.rezid = rezid;
     }
 
-    public RezeptGrenz(Integer rezid, String name,String beschreibung ,List<String> schritte, String art, String anlass, String praeferenz,String kochzeit, String bild, List<ZutatGrenz> zutaten, String menge) {
+    public RezeptGrenz(Integer rezid, String name,String beschreibung ,List<String> schritte, String art, String anlass, String praeferenz,String kochzeit, String bild, String menge) {
         this.rezid = rezid;
         this.name = name;
         this.schritte = schritte;

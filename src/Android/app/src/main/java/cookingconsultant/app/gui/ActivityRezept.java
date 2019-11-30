@@ -30,11 +30,14 @@ public class ActivityRezept extends AppCompatActivity implements OnNoteListener 
 
     List<RezeptGrenz> rezeptList;
     private RezeptVerwaltung rezeptVerwaltung;
+    private String query;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rezept);
+
+        query = getIntent().getStringExtra("query");
 
         LoadRezepte loadRezepte = new LoadRezepte();
         loadRezepte.execute();
@@ -56,7 +59,7 @@ public class ActivityRezept extends AppCompatActivity implements OnNoteListener 
             rezeptVerwaltung = new RezeptVerwaltungImpl();
 
             try {
-                rezeptList = rezeptVerwaltung.getRezeptByQuery("blabla suche");
+                rezeptList = rezeptVerwaltung.getRezeptByQuery(query);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {

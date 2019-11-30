@@ -40,7 +40,8 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
                 zutatGrenzList.add(new ZutatGrenz(zutat.getZutid(),zutat.getName(),zutat.getEinheit(),zutat.getBild()));
             }
             Rezept rezept = einkaufsliste.getRezept();
-            RezeptGrenz rezeptGrenz = new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList,rezept.getMenge());
+            RezeptGrenz rezeptGrenz = new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),rezept.getMenge());
+            rezeptGrenz.setZutaten(zutatGrenzList);
             return new EinkaufslisteGrenz(einkaufsliste.getEinkid(),einkaufsliste.getZustand(),zutatGrenzList,userGrenz,rezeptGrenz);
         }
         return null;
@@ -61,7 +62,8 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
                     zutatGrenzList.add(new ZutatGrenz(zutat.getZutid(),zutat.getName(),zutat.getEinheit(),zutat.getBild()));
                 }
                 Rezept rezept = einkaufsliste.getRezept();
-                RezeptGrenz rezeptGrenz = new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),zutatGrenzList,rezept.getMenge());
+                RezeptGrenz rezeptGrenz = new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),rezept.getMenge());
+                rezeptGrenz.setZutaten(zutatGrenzList);
                 einkaufslisteGrenzList.add(new EinkaufslisteGrenz(einkaufsliste.getEinkid(),einkaufsliste.getZustand(),zutatGrenzList,userGrenz,rezeptGrenz));
             }
         }

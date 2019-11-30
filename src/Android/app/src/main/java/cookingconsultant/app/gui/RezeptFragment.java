@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,11 +88,30 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 if(pressable) {
-                    String query = "";
-                    for(String art : rezeptartList){
-                        query += art+",";
+                    String query = "\"";
+                    for(int i = 0; i< rezeptartList.size();i++){
+                        if(i != rezeptartList.size()-1) {
+                            query += rezeptartList.get(i) + "\",\"";
+                        }else{
+                            query += rezeptartList.get(i) + "\";\"";
+                        }
+                    }
+                    for(int i = 0; i< rezeptAnlassList.size();i++){
+                        if(i != rezeptAnlassList.size()-1) {
+                            query += rezeptAnlassList.get(i) + "\",\"";
+                        }else{
+                            query += rezeptAnlassList.get(i) + "\";\"";
+                        }
+                    }
+                    for(int i = 0; i< rezeptPraeferenzList.size();i++){
+                        if(i != rezeptPraeferenzList.size()-1) {
+                            query += rezeptPraeferenzList.get(i) + "\",\"";
+                        }else{
+                            query += rezeptPraeferenzList.get(i) + "\"";
+                        }
                     }
                     Intent intent = new Intent(getContext(), ActivityRezept.class);
+                    intent.putExtra("query",query);
                     startActivity(intent);
                 }
             }

@@ -15,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import cookingconsultant.app.datenhaltung.entities.Zutat;
@@ -24,23 +25,15 @@ import cookingconsultant.app.datenhaltung.services.ZutatService;
 public class ZutatServiceImpl implements ZutatService {
 
     private final String URL_GET_ZUTAT_BY_ID = "http://10.49.223.166/getZutatByID.php";
+    private final String URL_GET_ZUTAT_BY_REZEPT_ID = "http://10.49.223.166/getZutatByRezeptID.php";
 
     @Override
     public Zutat getZutatByID(Integer zutid) throws IOException, JSONException {
-        URL myurl = new URL(URL_GET_ZUTAT_BY_ID);
+        URL myurl = new URL(URL_GET_ZUTAT_BY_ID+"?zutid="+zutid);
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
-        httpURLConnection.setDoOutput(true);
         httpURLConnection.setDoInput(true);
-        httpURLConnection.setRequestMethod("POST");
+        httpURLConnection.setRequestMethod("GET");
         httpURLConnection.connect();
-
-        OutputStream os = httpURLConnection.getOutputStream();
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-        String postData = URLEncoder.encode("zutid", "UTF-8") + "=" + URLEncoder.encode(""+zutid, "UTF-8");
-        bw.write(postData);
-        bw.flush();
-        os.close();
-
 
         InputStream is = httpURLConnection.getInputStream();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
@@ -63,7 +56,32 @@ public class ZutatServiceImpl implements ZutatService {
 
     @Override
     public List<Zutat> getZutatenByRezeptID(Integer rezid) throws IOException, JSONException {
-        RezeptService rezeptService = new RezeptServiceImpl();
-        return rezeptService.getRezeptByID(rezid).getZutaten();
+        URL myurl = new URL(URL_GET_ZUTAT_BY_REZEPT_ID+"?rezid="+rezid);
+        HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
+        httpURLConnection.setDoInput(true);
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.connect();
+
+        InputStream is = httpURLConnection.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        String line ="";
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while ((line = bufferedReader.readLine())!=null){
+            stringBuilder.append(line);
+        }
+        String data = stringBuilder.toString();
+
+        JSONArray jsonArray = new JSONArray(data);
+        JSONObject jobj;
+        List<Zutat> zutatList = new ArrayList<>();
+
+        for (int i=0; i<jsonArray.length(); i++){
+            jobj = jsonArray.getJSONObject(i);
+            if(jobj!=null){
+                zutatList.add(new Zutat(jobj.getInt("zutid"),jobj.getString("name"),jobj.getString("einheit"),jobj.getString("bild")));
+            }
+        }
+        return zutatList;
     }
 }
