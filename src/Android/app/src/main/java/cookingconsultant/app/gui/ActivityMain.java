@@ -35,6 +35,7 @@ public class ActivityMain extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private int userid;
+    private boolean firstUse;
     private RecyclerView recyclerView;
 
 
@@ -43,15 +44,22 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*  ENDVERSION
+        /*  ENDVERSION*/
 
+        //getSharedPreferences("userData", 0).edit().clear().commit();
         SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
         userid = sharedPreferences.getInt("userid",-1);
-        if(userid == -1){
-            Intent intent = new Intent(this,LoginActivtiy.class);
+        firstUse = sharedPreferences.getBoolean("firstUse",true);
+        if(firstUse){
+            Intent intent = new Intent(this,FirstStartActivity.class);
             startActivity(intent);
             finish();
-        }*/
+        }
+        else if(userid == -1){
+            Intent intent = new Intent(this,ActivityLogin.class);
+            startActivity(intent);
+            finish();
+        }
 
         userid = 1; //prototyp
 

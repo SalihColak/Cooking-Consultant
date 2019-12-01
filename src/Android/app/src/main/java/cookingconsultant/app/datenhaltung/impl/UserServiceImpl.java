@@ -23,8 +23,8 @@ import cookingconsultant.app.datenhaltung.services.UserService;
 public class UserServiceImpl implements UserService {
 
 
-    private final String URL_GET_USER_BY_ID="";
-    private final String URL_GET_USER_BY_LOGIN="";
+    private final String URL_GET_USER_BY_ID="http://10.49.223.166/getBenutzerByID.php";
+    private final String URL_GET_USER_BY_LOGIN="http://10.49.223.166/getBenutzerByLogin.php";
 
     public UserServiceImpl(){
 
@@ -32,20 +32,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByID(Integer userid) throws IOException, JSONException {
-        /*URL myurl = null;
-        myurl = new URL(URL_GET_USER_BY_ID);
+        URL myurl = new URL(URL_GET_USER_BY_ID+"?userid="+userid);
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
-        httpURLConnection.connect();
-
-        httpURLConnection.setRequestMethod("POST");
         httpURLConnection.setDoInput(true);
-        httpURLConnection.setDoOutput(true);
-        OutputStream os = httpURLConnection.getOutputStream();
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-        String postData = URLEncoder.encode("userid", "UTF-8") + "=" + URLEncoder.encode(""+userid, "UTF-8");
-        bw.write(postData);
-        bw.flush();
-        os.close();
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.connect();
 
 
         InputStream is = httpURLConnection.getInputStream();
@@ -58,39 +49,30 @@ public class UserServiceImpl implements UserService {
         }
         String data = stringBuilder.toString();
 
-        //JSONArray jsonArray = new JSONArray(data);
-        JSONObject jobj = new JSONObject(data);
-        User user = new User(jobj.getInt("userid"));
-        user.setTitel(jobj.getString("titel"));
-        user.setName(jobj.getString("name"));
-        user.setVorname(jobj.getString("vorname"));
-        user.setGeschlecht(jobj.getString("geschlecht"));
-        user.setGeburtsdatum(jobj.getString("geburtsdatum"));
-        user.setEmail(jobj.getString("email"));
-        EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
-        user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
-        user.setAdmin(jobj.getBoolean("admin"));
-        return user;*/
-        return new User(userid,"Herr","Mustermann","Max","maennlich","1997/03/14",true,"max.mustermann@th-koeln.de");
+        JSONArray jsonArray = new JSONArray(data);
+        JSONObject jobj = jsonArray.getJSONObject(0);
+        User user = null;
+
+        if(jobj != null){
+            user = new User(jobj.getInt("userid"),jobj.getString("titel"),jobj.getString("name"),
+                    jobj.getString("vorname"),jobj.getString("geschlecht"),jobj.getString("geburtsdatum"),
+                    jobj.getBoolean("admin"),jobj.getString("email"));
+            EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
+            user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
+        }
+
+
+        return user;
+        //return new User(userid,"Herr","Mustermann","Max","maennlich","1997/03/14",true,"max.mustermann@th-koeln.de");
     }
 
     @Override
     public User getUserByLogin(String email, String password) throws IOException, JSONException {
-        /*URL myurl = null;
-        myurl = new URL(URL_GET_USER_BY_LOGIN);
+        URL myurl = new URL(URL_GET_USER_BY_LOGIN+"?email="+email+"&passwort="+password);
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
-        httpURLConnection.connect();
-
-        httpURLConnection.setRequestMethod("POST");
         httpURLConnection.setDoInput(true);
-        httpURLConnection.setDoOutput(true);
-        OutputStream os = httpURLConnection.getOutputStream();
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-        String postData = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(""+email, "UTF-8") + "&"
-                + URLEncoder.encode("passwort", "UTF-8") + "=" + URLEncoder.encode(""+password, "UTF-8");
-        bw.write(postData);
-        bw.flush();
-        os.close();
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.connect();
 
 
         InputStream is = httpURLConnection.getInputStream();
@@ -103,18 +85,20 @@ public class UserServiceImpl implements UserService {
         }
         String data = stringBuilder.toString();
 
-        JSONObject jobj = new JSONObject(data);
-        User user = new User(jobj.getInt("userid"));
-        user.setTitel(jobj.getString("titel"));
-        user.setName(jobj.getString("name"));
-        user.setVorname(jobj.getString("vorname"));
-        user.setGeschlecht(jobj.getString("geschlecht"));
-        user.setGeburtsdatum(jobj.getString("geburtsdatum"));
-        user.setEmail(jobj.getString("email"));
-        EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
-        user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
-        user.setAdmin(jobj.getBoolean("admin"));
-        return user;*/
-        return new User(3,"Herr","Mustermann","Max","maennlich","1997/03/14",true,email);
+        JSONArray jsonArray = new JSONArray(data);
+        JSONObject jobj = jsonArray.getJSONObject(0);
+        User user = null;
+
+        if(jobj != null){
+            user = new User(jobj.getInt("userid"),jobj.getString("titel"),jobj.getString("name"),
+                    jobj.getString("vorname"),jobj.getString("geschlecht"),jobj.getString("geburtsdatum"),
+                    jobj.getBoolean("admin"),jobj.getString("email"));
+            EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
+            user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
+        }
+
+
+        return user;
+        //return new User(3,"Herr","Mustermann","Max","maennlich","1997/03/14",true,email);
     }
 }

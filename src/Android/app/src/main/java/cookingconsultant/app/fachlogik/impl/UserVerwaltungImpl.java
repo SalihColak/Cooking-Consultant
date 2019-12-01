@@ -22,16 +22,22 @@ public class UserVerwaltungImpl implements UserVerwaltung {
     @Override
     public UserGrenz getUserByID(Integer userid) throws IOException, JSONException {
         User user = userService.getUserByID(userid);
-        UserGrenz userGrenz = new UserGrenz(user.getUserid(),user.getTitel(),user.getName(),user.getVorname(),
-                user.getGeschlecht(),user.getGeburtsdatum(), user.isAdmin(),user.getEmail());
-        return userGrenz;
+        if(user != null) {
+            UserGrenz userGrenz = new UserGrenz(user.getUserid(), user.getTitel(), user.getName(), user.getVorname(),
+                    user.getGeschlecht(), user.getGeburtsdatum(), user.isAdmin(), user.getEmail());
+            return userGrenz;
+        }
+        return null;
     }
 
     @Override
     public UserGrenz getUserByLogin(String email, String password) throws IOException, JSONException {
         User user = userService.getUserByLogin(email,password);
-        UserGrenz userGrenz = new UserGrenz(user.getUserid(),user.getTitel(),user.getName(),user.getVorname(),
-                user.getGeschlecht(),user.getGeburtsdatum(), user.isAdmin(),user.getEmail());
-        return userGrenz;
+        if(user != null) {
+            UserGrenz userGrenz = new UserGrenz(user.getUserid(), user.getTitel(), user.getName(), user.getVorname(),
+                    user.getGeschlecht(), user.getGeburtsdatum(), user.isAdmin(), user.getEmail());
+            return userGrenz;
+        }
+        return null;
     }
 }
