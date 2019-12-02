@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Dez 2019 um 13:58
+-- Erstellungszeit: 02. Dez 2019 um 15:57
 -- Server-Version: 10.4.8-MariaDB
--- PHP-Version: 7.1.33
+-- PHP-Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -63,18 +63,6 @@ INSERT INTO `benutzer` (`userid`, `titel`, `name`, `vorname`, `geschlecht`, `geb
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `benutzer2einkaufsliste`
---
-
-CREATE TABLE `benutzer2einkaufsliste` (
-  `ben2einid` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `einkid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Tabellenstruktur für Tabelle `benutzer2rezept`
 --
 
@@ -94,19 +82,8 @@ CREATE TABLE `einkaufsliste` (
   `einkid` int(11) NOT NULL,
   `zustand` varchar(40) NOT NULL,
   `userid` int(11) NOT NULL,
-  `rezid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `einkaufsliste2zutat`
---
-
-CREATE TABLE `einkaufsliste2zutat` (
-  `ein2zutid` int(11) NOT NULL,
-  `einkid` int(11) NOT NULL,
-  `zutid` int(11) NOT NULL
+  `rezid` int(11) NOT NULL,
+  `menge` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -186,14 +163,6 @@ ALTER TABLE `benutzer`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indizes für die Tabelle `benutzer2einkaufsliste`
---
-ALTER TABLE `benutzer2einkaufsliste`
-  ADD PRIMARY KEY (`ben2einid`),
-  ADD KEY `userid` (`userid`),
-  ADD KEY `einkid` (`einkid`);
-
---
 -- Indizes für die Tabelle `benutzer2rezept`
 --
 ALTER TABLE `benutzer2rezept`
@@ -208,14 +177,6 @@ ALTER TABLE `einkaufsliste`
   ADD PRIMARY KEY (`einkid`),
   ADD KEY `userid` (`userid`),
   ADD KEY `rezid` (`rezid`);
-
---
--- Indizes für die Tabelle `einkaufsliste2zutat`
---
-ALTER TABLE `einkaufsliste2zutat`
-  ADD PRIMARY KEY (`ein2zutid`),
-  ADD KEY `einkid` (`einkid`),
-  ADD KEY `zutid` (`zutid`);
 
 --
 -- Indizes für die Tabelle `rezept`
@@ -254,12 +215,6 @@ ALTER TABLE `benutzer`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT für Tabelle `benutzer2einkaufsliste`
---
-ALTER TABLE `benutzer2einkaufsliste`
-  MODIFY `ben2einid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT für Tabelle `benutzer2rezept`
 --
 ALTER TABLE `benutzer2rezept`
@@ -270,12 +225,6 @@ ALTER TABLE `benutzer2rezept`
 --
 ALTER TABLE `einkaufsliste`
   MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT für Tabelle `einkaufsliste2zutat`
---
-ALTER TABLE `einkaufsliste2zutat`
-  MODIFY `ein2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `rezept`
@@ -300,13 +249,6 @@ ALTER TABLE `zutat`
 --
 
 --
--- Constraints der Tabelle `benutzer2einkaufsliste`
---
-ALTER TABLE `benutzer2einkaufsliste`
-  ADD CONSTRAINT `benutzer2einkaufsliste_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `benutzer` (`userid`),
-  ADD CONSTRAINT `benutzer2einkaufsliste_ibfk_2` FOREIGN KEY (`einkid`) REFERENCES `einkaufsliste` (`einkid`);
-
---
 -- Constraints der Tabelle `benutzer2rezept`
 --
 ALTER TABLE `benutzer2rezept`
@@ -319,13 +261,6 @@ ALTER TABLE `benutzer2rezept`
 ALTER TABLE `einkaufsliste`
   ADD CONSTRAINT `einkaufsliste_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `benutzer` (`userid`),
   ADD CONSTRAINT `einkaufsliste_ibfk_2` FOREIGN KEY (`rezid`) REFERENCES `rezept` (`rezid`);
-
---
--- Constraints der Tabelle `einkaufsliste2zutat`
---
-ALTER TABLE `einkaufsliste2zutat`
-  ADD CONSTRAINT `einkaufsliste2zutat_ibfk_1` FOREIGN KEY (`einkid`) REFERENCES `einkaufsliste` (`einkid`),
-  ADD CONSTRAINT `einkaufsliste2zutat_ibfk_2` FOREIGN KEY (`zutid`) REFERENCES `zutat` (`zutid`);
 
 --
 -- Constraints der Tabelle `rezept2zutat`
