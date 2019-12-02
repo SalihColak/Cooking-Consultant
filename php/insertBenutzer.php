@@ -16,7 +16,13 @@ $email = $_GET['email'];
 $passwort = $_GET['passwort'];
 $admin = $_GET['admin'];
 
-//Example: http://localhost/insertBenutzer.php?titel=Herr&name=name&vorname=vorname&geschlecht=m&geburtsdatum=1900-01-01&email=email&passwort=pass&admin=0
+/** Example: http://localhost/insertBenutzer.php?titel=Herr&name=name&vorname=vorname&geschlecht=m&geburtsdatum=1900-01-01&email=email&passwort=pass&admin=0
+*
+*	Error bei duplicate Email:
+*
+*	Fehler beim Ausfuehren von INSERT INTO benutzer (titel, name, vorname, geschlecht, geburtsdatum, email, passwort, admin) VALUES ('Herr', 'name', 'vorname', 'm', '1900-01-01', 'email', 'pass', 0).
+*	Duplicate entry 'email' for key 'email'
+*/
 $sql = "INSERT INTO benutzer (titel, name, vorname, geschlecht, geburtsdatum, email, passwort, admin) VALUES ('$titel', '$name', '$vorname', '$geschlecht', '$geburtsdatum', '$email', '$passwort', $admin)";
  
 if ($result = mysqli_query($con, $sql))
