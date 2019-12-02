@@ -11,9 +11,10 @@ $einkid = $_GET['einkid'];
 $zustand = $_GET['zustand'];
 $userid = $_GET['userid'];
 $rezid = $_GET['rezid'];
+$menge = $_GET['menge'];
 
 //Example: http://localhost/updateEinkaufsliste.php?einkid=6&zustand=upZustand&userid=3&rezid=2
-$sql = "UPDATE einkaufsliste SET zustand = '$zustand', userid = $userid, rezid = $rezid WHERE einkid = $einkid";
+$sql = "UPDATE einkaufsliste SET zustand = '$zustand', userid = $userid, rezid = $rezid, menge = $menge WHERE einkid = $einkid";
 
 if ($result = mysqli_query($con, $sql))
 {

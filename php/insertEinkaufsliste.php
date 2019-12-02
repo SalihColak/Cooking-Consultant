@@ -10,9 +10,10 @@ if (mysqli_connect_errno())
 $zustand = $_GET['zustand'];
 $userid = $_GET['userid'];
 $rezid = $_GET['rezid'];
+$menge = $_GET['menge'];
 
 //Example: http://localhost/insertEinkaufsliste.php?zustand=zustand&userid=1&rezid=2
-$sql = "INSERT INTO einkaufsliste (zustand, userid, rezid) VALUES ('$zustand', $userid, $rezid)";
+$sql = "INSERT INTO einkaufsliste (zustand, userid, rezid, menge) VALUES ('$zustand', $userid, $rezid, $menge)";
  
 if ($result = mysqli_query($con, $sql))
 {

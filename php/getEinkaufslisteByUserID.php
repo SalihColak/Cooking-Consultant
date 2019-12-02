@@ -12,7 +12,7 @@ $userid = $_GET['userid'];
 /**	Example http://localhost/getEinkaufslisteByUserID.php?userid=1
 *	Returned alle Einkaufslisten, die der Benutzer angelegt hat
 */
-$sql = "SELECT * FROM einkaufsliste WHERE userid IN (SELECT einkid FROM benutzer2einkaufsliste WHERE userid = $userid)";
+$sql = "SELECT * FROM einkaufsliste WHERE userid = $userid";
  
 // Confirm there are results
 if ($result = mysqli_query($con, $sql))

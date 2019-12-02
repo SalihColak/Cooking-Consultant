@@ -12,7 +12,7 @@ $einkid = $_GET['einkid'];
 /** Example: http://localhost/getZutatByEinkaufslisteID.php?einkid=1
 *	Returned alle Zutaten, die in einer Einkaufsliste gespeichert sind
 */
-$sql = "SELECT * FROM zutat WHERE zutid IN (SELECT zutid FROM einkaufsliste2zutat WHERE einkid = $einkid)";
+$sql = "SELECT * FROM zutat WHERE zutid IN (SELECT zutid FROM rezept2zutat WHERE rezid IN (SELECT rezid FROM einkaufsliste WHERE einkid = $einkid))";
  
 // Confirm there are results
 if ($result = mysqli_query($con, $sql))
