@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 29. Nov 2019 um 14:54
+-- Erstellungszeit: 02. Dez 2019 um 13:58
 -- Server-Version: 10.4.8-MariaDB
--- PHP-Version: 7.3.11
+-- PHP-Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,7 +48,7 @@ CREATE TABLE `benutzer` (
   `vorname` varchar(40) NOT NULL,
   `geschlecht` enum('m','w','d') NOT NULL,
   `geburtsdatum` date NOT NULL,
-  `email` varchar(40) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `passwort` varchar(40) NOT NULL,
   `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -182,7 +182,8 @@ ALTER TABLE `beitrag`
 -- Indizes für die Tabelle `benutzer`
 --
 ALTER TABLE `benutzer`
-  ADD PRIMARY KEY (`userid`);
+  ADD PRIMARY KEY (`userid`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indizes für die Tabelle `benutzer2einkaufsliste`
