@@ -15,8 +15,6 @@ public class User {
     private String passwort;
     private String email;
 
-    private List<Einkaufsliste> einkaufslisten;
-
     public User(Integer userid){
         this.userid = userid;
     }
@@ -86,14 +84,6 @@ public class User {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
-    }
-
-    public List<Einkaufsliste> getEinkaufslisten() {
-        return einkaufslisten;
-    }
-
-    public void setEinkaufslisten(List<Einkaufsliste> einkaufslisten) {
-        this.einkaufslisten = einkaufslisten;
     }
 
     public String getPasswort() {

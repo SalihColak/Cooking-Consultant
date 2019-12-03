@@ -25,11 +25,12 @@ import cookingconsultant.app.datenhaltung.entities.Rezept;
 import cookingconsultant.app.datenhaltung.entities.Zutat;
 import cookingconsultant.app.datenhaltung.services.RezeptService;
 import cookingconsultant.app.datenhaltung.services.ZutatService;
+import cookingconsultant.app.fachlogik.services.Constants;
 
 public class RezeptServiceImpl implements RezeptService {
 
-    private static final String URL_GET_REZEPT_BY_ID = "http://10.49.223.166/getRezeptByID.php";
-    private static final String URL_GET_REZEPTE_BY_QUERY = "http://10.49.223.166/getRezeptByArtAnlassPraeferenz.php";
+    private static final String URL_GET_REZEPT_BY_ID = Constants.IP_SERVER+"getRezeptByID.php";
+    private static final String URL_GET_REZEPTE_BY_QUERY = Constants.IP_SERVER+"getRezeptByArtAnlassPraeferenz.php";
 
     @Override
     public Rezept getRezeptByID(Integer rezid) throws IOException, JSONException {

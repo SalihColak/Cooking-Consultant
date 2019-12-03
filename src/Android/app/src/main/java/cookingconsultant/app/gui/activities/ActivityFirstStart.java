@@ -1,4 +1,4 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.activities;
 
 import android.animation.ArgbEvaluator;
 import android.content.Context;
@@ -17,7 +17,7 @@ import cookingconsultant.app.R;
 import cookingconsultant.app.gui.adapter.FirstStartAdapter;
 import cookingconsultant.app.gui.entities.Model;
 
-public class FirstStartActivity extends AppCompatActivity {
+public class ActivityFirstStart extends AppCompatActivity {
 
     ViewPager viewPager;
     FirstStartAdapter adapter;

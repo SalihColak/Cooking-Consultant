@@ -1,4 +1,4 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.fragments;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;

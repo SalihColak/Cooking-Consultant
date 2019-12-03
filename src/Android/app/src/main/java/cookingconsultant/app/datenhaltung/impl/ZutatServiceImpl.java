@@ -21,11 +21,12 @@ import java.util.List;
 import cookingconsultant.app.datenhaltung.entities.Zutat;
 import cookingconsultant.app.datenhaltung.services.RezeptService;
 import cookingconsultant.app.datenhaltung.services.ZutatService;
+import cookingconsultant.app.fachlogik.services.Constants;
 
 public class ZutatServiceImpl implements ZutatService {
 
-    private final String URL_GET_ZUTAT_BY_ID = "http://10.49.223.166/getZutatByID.php";
-    private final String URL_GET_ZUTAT_BY_REZEPT_ID = "http://10.49.223.166/getZutatByRezeptID.php";
+    private final String URL_GET_ZUTAT_BY_ID = Constants.IP_SERVER+"getZutatByID.php";
+    private final String URL_GET_ZUTAT_BY_REZEPT_ID = Constants.IP_SERVER+"getZutatByRezeptID.php";
 
     @Override
     public Zutat getZutatByID(Integer zutid) throws IOException, JSONException {

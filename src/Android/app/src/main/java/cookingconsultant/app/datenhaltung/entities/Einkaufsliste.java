@@ -6,8 +6,9 @@ public class Einkaufsliste {
 
     private Integer einkid;
     private String zustand;
+    private Integer portion;
 
-    private List<Zutat> zutaten;
+    private List<ZutatState> zutatStateList;
     private Rezept rezept;
     private User user;
 
@@ -15,9 +16,26 @@ public class Einkaufsliste {
         this.einkid = einkid;
     }
 
-    public Einkaufsliste(Integer einkid, String zustand) {
+    public Einkaufsliste(Integer einkid, String zustand, Integer portion) {
         this.einkid = einkid;
         this.zustand = zustand;
+        this.portion = portion;
+    }
+
+    public List<ZutatState> getZutatStateList() {
+        return zutatStateList;
+    }
+
+    public void setZutatStateList(List<ZutatState> zutatStateList) {
+        this.zutatStateList = zutatStateList;
+    }
+
+    public Integer getPortion() {
+        return portion;
+    }
+
+    public void setPortion(Integer portion) {
+        this.portion = portion;
     }
 
     public Integer getEinkid() {
@@ -26,14 +44,6 @@ public class Einkaufsliste {
 
     public void setEinkid(Integer einkid) {
         this.einkid = einkid;
-    }
-
-    public List<Zutat> getZutaten() {
-        return zutaten;
-    }
-
-    public void setZutaten(List<Zutat> zutaten) {
-        this.zutaten = zutaten;
     }
 
     public String getZustand() {

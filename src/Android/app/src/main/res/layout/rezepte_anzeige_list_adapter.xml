@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
     android:layout_marginBottom="0dp"
     android:id="@+id/cardview_parent_id"
     app:cardCornerRadius="10dp">

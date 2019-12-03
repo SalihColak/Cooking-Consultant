@@ -1,12 +1,11 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ActionMenuView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -33,10 +33,12 @@ import cookingconsultant.app.fachlogik.grenz.UserGrenz;
 import cookingconsultant.app.fachlogik.impl.EinkaufslisteVerwaltungImpl;
 import cookingconsultant.app.fachlogik.impl.RezeptVerwaltungImpl;
 import cookingconsultant.app.fachlogik.impl.UserVerwaltungImpl;
+import cookingconsultant.app.fachlogik.services.Constants;
 import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
 import cookingconsultant.app.fachlogik.services.RezeptVerwaltung;
 import cookingconsultant.app.fachlogik.services.UserVerwaltung;
 import cookingconsultant.app.gui.adapter.RezeptZutatenAdapter;
+import cookingconsultant.app.gui.fragments.EinkaufFragment;
 
 public class ActivityRezeptAnzeige extends AppCompatActivity {
 
@@ -137,7 +139,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
             mengeList = Arrays.asList(mengeArray);
 
             ImageView bild = (ImageView) findViewById(R.id.rezept_image_id);
-            Picasso.get().load(getString(R.string.ip_server)+"/"+rezeptGrenz.getBild()).into(bild);
+            Picasso.get().load(Constants.IP_SERVER+rezeptGrenz.getBild()).into(bild);
 
             recyclerView = findViewById(R.id.rv_zutaten);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -174,7 +176,9 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
             UserVerwaltung userVerwaltung = new UserVerwaltungImpl();
             UserGrenz userGrenz = null;
             try {
-                userGrenz = userVerwaltung.getUserByID(getIntent().getIntExtra("userid",-1));
+                SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+                int userid = sharedPreferences.getInt("userid",-1);
+                userGrenz = userVerwaltung.getUserByID(userid);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -182,7 +186,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
             }
             EinkaufslisteVerwaltung einkaufslisteVerwaltung = new EinkaufslisteVerwaltungImpl();
             try {
-                if(einkaufslisteVerwaltung.addEinkaufsliste(new EinkaufslisteGrenz(null,"bearbeitung",rezeptGrenz.getZutaten(),userGrenz,rezeptGrenz))){
+                if(userGrenz != null && einkaufslisteVerwaltung.addEinkaufsliste(new EinkaufslisteGrenz(null,"Bearbeitung",userGrenz,rezeptGrenz,portion))){
                     return true;
                 }
             } catch (IOException e) {
@@ -197,6 +201,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             if(aBoolean){
                 Toast.makeText(ActivityRezeptAnzeige.this,"Erfolgreich hinzugefügt",Toast.LENGTH_SHORT).show();
+                Snackbar.make(recyclerView,"Rezept wurde der Einkaufsliste hinzugefügt",Snackbar.LENGTH_SHORT).show();
             }
         }
     }

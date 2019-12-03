@@ -1,9 +1,9 @@
 package cookingconsultant.app.fachlogik.grenz;
 
-import java.util.List;
+import java.io.Serializable;
 
 
-public class UserGrenz {
+public class UserGrenz implements Serializable {
 
     private Integer userid;
     private String titel;
@@ -14,8 +14,6 @@ public class UserGrenz {
     private boolean admin;
     private String passwort;
     private String email;
-
-    private List<EinkaufslisteGrenz> einkaufslisten;
 
     public UserGrenz(Integer userid){
         this.userid = userid;
@@ -102,14 +100,6 @@ public class UserGrenz {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
-    }
-
-    public List<EinkaufslisteGrenz> getEinkaufslisten() {
-        return einkaufslisten;
-    }
-
-    public void setEinkaufslisten(List<EinkaufslisteGrenz> einkaufslisten) {
-        this.einkaufslisten = einkaufslisten;
     }
 
 }

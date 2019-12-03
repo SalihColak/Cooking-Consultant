@@ -17,6 +17,7 @@ import java.util.List;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.fachlogik.grenz.RezeptGrenz;
+import cookingconsultant.app.fachlogik.services.Constants;
 import cookingconsultant.app.gui.services.OnNoteListener;
 
 public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder> {
@@ -49,7 +50,7 @@ public class RezeptAdapter extends RecyclerView.Adapter<RezeptAdapter.ViewHolder
         CardView cardView = holder.rezept_background;
         TextView kochzeit = holder.item_kochzeit;
         String bild = list.get(position).getBild();
-        Picasso.get().load(mContext.getString(R.string.ip_server)+"/"+bild).into(image);
+        Picasso.get().load(Constants.IP_SERVER+bild).into(image);
         name.setText(list.get(position).getName());
         kochzeit.setText(list.get(position).getKochzeit());
 

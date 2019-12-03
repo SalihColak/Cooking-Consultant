@@ -19,12 +19,13 @@ import java.time.LocalDate;
 import cookingconsultant.app.datenhaltung.entities.User;
 import cookingconsultant.app.datenhaltung.services.EinkaufslisteService;
 import cookingconsultant.app.datenhaltung.services.UserService;
+import cookingconsultant.app.fachlogik.services.Constants;
 
 public class UserServiceImpl implements UserService {
 
 
-    private final String URL_GET_USER_BY_ID="http://10.49.223.166/getBenutzerByID.php";
-    private final String URL_GET_USER_BY_LOGIN="http://10.49.223.166/getBenutzerByLogin.php";
+    private final String URL_GET_USER_BY_ID= Constants.IP_SERVER+"getBenutzerByID.php";
+    private final String URL_GET_USER_BY_LOGIN=Constants.IP_SERVER+"getBenutzerByEmailPasswort.php";
 
     public UserServiceImpl(){
 
@@ -54,11 +55,13 @@ public class UserServiceImpl implements UserService {
         User user = null;
 
         if(jobj != null){
+            boolean admin;
+            if(jobj.getInt("admin") == 1){
+                admin = true;
+            }else { admin = false;}
             user = new User(jobj.getInt("userid"),jobj.getString("titel"),jobj.getString("name"),
                     jobj.getString("vorname"),jobj.getString("geschlecht"),jobj.getString("geburtsdatum"),
-                    jobj.getBoolean("admin"),jobj.getString("email"));
-            EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
-            user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
+                    admin,jobj.getString("email"));
         }
 
 
@@ -90,11 +93,14 @@ public class UserServiceImpl implements UserService {
         User user = null;
 
         if(jobj != null){
+            boolean admin;
+            if(jobj.getInt("admin") == 1){
+                admin = true;
+            }else { admin = false;}
+
             user = new User(jobj.getInt("userid"),jobj.getString("titel"),jobj.getString("name"),
                     jobj.getString("vorname"),jobj.getString("geschlecht"),jobj.getString("geburtsdatum"),
-                    jobj.getBoolean("admin"),jobj.getString("email"));
-            EinkaufslisteService einkaufslisteService = new EinkaufslisteServiceImpl();
-            user.setEinkaufslisten(einkaufslisteService.getEinkaufslistenByUserID(user.getUserid()));
+                    admin,jobj.getString("email"));
         }
 
 

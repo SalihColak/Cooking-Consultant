@@ -1,4 +1,4 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -47,12 +47,11 @@ public class ActivityLogin extends AppCompatActivity {
 
         if(passwort.equals("") || email.equals("")){
             error.setTextColor(error.getResources().getColor(R.color.card_background0));
+            error.setTextSize(18f);
             error.setText("Bitte Email und Passwort eingeben");
             return;
         }
-        else{
-            error.setText("");
-        }
+
 
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -92,6 +91,10 @@ public class ActivityLogin extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),userGrenz.getUserid()+" "+userGrenz.getVorname(),Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();
+            }else{
+                error.setTextColor(error.getResources().getColor(R.color.card_background0));
+                error.setTextSize(18f);
+                error.setText("Email und Passwort stimmen nicht überein");
             }
         }
     }

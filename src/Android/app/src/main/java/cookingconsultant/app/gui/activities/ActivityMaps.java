@@ -1,4 +1,4 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.activities;
 
-public class MapsActivity {
+public class ActivityMaps {
 }

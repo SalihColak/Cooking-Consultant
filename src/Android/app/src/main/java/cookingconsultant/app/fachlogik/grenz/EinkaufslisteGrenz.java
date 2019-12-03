@@ -1,14 +1,16 @@
 package cookingconsultant.app.fachlogik.grenz;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class EinkaufslisteGrenz {
+public class EinkaufslisteGrenz implements Serializable {
 
     private Integer einkid;
     private String zustand;
+    private Integer portion;
+    private List<ZutatStateGrenz> zutatStateList;
 
-    private List<ZutatGrenz> zutaten;
     private UserGrenz user;
     private RezeptGrenz rezept;
 
@@ -16,12 +18,28 @@ public class EinkaufslisteGrenz {
         this.einkid = einkid;
     }
 
-    public EinkaufslisteGrenz(Integer einkid, String zustand, List<ZutatGrenz> zutaten, UserGrenz user, RezeptGrenz rezept) {
+    public EinkaufslisteGrenz(Integer einkid, String zustand, UserGrenz user, RezeptGrenz rezept, Integer portion) {
         this.einkid = einkid;
         this.zustand = zustand;
-        this.zutaten = zutaten;
         this.user = user;
         this.rezept = rezept;
+        this.portion = portion;
+    }
+
+    public List<ZutatStateGrenz> getZutatStateList() {
+        return zutatStateList;
+    }
+
+    public void setZutatStateList(List<ZutatStateGrenz> zutatStateList) {
+        this.zutatStateList = zutatStateList;
+    }
+
+    public Integer getPortion() {
+        return portion;
+    }
+
+    public void setPortion(Integer portion) {
+        this.portion = portion;
     }
 
     public RezeptGrenz getRezept() {
@@ -38,14 +56,6 @@ public class EinkaufslisteGrenz {
 
     public void setEinkid(Integer einkid) {
         this.einkid = einkid;
-    }
-
-    public List<ZutatGrenz> getZutaten() {
-        return zutaten;
-    }
-
-    public void setZutaten(List<ZutatGrenz> zutaten) {
-        this.zutaten = zutaten;
     }
 
     public String getZustand() {

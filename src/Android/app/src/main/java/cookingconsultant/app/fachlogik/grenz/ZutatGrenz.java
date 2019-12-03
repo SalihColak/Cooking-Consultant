@@ -1,6 +1,8 @@
 package cookingconsultant.app.fachlogik.grenz;
 
-public class ZutatGrenz {
+import java.io.Serializable;
+
+public class ZutatGrenz implements Serializable {
 
     private Integer zutid;
     private String name;

@@ -1,4 +1,4 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;

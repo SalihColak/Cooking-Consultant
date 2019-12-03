@@ -1,32 +1,22 @@
-package cookingconsultant.app.gui;
+package cookingconsultant.app.gui.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.util.List;
-
 import cookingconsultant.app.R;
-import cookingconsultant.app.fachlogik.grenz.EinkaufslisteGrenz;
-import cookingconsultant.app.fachlogik.impl.EinkaufslisteVerwaltungImpl;
-import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
-import cookingconsultant.app.gui.adapter.EinkaufslisteAdapter;
+import cookingconsultant.app.gui.fragments.EinkaufFragment;
+import cookingconsultant.app.gui.fragments.KochlexikonFragment;
+import cookingconsultant.app.gui.fragments.RezeptFragment;
 import cookingconsultant.app.gui.adapter.ViewPagerAdapter;
-import cookingconsultant.app.gui.services.OnNoteListener;
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -51,7 +41,7 @@ public class ActivityMain extends AppCompatActivity {
         userid = sharedPreferences.getInt("userid",-1);
         firstUse = sharedPreferences.getBoolean("firstUse",true);
         if(firstUse){
-            Intent intent = new Intent(this,FirstStartActivity.class);
+            Intent intent = new Intent(this, ActivityFirstStart.class);
             startActivity(intent);
             finish();
         }
@@ -68,9 +58,10 @@ public class ActivityMain extends AppCompatActivity {
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new RezeptFragment(),"Suche");
-        adapter.addFragment(new EinkaufFragment(),"Liste");
-        adapter.addFragment(new KochlexikonFragment(),"Lexikon");
+        adapter.addFragment(new RezeptFragment(),"Rezeptsuche");
+        adapter.addFragment(new KochlexikonFragment(),"Kochlexikon");
+        adapter.addFragment(new EinkaufFragment(),"Einkaufsliste");
+
 
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);

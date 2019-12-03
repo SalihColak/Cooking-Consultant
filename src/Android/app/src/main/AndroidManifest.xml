@@ -2,18 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cookingconsultant.app">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".gui.ActivityMain"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".gui.activities.ActivityEinkaufslisteAnzeige"></activity>
+        <activity
+            android:name=".gui.activities.ActivityMain"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,15 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.ActivityRezept"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".gui.ActivityRezeptAnzeige"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".gui.ActivityKochvorgang"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".gui.FirstStartActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".gui.ActivityLogin"></activity>
+        <activity
+            android:name=".gui.activities.ActivityRezept"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gui.activities.ActivityRezeptAnzeige"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gui.activities.ActivityKochvorgang"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gui.activities.ActivityFirstStart"
+            android:screenOrientation="portrait" />
+        <activity android:name=".gui.activities.ActivityLogin" />
     </application>
 
 </manifest>

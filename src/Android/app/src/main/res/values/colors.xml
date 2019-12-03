@@ -15,6 +15,7 @@
     <color name="card_background3">#3AADDA</color>
     <color name="card_background4">#FFEEBE</color>
     <color name="card_background5">#F0F0F0</color>
+    <color name="card_background6">#B6B6B6</color>
     <color name="zustandBearbeitung">#FFC375</color>
     <color name="grey">#EBEBEB</color>
     <color name="defaultColor">#FAFAFA</color>

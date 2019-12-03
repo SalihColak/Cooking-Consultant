@@ -1,9 +1,10 @@
 package cookingconsultant.app.fachlogik.grenz;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class RezeptGrenz {
+public class RezeptGrenz implements Serializable {
 
     private Integer rezid;
     private String name;

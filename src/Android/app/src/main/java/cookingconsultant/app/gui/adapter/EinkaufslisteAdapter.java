@@ -16,6 +16,7 @@ import java.util.List;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.fachlogik.grenz.EinkaufslisteGrenz;
+import cookingconsultant.app.fachlogik.services.Constants;
 import cookingconsultant.app.gui.services.OnNoteListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -53,7 +54,7 @@ public class EinkaufslisteAdapter extends RecyclerView.Adapter<EinkaufslisteAdap
         String name = einkaufslisteGrenzList.get(position).getRezept().getName();
         String state = einkaufslisteGrenzList.get(position).getZustand();
 
-        Picasso.get().load(R.string.ip_server+bild).into(image);
+        Picasso.get().load(Constants.IP_SERVER+bild).into(image);
         rezeptName.setText(name);
         status.setText(state);
 
@@ -71,6 +72,7 @@ public class EinkaufslisteAdapter extends RecyclerView.Adapter<EinkaufslisteAdap
 
     @Override
     public int getItemCount() {
+        if(einkaufslisteGrenzList == null) return 0;
         return einkaufslisteGrenzList.size();
     }
 
