@@ -28,6 +28,7 @@ import java.util.List;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.fachlogik.grenz.EinkaufslisteGrenz;
+import cookingconsultant.app.fachlogik.grenz.ZutatStateGrenz;
 import cookingconsultant.app.fachlogik.impl.EinkaufslisteVerwaltungImpl;
 import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
 import cookingconsultant.app.gui.activities.ActivityEinkaufslisteAnzeige;
@@ -68,6 +69,19 @@ public class EinkaufFragment extends Fragment implements OnNoteListener{
         super.onResume();
         LoadEinkaufsliste loadEinkaufsliste = new LoadEinkaufsliste();
         loadEinkaufsliste.execute();
+    }
+
+    public void setStates(){
+        for(EinkaufslisteGrenz einkaufslisteGrenz : einkaufslisteGrenzList){
+            boolean state = true;
+            List<ZutatStateGrenz> zutatStateGrenzList = einkaufslisteGrenz.getZutatStateList();
+            for(int i = 0; i<zutatStateGrenzList.size();i++){
+                if(!zutatStateGrenzList.get(i).isStatus()) state = false;
+            }
+            if(state) einkaufslisteGrenz.setZustand("Abgeschlossen");
+            else einkaufslisteGrenz.setZustand("Bearbeitung");
+        }
+        einkaufslisteAdapter.notifyDataSetChanged();
     }
 
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
@@ -148,6 +162,7 @@ public class EinkaufFragment extends Fragment implements OnNoteListener{
         protected void onPostExecute(Void aVoid) {
             einkaufslisteAdapter = new EinkaufslisteAdapter(getContext(),einkaufslisteGrenzList,EinkaufFragment.this);
             recyclerView.setAdapter(einkaufslisteAdapter);
+            setStates();
         }
     }
 
