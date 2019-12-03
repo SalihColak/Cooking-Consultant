@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Dez 2019 um 15:57
--- Server-Version: 10.4.8-MariaDB
--- PHP-Version: 7.3.11
+-- Erstellungszeit: 03. Dez 2019 um 17:50
+-- Server-Version: 10.3.16-MariaDB
+-- PHP-Version: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,7 +58,7 @@ CREATE TABLE `benutzer` (
 --
 
 INSERT INTO `benutzer` (`userid`, `titel`, `name`, `vorname`, `geschlecht`, `geburtsdatum`, `email`, `passwort`, `admin`) VALUES
-(3, 'Herr', 'name', 'vorname', 'm', '1900-01-01', 'email', 'pass', 0);
+(1, 'Herr', 'Colak', 'Salih', 'm', '1900-01-01', 'admin.syp14@email.de', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -89,6 +89,19 @@ CREATE TABLE `einkaufsliste` (
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `einkaufsliste2zutatstate`
+--
+
+CREATE TABLE `einkaufsliste2zutatstate` (
+  `ein2zutid` int(11) NOT NULL,
+  `einkid` int(11) NOT NULL,
+  `zutid` int(11) NOT NULL,
+  `state` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `rezept`
 --
 
@@ -110,7 +123,7 @@ CREATE TABLE `rezept` (
 --
 
 INSERT INTO `rezept` (`rezid`, `name`, `schritte`, `menge`, `kochzeit`, `art`, `anlass`, `praeferenz`, `bild`, `beschreibung`) VALUES
-(2, 'name', 'schritte', 'menge', 10, 'BRUNCH', 'ESSEN ZU ZWEIT', 'ASIATISCH', 'bild', 'beschreibung');
+(1, 'Rührei', 'Die Eier in eine Schüssel schlagen und mit einem Schneebesen kräftig rühren. Dann die Milch hinzufügen und erneut rühren.;Zum Schluss Schnittlauch und die Gewürze hinzufügen und nochmal leicht durchrühren.;Dann die Masse in einer erhitzten Pfanne unter leichtem Rühren (sobald sich was gesetzt hat) zum Stocken bringen und leicht bräunen. Nach Belieben mit Kräutern garnieren.', '2;50;1;1;1', 10, 'FRUEHSTUECK', 'FAMILIENESSEN', 'DEUTSCH', 'bilder/rezepte/bananenkuchen.png', 'Ob als Frühstück, Low Carb-Abendessen oder kleine Zwischenmahlzeit, wenn es schnell und lecker sein soll, liegt man mit Rührei immer richtig. Doch wie macht man Rührei? Einfach ein paar Eier in die heiße Pfanne hauen. Denkst du! Ein paar Tricks solltest du beachten, damit das Rührei auch perfekt wird. ');
 
 -- --------------------------------------------------------
 
@@ -123,6 +136,17 @@ CREATE TABLE `rezept2zutat` (
   `rezid` int(11) NOT NULL,
   `zutid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `rezept2zutat`
+--
+
+INSERT INTO `rezept2zutat` (`rez2zutid`, `rezid`, `zutid`) VALUES
+(7, 1, 7),
+(8, 1, 8),
+(9, 1, 9),
+(10, 1, 10),
+(11, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -142,8 +166,11 @@ CREATE TABLE `zutat` (
 --
 
 INSERT INTO `zutat` (`zutid`, `name`, `einheit`, `bild`) VALUES
-(5, 'name', 'einheit', 'bild'),
-(6, 'test', 'test', 'test');
+(7, 'Ei', 'Stück', ''),
+(8, 'Milch 3,5%', 'ml', ''),
+(9, 'Schnittlauch', 'Priese', ''),
+(10, 'Salz', 'Priese', ''),
+(11, 'Pfeffer', 'Priese', '');
 
 --
 -- Indizes der exportierten Tabellen
@@ -177,6 +204,14 @@ ALTER TABLE `einkaufsliste`
   ADD PRIMARY KEY (`einkid`),
   ADD KEY `userid` (`userid`),
   ADD KEY `rezid` (`rezid`);
+
+--
+-- Indizes für die Tabelle `einkaufsliste2zutatstate`
+--
+ALTER TABLE `einkaufsliste2zutatstate`
+  ADD PRIMARY KEY (`ein2zutid`),
+  ADD KEY `einkid` (`einkid`),
+  ADD KEY `zutid` (`zutid`);
 
 --
 -- Indizes für die Tabelle `rezept`
@@ -224,7 +259,13 @@ ALTER TABLE `benutzer2rezept`
 -- AUTO_INCREMENT für Tabelle `einkaufsliste`
 --
 ALTER TABLE `einkaufsliste`
-  MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT für Tabelle `einkaufsliste2zutatstate`
+--
+ALTER TABLE `einkaufsliste2zutatstate`
+  MODIFY `ein2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `rezept`
@@ -236,13 +277,13 @@ ALTER TABLE `rezept`
 -- AUTO_INCREMENT für Tabelle `rezept2zutat`
 --
 ALTER TABLE `rezept2zutat`
-  MODIFY `rez2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `rez2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `zutat`
 --
 ALTER TABLE `zutat`
-  MODIFY `zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints der exportierten Tabellen
@@ -261,6 +302,13 @@ ALTER TABLE `benutzer2rezept`
 ALTER TABLE `einkaufsliste`
   ADD CONSTRAINT `einkaufsliste_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `benutzer` (`userid`),
   ADD CONSTRAINT `einkaufsliste_ibfk_2` FOREIGN KEY (`rezid`) REFERENCES `rezept` (`rezid`);
+
+--
+-- Constraints der Tabelle `einkaufsliste2zutatstate`
+--
+ALTER TABLE `einkaufsliste2zutatstate`
+  ADD CONSTRAINT `einkaufsliste2zutatstate_ibfk_1` FOREIGN KEY (`einkid`) REFERENCES `einkaufsliste` (`einkid`),
+  ADD CONSTRAINT `einkaufsliste2zutatstate_ibfk_2` FOREIGN KEY (`zutid`) REFERENCES `zutat` (`zutid`);
 
 --
 -- Constraints der Tabelle `rezept2zutat`
