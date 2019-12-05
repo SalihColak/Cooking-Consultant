@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import com.google.android.material.tabs.TabLayout;
@@ -79,5 +80,10 @@ public class ActivityMain extends AppCompatActivity {
             super.onBackPressed();
         }
 
+    }
+
+    public void test(View view){
+        Intent intent = new Intent(this, ActivityMaps.class);
+        startActivity(intent);
     }
 }

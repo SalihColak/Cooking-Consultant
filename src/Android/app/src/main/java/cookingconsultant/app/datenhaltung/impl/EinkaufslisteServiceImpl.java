@@ -33,7 +33,8 @@ public class EinkaufslisteServiceImpl implements EinkaufslisteService {
     private static final String URL_GET_ZUTAT_STATE_LIST_BY_EINK_ID = Constants.IP_SERVER+"getEinkaufsliste2ZutatState.php";;
     private static final String URL_INSERT_ZUTAT_STATE_BY_EINK_ID = Constants.IP_SERVER+"insertEinkaufsliste2ZutatState.php";
     private static final String URL_DELETE_ZUTAT_STATE_BY_EINK_ID = Constants.IP_SERVER+"deleteEinkaufsliste2ZutatState.php";
-    private static final String URL_UPDATE_ZUTAT_STATE_BY_EINK_ID = Constants.IP_SERVER+"updateEinkaufsliste2ZutatState.php";;
+    private static final String URL_UPDATE_ZUTAT_STATE_BY_EINK_ID = Constants.IP_SERVER+"updateEinkaufsliste2ZutatState.php";
+    private static final String URL_UPDATE_EINKAUFSLISTE_ZUSTAND_BY_EINK_ID = Constants.IP_SERVER+"updateEinkaufslisteZustand.php";
 
     @Override
     public Einkaufsliste getEinkaufslisteByID(Integer einkid) {
@@ -111,10 +112,23 @@ public class EinkaufslisteServiceImpl implements EinkaufslisteService {
     }
 
     @Override
-    public boolean changeZustandEinkaufslisteByID(Integer einkid, String neuerZustand) {
-        Einkaufsliste einkaufsliste = getEinkaufslisteByID(einkid);
-        if(einkaufsliste!=null){
-            einkaufsliste.setZustand(neuerZustand);
+    public boolean changeZustandEinkaufslisteByID(Integer einkid, String neuerZustand) throws IOException {
+        URL myurl = new URL(URL_UPDATE_EINKAUFSLISTE_ZUSTAND_BY_EINK_ID+"?einkid="+einkid+"&zustand="+neuerZustand);
+        HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
+        httpURLConnection.setDoInput(true);
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.connect();
+
+        InputStream is = httpURLConnection.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        String line ="";
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while ((line = bufferedReader.readLine())!=null){
+            stringBuilder.append(line);
+        }
+        String data = stringBuilder.toString();
+        if(data.substring(0,2).equals("Er")){
             return true;
         }
         return false;

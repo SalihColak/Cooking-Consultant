@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -67,5 +68,10 @@ public class ActivityEinkaufslisteAnzeige extends AppCompatActivity implements O
         ZutatStateGrenz zutatStateGrenz = einkaufslisteGrenz.getZutatStateList().get(position);
         Toast.makeText(this,zutatStateGrenz.getZutatGrenz().getName()+" "+zutatStateGrenz.isStatus(),Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void startMap(View view){
+        Intent intent = new Intent(this,ActivityMaps.class);
+        startActivity(intent);
     }
 }

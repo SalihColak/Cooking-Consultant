@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/dummy_layout_for_snackbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:background="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
+        android:background="@color/colorAccent"
         android:weightSum="100">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:layout_weight="45">
+            android:layout_weight="45"
+            >
 
             <ImageView
                 android:layout_marginLeft="18dp"
@@ -39,10 +41,9 @@
             android:layout_weight="13">
 
             <TextView
-                android:id="@+id/einkaufsliste_rezept_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rezeptname"
+                android:text="Shops in deiner Nähe"
                 android:textSize="22sp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
@@ -57,24 +58,28 @@
             android:layout_weight="42"
             android:orientation="horizontal">
 
-            <ImageView
-                android:src="@drawable/ic_location_on_white_24dp"
+
+            <ProgressBar
+                android:visibility="invisible"
                 android:layout_gravity="center"
+                android:indeterminateTint="@color/white"
+                android:indeterminate = "true"
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleSmall"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="startMap"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"/>
+                android:layout_height="20dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
 
-
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_einkaufsliste_zutaten"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+    <fragment
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.activities.ActivityMaps" />
 
 </LinearLayout>

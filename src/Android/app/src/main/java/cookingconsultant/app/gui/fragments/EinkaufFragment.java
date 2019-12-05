@@ -78,8 +78,22 @@ public class EinkaufFragment extends Fragment implements OnNoteListener{
             for(int i = 0; i<zutatStateGrenzList.size();i++){
                 if(!zutatStateGrenzList.get(i).isStatus()) state = false;
             }
-            if(state) einkaufslisteGrenz.setZustand("Abgeschlossen");
-            else einkaufslisteGrenz.setZustand("Bearbeitung");
+            if(state) {
+                if(einkaufslisteGrenz.getZustand().equals("Bearbeitung")){
+                    einkaufslisteGrenz.setZustand("Abgeschlossen");
+                    ChangeEinkaufslisteZustand changeEinkaufslisteZustand = new ChangeEinkaufslisteZustand();
+                    changeEinkaufslisteZustand.execute(""+einkaufslisteGrenz.getEinkid(),"Abgeschlossen");
+                }
+
+            }
+            else {
+                if(einkaufslisteGrenz.getZustand().equals("Abgeschlossen")){
+                    einkaufslisteGrenz.setZustand("Bearbeitung");
+                    ChangeEinkaufslisteZustand changeEinkaufslisteZustand = new ChangeEinkaufslisteZustand();
+                    changeEinkaufslisteZustand.execute(""+einkaufslisteGrenz.getEinkid(),"Bearbeitung");
+                }
+
+            }
         }
         einkaufslisteAdapter.notifyDataSetChanged();
     }
@@ -162,7 +176,23 @@ public class EinkaufFragment extends Fragment implements OnNoteListener{
         protected void onPostExecute(Void aVoid) {
             einkaufslisteAdapter = new EinkaufslisteAdapter(getContext(),einkaufslisteGrenzList,EinkaufFragment.this);
             recyclerView.setAdapter(einkaufslisteAdapter);
-            setStates();
+            if(einkaufslisteGrenzList!=null)setStates();
+        }
+    }
+
+    private class ChangeEinkaufslisteZustand extends AsyncTask<String,Void,Void>{
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            EinkaufslisteVerwaltung einkaufslisteVerwaltung = new EinkaufslisteVerwaltungImpl();
+            try {
+                einkaufslisteVerwaltung.changeZustandEinkaufslisteByID(Integer.parseInt(strings[0]),strings[1]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
