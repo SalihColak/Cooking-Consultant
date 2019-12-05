@@ -11,5 +11,5 @@ public interface KochlexikonService {
 
     public Beitrag getBeitragByID(Integer beitid)throws IOException, JSONException;
     public List<Beitrag> getBeitraegeByKategorie(String kategorie)throws IOException, JSONException;
-
+    public List<Beitrag> getBeitraege() throws IOException, JSONException;
 }
