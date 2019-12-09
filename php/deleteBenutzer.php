@@ -11,6 +11,7 @@ $userid = $_GET['userid'];
 
 /**	Example: http://localhost/deleteBenutzer.php?userid=1
 *	Löscht alle Verbindungen des Benutzers zu Rezepten
+*	Löscht alle Zutatstates von Einkaufslisten dieses Benutzers
 *	Löscht alle Einkaufslisten des Benutzers
 *	Löscht den Benutzer
 */
@@ -18,6 +19,12 @@ $sql = "DELETE FROM benutzer2rezept WHERE userid = $userid";
 if (!($result = mysqli_query($con, $sql)))
 {
 	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
+$sql = "DELETE FROM einkaufsliste2zutatstate WHERE einkid IN (SELECT einkid FROM einkaufsliste WHERE userid = $userid)";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "<br>" . "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
 
 $sql = "DELETE FROM einkaufsliste WHERE userid = $userid";
