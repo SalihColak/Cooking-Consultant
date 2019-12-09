@@ -11,6 +11,7 @@ $rezid = $_GET['rezid'];
 
 /**	Example: http://localhost/deleteRezept.php?rezid=1
 *	Löscht alle Verbindungen des Rezepts zu Benutzern
+*	Löscht alle ZutatStates aller Einkaufslisten für dieses Rezept
 *	Löscht alle Einkaufslisten für dieses Rezept
 *	Löscht alle Verbindungen des Rezepts zu Zutaten
 *	Löscht das Rezept
@@ -20,6 +21,13 @@ if (!($result = mysqli_query($con, $sql)))
 {
 	echo "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
 }
+
+$sql = "DELETE FROM einkaufsliste2zutatstate WHERE einkid IN (SELECT einkid FROM einkaufsliste WHERE rezid = $rezid)";
+if (!($result = mysqli_query($con, $sql)))
+{
+	echo "<br>" . "Fehler beim Ausfuehren von $sql." . "<br>" . mysqli_error($con);
+}
+
 
 $sql = "DELETE FROM einkaufsliste WHERE rezid = $rezid";
 if (!($result = mysqli_query($con, $sql)))
