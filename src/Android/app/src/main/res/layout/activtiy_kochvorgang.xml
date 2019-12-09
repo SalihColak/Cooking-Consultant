@@ -62,97 +62,124 @@
     </LinearLayout>
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:cardCornerRadius="30dp"
-        android:id="@+id/schritte_cv"
-        android:layout_below="@id/timer"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="match_parent"
+        android:layout_below="@id/timer"
+        android:weightSum="10">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="30dp"
+            android:id="@+id/schritte_cv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="200dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/schritt_counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1. Schritt"
-                    android:textSize="22sp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-condensed-light"/>
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_gravity="center"
-                    android:id="@+id/schritt_id"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Beispiel Schritt"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-condensed-light"/>
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/schritt_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1. Schritt"
+                        android:textSize="22sp"
+                        android:layout_marginTop="5dp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:id="@+id/schritt_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Beispiel Schritt"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-condensed-light"/>
+
+                </LinearLayout>
+                </ScrollView>
 
             </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_below="@id/schritte_cv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:layout_marginBottom="3dp"
+                android:text="Zurück"
+                android:background="@drawable/btn_round_green"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:onClick="zurueck"/>
+
+            <Button
+                android:layout_marginBottom="3dp"
+                android:text="Weiter"
+                android:background="@drawable/btn_round_green"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="80dp"
+                android:onClick="weiter"/>
 
         </LinearLayout>
 
 
-
-
-
-
-
-
-
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_marginTop="40dp"
-        android:layout_below="@id/schritte_cv"
-        android:layout_width="wrap_content"
-        android:layout_height="65dp"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:text="Zurück"
-            android:background="@drawable/btn_round_green"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:onClick="zurueck"/>
-
-        <Button
-            android:text="Weiter"
-            android:background="@drawable/btn_round_green"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="80dp"
-            android:onClick="weiter"/>
+    </LinearLayout>
 
     </LinearLayout>
 
