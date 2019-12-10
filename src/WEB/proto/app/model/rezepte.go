@@ -2,10 +2,10 @@ package model
 
 import (
 	"database/sql"
-	//"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"strconv"
 	"strings"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type RezeptMin struct {
@@ -32,7 +32,7 @@ var btDB *sql.DB
 
 func init() {
 	var err error
-	btDB, err = sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/syp")
+	btDB, err = sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/syp14")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -89,7 +89,7 @@ func InsertRezept(r Rezept) {
 	if err != nil {
 		panic(err.Error())
 	}
-	res, err := stmt.Exec("NULL", r.Name, strings.Join(r.Schritte, ";"), menge, r.Kochzeit, r.Art, r.Anlass, r.Praeferenz, "food-placeholder.png", r.Beschreibung)
+	res, err := stmt.Exec("NULL", r.Name, strings.Join(r.Schritte, ";"), menge, r.Kochzeit, r.Art, r.Anlass, r.Praeferenz, "logo.png", r.Beschreibung)
 	id, err := res.LastInsertId()
 	ids := InsertZutaten(r.Zutaten)
 

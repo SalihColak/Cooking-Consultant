@@ -51,10 +51,6 @@ a {
   border-color: #6bad67 !important;
 }
 
-input {
-  outline: none;
-}
-
 .gruenControl .select:not(.is-multiple):not(.is-loading)::after {
   border-color: #6bad67;
   right: 1.125em;

@@ -8,7 +8,7 @@ import (
 func main() {
 
 	http.HandleFunc("/alleRezepte", controller.AlleRezepte)
-	http.HandleFunc("/registerUser", controller.RegisterUser)
+	http.HandleFunc("/login", controller.LoginUser)
 	http.HandleFunc("/addUser", controller.AddUser)
 	http.HandleFunc("/rezeptEintragen", controller.RezeptEintragen)
 	http.HandleFunc("/addRezept", controller.AddZerept)

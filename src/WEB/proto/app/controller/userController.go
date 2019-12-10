@@ -6,7 +6,7 @@ import (
 	"syp/proto/app/model"
 )
 
-func RegisterUser(w http.ResponseWriter, r *http.Request) {
+func LoginUser(w http.ResponseWriter, r *http.Request) {
 	var t1 = template.Must(template.ParseFiles("static/template/login.tmpl"))
 	t1.ExecuteTemplate(w, "login", nil)
 }
