@@ -85,7 +85,7 @@ function addTextarea() {
       columnName.appendChild(content);
       var title = document.createElement("div");
       title.setAttribute("class", "title is-5");
-      title.innerHTML = "Zutat " + (i + 1) + ":";
+      title.innerHTML = "Schritt " + (i + 1) + ":";
       content.appendChild(title);
 
       var columnInput = document.createElement("div");
@@ -93,7 +93,7 @@ function addTextarea() {
       divtest.appendChild(columnInput);
       var input = document.createElement("textarea");
       input.setAttribute("class", "textarea");
-      input.setAttribute("placeholder", "Menge");
+      input.setAttribute("placeholder", "Kochschritt");
       input.setAttribute("rows", "5");
       input.setAttribute("id", "schritt" + (i + 1));
       input.setAttribute("name", "schritt" + (i + 1));
