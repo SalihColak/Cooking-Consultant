@@ -10,8 +10,16 @@ if (mysqli_connect_errno())
 $einkid = $_GET['einkid'];
 
 /**	Example: http://localhost/deleteEinkaufsliste.php?einkid=4
+*	Löscht alle Zutatstates der Einkaufsliste
 *	Löscht die Einkaufsliste
 */
+
+$sql = "DELETE FROM einkaufsliste2zutatstate WHERE einkid = $einkid";
+ 
+if ($result = mysqli_query($con, $sql))
+{
+	echo "Erfolgreich geloescht!";
+}
 
 $sql = "DELETE FROM einkaufsliste WHERE einkid = $einkid";
  

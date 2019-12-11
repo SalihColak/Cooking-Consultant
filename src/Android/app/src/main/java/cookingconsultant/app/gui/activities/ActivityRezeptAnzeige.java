@@ -200,7 +200,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             if(aBoolean){
-                Toast.makeText(ActivityRezeptAnzeige.this,"Erfolgreich hinzugefügt",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ActivityRezeptAnzeige.this,"Erfolgreich hinzugefügt",Toast.LENGTH_SHORT).show();
                 Snackbar.make(recyclerView,"Rezept wurde der Einkaufsliste hinzugefügt",Snackbar.LENGTH_SHORT).show();
             }
         }
