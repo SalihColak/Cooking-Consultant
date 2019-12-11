@@ -164,7 +164,7 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
             circleImageView.setCircleBackgroundColor(Color.parseColor(BACKGROUND_COLOR));
         }
         //Kontrollausgabe
-        Toast.makeText(getContext(),rezeptartList.toString()+" | "+rezeptAnlassList.toString()+" | "+rezeptPraeferenzList.toString(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),rezeptartList.toString()+" | "+rezeptAnlassList.toString()+" | "+rezeptPraeferenzList.toString(),Toast.LENGTH_SHORT).show();
         if(!rezeptartList.isEmpty() && !rezeptAnlassList.isEmpty() && !rezeptPraeferenzList.isEmpty()){
             pressable = true;
             search.setBackgroundColor(search.getResources().getColor(R.color.colorAccent));
