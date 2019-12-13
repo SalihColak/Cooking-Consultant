@@ -82,7 +82,7 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
     public void startKochvorgang(View view) {
         Intent intent = new Intent(this,ActivityKochvorgang.class);
         intent.putExtra("rezid",rezeptGrenz.getRezid());
-        startActivity(intent);
+        //startActivity(intent);
     }
 
     public void addPortion(View view) {
@@ -164,8 +164,8 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
     }
 
     public void addCart(View view) throws IOException, JSONException {
-        AddCart addCart = new AddCart();
-        addCart.execute();
+        //AddCart addCart = new AddCart();
+        //addCart.execute();
     }
 
 
