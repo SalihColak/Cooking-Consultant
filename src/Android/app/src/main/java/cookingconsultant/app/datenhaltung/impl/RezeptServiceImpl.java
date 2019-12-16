@@ -31,6 +31,8 @@ public class RezeptServiceImpl implements RezeptService {
 
     private static final String URL_GET_REZEPT_BY_ID = Constants.IP_SERVER+"getRezeptByID.php";
     private static final String URL_GET_REZEPTE_BY_QUERY = Constants.IP_SERVER+"getRezeptByArtAnlassPraeferenz.php";
+    private static final String URL_GET_REZEPTE_BY_USER_ID = Constants.IP_SERVER+"getBenutzer2Rezept.php";
+    private static final String URL_INSERT_REZEPT_FOR_USER = Constants.IP_SERVER+"insertBenutzer2Rezept.php";;
 
     @Override
     public Rezept getRezeptByID(Integer rezid) throws IOException, JSONException {
@@ -70,6 +72,7 @@ public class RezeptServiceImpl implements RezeptService {
 
         return rezept;
     }
+
 
     @Override
     public List<Rezept> getRezepteByQuery(String query) throws IOException, JSONException {
@@ -114,5 +117,60 @@ public class RezeptServiceImpl implements RezeptService {
         list.add(getRezeptByID(1));
         list.add(getRezeptByID(1));
         return list;*/
+    }
+
+    @Override
+    public List<Rezept> getRezepteByUserID(Integer userid) throws IOException, JSONException {
+        URL myurl = new URL(URL_GET_REZEPTE_BY_USER_ID+"?userid="+userid);
+        HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
+        httpURLConnection.setDoOutput(true);
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.connect();
+
+
+        InputStream is = httpURLConnection.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        String line ="";
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while ((line = bufferedReader.readLine())!=null){
+            stringBuilder.append(line);
+        }
+        String data = stringBuilder.toString();
+
+        JSONArray jsonArray = new JSONArray(data);
+        JSONObject jobj;
+        List<Integer> rezids = new ArrayList<>();
+        List<Rezept> list = new ArrayList<>();
+        for (int i = 0; i<jsonArray.length();i++){
+            jobj = jsonArray.getJSONObject(i);
+            rezids.add(jobj.getInt("rezid"));
+        }
+
+        for(int j = 0; j<rezids.size(); j++){
+            list.add(getRezeptByID(rezids.get(j)));
+        }
+
+        return list;
+    }
+
+    @Override
+    public void insertRezeptForUser(Integer rezid, Integer userid) throws IOException, JSONException {
+        URL myurl = new URL(URL_INSERT_REZEPT_FOR_USER+"?userid="+userid+"&rezid="+rezid);
+        HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
+        httpURLConnection.setDoOutput(true);
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.connect();
+
+
+        InputStream is = httpURLConnection.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        String line ="";
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while ((line = bufferedReader.readLine())!=null){
+            stringBuilder.append(line);
+        }
+        String data = stringBuilder.toString();
     }
 }

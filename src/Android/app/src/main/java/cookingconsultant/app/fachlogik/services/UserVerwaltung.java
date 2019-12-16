@@ -10,5 +10,4 @@ public interface UserVerwaltung {
 
     public UserGrenz getUserByID(Integer userid) throws IOException, JSONException;
     public UserGrenz getUserByLogin(String email, String password) throws IOException, JSONException;
-
 }

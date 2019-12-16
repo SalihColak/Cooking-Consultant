@@ -79,10 +79,12 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
 
     }
 
-    public void startKochvorgang(View view) {
+    public void startKochvorgang(View view) throws IOException, JSONException {
         Intent intent = new Intent(this,ActivityKochvorgang.class);
         intent.putExtra("rezid",rezeptGrenz.getRezid());
-        //startActivity(intent);
+        InsertBenutzer2Rezept insertBenutzer2Rezept = new InsertBenutzer2Rezept();
+        insertBenutzer2Rezept.execute();
+        startActivity(intent);
     }
 
     public void addPortion(View view) {
@@ -164,8 +166,8 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
     }
 
     public void addCart(View view) throws IOException, JSONException {
-        //AddCart addCart = new AddCart();
-        //addCart.execute();
+        AddCart addCart = new AddCart();
+        addCart.execute();
     }
 
 
@@ -203,6 +205,23 @@ public class ActivityRezeptAnzeige extends AppCompatActivity {
                 //Toast.makeText(ActivityRezeptAnzeige.this,"Erfolgreich hinzugefügt",Toast.LENGTH_SHORT).show();
                 Snackbar.make(recyclerView,"Rezept wurde der Einkaufsliste hinzugefügt",Snackbar.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private class InsertBenutzer2Rezept extends AsyncTask<Void,Void,Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            int userid = getSharedPreferences("userData",MODE_PRIVATE).getInt("userid",-1);
+            RezeptVerwaltung rezeptVerwaltung = new RezeptVerwaltungImpl();
+            try {
+                rezeptVerwaltung.insertRezeptForUser(userid,rezeptGrenz.getRezid());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 }

@@ -86,6 +86,8 @@ public class ActivityLogin extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("userData",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("userid",userGrenz.getUserid());
+                editor.putString("uservorname",userGrenz.getVorname());
+                editor.putString("username",userGrenz.getName());
                 editor.apply();
                 Intent intent = new Intent(ActivityLogin.this,ActivityMain.class);
                 Toast.makeText(getApplicationContext(),userGrenz.getUserid()+" "+userGrenz.getVorname(),Toast.LENGTH_LONG).show();

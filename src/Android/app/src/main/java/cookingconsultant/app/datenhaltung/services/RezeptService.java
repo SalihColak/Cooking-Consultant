@@ -11,5 +11,6 @@ public interface RezeptService {
 
     public Rezept getRezeptByID(Integer rezid)throws IOException, JSONException;
     public List<Rezept> getRezepteByQuery(String query)throws IOException, JSONException;
-
+    public List<Rezept> getRezepteByUserID(Integer userid) throws IOException,JSONException;
+    public void insertRezeptForUser(Integer rezid, Integer userid) throws IOException,JSONException;
 }

@@ -67,4 +67,22 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
         }
         return zutatGrenzList;
     }
+
+    @Override
+    public List<RezeptGrenz> getRezeptByUserId(Integer userid) throws IOException, JSONException {
+        List<RezeptGrenz> rezeptGrenzList = new ArrayList<>();
+        List<Rezept> rezeptList = rezeptService.getRezepteByUserID(userid);
+        if(rezeptList!=null){
+            for (Rezept rezept : rezeptList){
+                rezeptGrenzList.add(new RezeptGrenz(rezept.getRezid(),rezept.getName(),rezept.getBeschreibung(),rezept.getSchritte(),
+                        rezept.getArt(),rezept.getAnlass(),rezept.getPraeferenz(),rezept.getKochzeit(),rezept.getBild(),rezept.getMenge()));
+            }
+        }
+        return rezeptGrenzList;
+    }
+
+    @Override
+    public void insertRezeptForUser(Integer userid, Integer rezid) throws IOException, JSONException {
+        rezeptService.insertRezeptForUser(rezid,userid);
+    }
 }
