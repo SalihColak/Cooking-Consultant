@@ -25,8 +25,8 @@ import cookingconsultant.app.fachlogik.services.Constants;
 import static org.junit.Assert.*;
 
 public class EinkaufslisteServiceImplTest {
-    static private EinkaufslisteServiceImpl classToTest = new EinkaufslisteServiceImpl();
-    static private final String URL_GET_EINKAUFSLISTEN_BY_USER_ID = Constants.IP_SERVER + "getEinkaufslisteByUserID.php";
+    private static EinkaufslisteServiceImpl classToTest = new EinkaufslisteServiceImpl();
+    private static final String URL_GET_EINKAUFSLISTEN_BY_USER_ID = Constants.IP_SERVER + "getEinkaufslisteByUserID.php";
 
     /**
      * /TF09/ Korrektes Anzeigen der Einkaufslisten eines Benutzers
@@ -99,7 +99,7 @@ public class EinkaufslisteServiceImplTest {
      */
     @Test
     public void fehlerhaftesAnzeigenEinkaufslisten() throws IOException, JSONException {
-        assertTrue(classToTest.getEinkaufslistenByUserID(1).isEmpty());
+        assertTrue(classToTest.getEinkaufslistenByUserID(5).isEmpty());
     }
 
     /**
@@ -156,5 +156,49 @@ public class EinkaufslisteServiceImplTest {
         testObjekt = classToTest.getEinkaufslisteZutatState(2);
         for(ZutatState z : testObjekt)
             assertFalse(z.getState());
+    }
+
+    /**
+     * /TF16/ Korrektes Einfügen einer Einkaufsliste
+     * Anwendungsfall
+     * /LF011/
+     *
+     * Schritte
+     * Erstellen einer neuen Einkaufsliste
+     *
+     * Einfügen der neuen Einkaufsliste in die Datenbank
+     *
+     * erwartetes Ergebnis
+     * True
+     *
+     * Ergebnis
+     * True
+     */
+    @Test
+    public void korrektesEinfuegenEinkaufsliste() throws IOException, JSONException {
+        Einkaufsliste testObjekt = new Einkaufsliste(null, "status", 3);
+        assertTrue(classToTest.addEinkaufsliste(testObjekt));
+    }
+
+    /**
+     * /TF17/ Fehlerhaftes Einfügen einer Einkaufsliste
+     * Anwendungsfall
+     * /LF011/
+     *
+     * Schritte
+     * Erstellen einer neuen fehlerhaften Einkaufsliste
+     *
+     * Einfügen der neuen Einkaufsliste in die Datenbank
+     *
+     * erwartetes Ergebnis
+     * True
+     *
+     * Ergebnis
+     * False
+     */
+    @Test
+    public void fehlerhaftesEinfuegenEinkaufsliste() throws IOException, JSONException {
+        Einkaufsliste testObjekt = new Einkaufsliste(5, "status", 3);
+        assertFalse(classToTest.addEinkaufsliste(testObjekt));
     }
 }

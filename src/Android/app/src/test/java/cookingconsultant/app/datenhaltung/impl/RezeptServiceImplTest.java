@@ -23,9 +23,9 @@ import cookingconsultant.app.fachlogik.services.Constants;
 import static org.junit.Assert.*;
 
 public class RezeptServiceImplTest {
-    static private RezeptServiceImpl classToTest = new RezeptServiceImpl();
-    static private final String URL_GET_REZEPTE_BY_QUERY = Constants.IP_SERVER+"getRezeptByArtAnlassPraeferenz.php";
-    static private final String URL_GET_REZEPT_BY_ID = Constants.IP_SERVER+"getRezeptByID.php";
+    private static RezeptServiceImpl classToTest = new RezeptServiceImpl();
+    private static final String URL_GET_REZEPTE_BY_QUERY = Constants.IP_SERVER+"getRezeptByArtAnlassPraeferenz.php";
+    private static final String URL_GET_REZEPT_BY_ID = Constants.IP_SERVER+"getRezeptByID.php";
 
     /**
      * /TF03/ Korrektes Suchen von Rezepten
@@ -138,23 +138,21 @@ public class RezeptServiceImplTest {
     }
 
     /**
-     * /TF08/ Fehlerhaftes Anzeigen eines Rezepts
+     * /TF07/ Korrektes Anzeigen eines Rezepts
      * Anwendungsfall
      * /LF04/
      *
      * Schritte
-     * Neues Rezept mit einer ID 5 anlegen
-     *
-     * Nach diesem Rezept suchen
+     * Rezept mit ID 1 suchen
      *
      * erwartetes Ergebnis
-     * Rezept mit der ID 5 wird als Ergebnis zurückgegeben
+     * Rezept mit der ID 1 wird als Ergebnis zurückgegeben
      *
      * Ergebnis
-     * Der Benutzer erhält eine Null-Referenz, da das Rezept nicht in der Datenbank vorhanden ist
+     * Rezept mit der ID 1 wird als Ergebnis zurückgegeben
      */
     @Test
-    public void fehlerhaftesRezeptAnzeigen() throws IOException, JSONException {
+    public void korrektesRezeptAnzeigen() throws IOException, JSONException {
         URL myurl = new URL(URL_GET_REZEPT_BY_ID+"?rezid=1");
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
         httpURLConnection.setDoOutput(true);
@@ -193,21 +191,23 @@ public class RezeptServiceImplTest {
     }
 
     /**
-     * /TF07/ Korrektes Anzeigen eines Rezepts
+     * /TF08/ Fehlerhaftes Anzeigen eines Rezepts
      * Anwendungsfall
      * /LF04/
      *
      * Schritte
-     * Rezept mit ID 1 suchen
+     * Neues Rezept mit einer ID 5 anlegen
+     *
+     * Nach diesem Rezept suchen
      *
      * erwartetes Ergebnis
-     * Rezept mit der ID 1 wird als Ergebnis zurückgegeben
+     * Rezept mit der ID 5 wird als Ergebnis zurückgegeben
      *
      * Ergebnis
-     * Rezept mit der ID 1 wird als Ergebnis zurückgegeben
+     * Der Benutzer erhält eine Null-Referenz, da das Rezept nicht in der Datenbank vorhanden ist
      */
     @Test
-    public void korrektesRezeptAnzeigen() throws IOException, JSONException {
+    public void fehlerhaftesRezeptAnzeigen() throws IOException, JSONException {
         assertNull(classToTest.getRezeptByID(5));
     }
 }

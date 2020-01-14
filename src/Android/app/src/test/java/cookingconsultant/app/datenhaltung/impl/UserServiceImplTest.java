@@ -19,8 +19,8 @@ import static org.junit.Assert.*;
 
 public class UserServiceImplTest {
 
-    static private UserServiceImpl classToTest = new UserServiceImpl();
-    static private final String URL_GET_USER_BY_LOGIN= Constants.IP_SERVER+"getBenutzerByEmailPasswort.php";
+    private static UserServiceImpl classToTest = new UserServiceImpl();
+    private static final String URL_GET_USER_BY_LOGIN= Constants.IP_SERVER+"getBenutzerByEmailPasswort.php";
     /**
      * /TF01/ Korrektes Einloggen
      * Anwendungsfall
