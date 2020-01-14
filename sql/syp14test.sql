@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 13. Jan 2020 um 23:35
+-- Erstellungszeit: 15. Jan 2020 um 00:52
 -- Server-Version: 10.4.8-MariaDB
 -- PHP-Version: 7.3.11
 
@@ -100,7 +100,8 @@ CREATE TABLE `einkaufsliste` (
 --
 
 INSERT INTO `einkaufsliste` (`einkid`, `zustand`, `userid`, `rezid`, `menge`) VALUES
-(1, 'zustand', 1, 2, 2);
+(1, 'zustand', 1, 2, 2),
+(2, 'zustand', 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,10 @@ CREATE TABLE `einkaufsliste2zutatstate` (
 INSERT INTO `einkaufsliste2zutatstate` (`ein2zutid`, `einkid`, `zutid`, `state`) VALUES
 (1, 1, 1, 0),
 (2, 1, 2, 0),
-(3, 1, 3, 0);
+(3, 1, 3, 0),
+(4, 2, 4, 0),
+(5, 2, 5, 0),
+(6, 2, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -171,7 +175,10 @@ CREATE TABLE `rezept2zutat` (
 INSERT INTO `rezept2zutat` (`rez2zutid`, `rezid`, `zutid`) VALUES
 (1, 2, 1),
 (2, 2, 2),
-(3, 2, 3);
+(3, 2, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -193,7 +200,10 @@ CREATE TABLE `zutat` (
 INSERT INTO `zutat` (`zutid`, `name`, `einheit`, `bild`) VALUES
 (1, 'name', 'einheit', 'bild'),
 (2, 'name', 'einheit', 'bild'),
-(3, 'name', 'einheit', 'bild');
+(3, 'name', 'einheit', 'bild'),
+(4, 'name2', 'einheit2', 'bild2'),
+(5, 'name2', 'einheit2', 'bild2'),
+(6, 'name2', 'einheit2', 'bild2');
 
 --
 -- Indizes der exportierten Tabellen
@@ -282,13 +292,13 @@ ALTER TABLE `benutzer2rezept`
 -- AUTO_INCREMENT für Tabelle `einkaufsliste`
 --
 ALTER TABLE `einkaufsliste`
-  MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `einkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `einkaufsliste2zutatstate`
 --
 ALTER TABLE `einkaufsliste2zutatstate`
-  MODIFY `ein2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ein2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `rezept`
@@ -300,13 +310,13 @@ ALTER TABLE `rezept`
 -- AUTO_INCREMENT für Tabelle `rezept2zutat`
 --
 ALTER TABLE `rezept2zutat`
-  MODIFY `rez2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rez2zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `zutat`
 --
 ALTER TABLE `zutat`
-  MODIFY `zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `zutid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints der exportierten Tabellen
