@@ -43,10 +43,7 @@ public class RezeptServiceImplTest {
      */
     @Test
     public void korrektesSuchen() throws IOException, JSONException {
-        //URL myurl = new URL(URL_GET_REZEPTE_BY_QUERY+"?art='BRUNCH'&anlass='ESSEN ZU ZWEIT'&praeferenz='ASIATISCH'");
-        String querytest = "'BRUNCH';'ESSEN ZU ZWEIT';'ASIATISCH'";
-        assertTrue(!classToTest.getRezepteByQuery(querytest).isEmpty());
-        /*
+        URL myurl = new URL(URL_GET_REZEPTE_BY_QUERY+"?art='BRUNCH'&anlass='ESSEN%20ZU%20ZWEIT'&praeferenz='ASIATISCH'");
         HttpURLConnection httpURLConnection = (HttpURLConnection)myurl.openConnection();
         httpURLConnection.setDoOutput(true);
         httpURLConnection.setRequestMethod("GET");
@@ -74,11 +71,11 @@ public class RezeptServiceImplTest {
                     jobj.getString("art"), jobj.getString("anlass"), jobj.getString("praeferenz"), jobj.getString("kochzeit") + "min",
                     jobj.getString("bild"), jobj.getString("menge")));
         }
-        String query = "'BRUNCH';'ESSEN ZU ZWEIT';'ASIATISCH'";
-        assertNotSame(rueckgabe, classToTest.getRezepteByQuery(query));
-        assertEquals(rueckgabe, classToTest.getRezepteByQuery(query));
-
-         */
+        String query = "'BRUNCH';'ESSEN%20ZU%20ZWEIT';'ASIATISCH'";
+        List<Rezept> actual = classToTest.getRezepteByQuery(query);
+        assertNotSame(rueckgabe, actual);
+        for(int i = 0; i < rueckgabe.size(); i++)
+            assertTrue(rueckgabe.get(i).equals(actual.get(i)));
     }
 
     /**
@@ -97,7 +94,7 @@ public class RezeptServiceImplTest {
      */
     @Test
     public void fehlerhaftesSuchenArt() throws IOException, JSONException {
-        String query = "'MITTERNACHTSSNACK';'ESSEN ZU ZWEIT';'ASIATISCH'";
+        String query = "'MITTERNACHTSSNACK';'ESSEN%20ZU%20ZWEIT';'ASIATISCH'";
         assertTrue(classToTest.getRezepteByQuery(query).isEmpty());
     }
 
@@ -117,7 +114,7 @@ public class RezeptServiceImplTest {
      */
     @Test
     public void fehlerhaftesSuchenAnlass() throws IOException, JSONException {
-        String query = "'BRUNCH';'DINNER FOR ONE';'ASIATISCH'";
+        String query = "'BRUNCH';'DINNER%20FOR%20ONE';'ASIATISCH'";
         assertTrue(classToTest.getRezepteByQuery(query).isEmpty());
     }
 
@@ -138,7 +135,7 @@ public class RezeptServiceImplTest {
     @Test
     public void fehlerhaftesSuchenPraeferenz() throws IOException, JSONException {
 
-        String query = "'BRUNCH';'ESSEN ZU ZWEIT';'UGANDISCH'";
+        String query = "'BRUNCH';'ESSEN%20ZU%20ZWEIT';'UGANDISCH'";
         assertTrue(classToTest.getRezepteByQuery(query).isEmpty());
     }
 
