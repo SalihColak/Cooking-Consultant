@@ -81,19 +81,6 @@ public class ActivityMain extends AppCompatActivity {
 
         createNotificationChannel();
 
-        /*if(!notificationSet) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, 15);
-
-            Intent intent = new Intent(this, NotificationReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * 60 * 24, pendingIntent);
-            SharedPreferences.Editor editor = getSharedPreferences("userData",MODE_PRIVATE).edit();
-            editor.putBoolean("notification",true);
-            editor.apply();
-        }*/
 
         PeriodicWorkRequest saveRequest = new PeriodicWorkRequest.Builder(NotifyWorker.class, 15, TimeUnit.MINUTES).build();
         WorkManager.getInstance(this).enqueue(saveRequest);

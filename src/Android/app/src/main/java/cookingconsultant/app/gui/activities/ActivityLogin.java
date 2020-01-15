@@ -90,7 +90,7 @@ public class ActivityLogin extends AppCompatActivity {
                 editor.putString("username",userGrenz.getName());
                 editor.apply();
                 Intent intent = new Intent(ActivityLogin.this,ActivityMain.class);
-                Toast.makeText(getApplicationContext(),userGrenz.getUserid()+" "+userGrenz.getVorname(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),userGrenz.getUserid()+" "+userGrenz.getVorname(),Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();
             }else{
