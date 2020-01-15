@@ -18,6 +18,10 @@ public class Beitrag {
         this.kategorie = kategorie;
     }
 
+    public boolean equals(Beitrag beitrag) {
+        return this.beitid == beitrag.beitid;
+    }
+
     public String getKategorie() {
         return kategorie;
     }

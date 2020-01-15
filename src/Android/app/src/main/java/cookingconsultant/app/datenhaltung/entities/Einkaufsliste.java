@@ -30,6 +30,10 @@ public class Einkaufsliste {
         this.zutatStateList = zutatStateList;
     }
 
+    public boolean equals(Einkaufsliste einkaufsliste) {
+        return this.einkid == einkaufsliste.einkid;
+    }
+
     public Integer getPortion() {
         return portion;
     }

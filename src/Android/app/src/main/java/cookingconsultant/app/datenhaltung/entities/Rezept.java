@@ -34,6 +34,9 @@ public class Rezept {
         this.menge = menge;
     }
 
+    public boolean equals(Rezept rezept) {
+        return this.rezid == rezept.rezid;
+    }
     public String getMenge() {
         return menge;
     }

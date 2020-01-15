@@ -30,6 +30,10 @@ public class User {
         this.email = email;
     }
 
+    public boolean equals(User user) {
+        return this.userid == user.userid;
+    }
+
     public Integer getUserid() {
         return userid;
     }
