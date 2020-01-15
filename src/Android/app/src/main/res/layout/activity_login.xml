@@ -105,6 +105,7 @@
                     <EditText
                         android:id="@+id/email"
                         android:hint="E-Mail"
+                        android:textColor="#333"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -146,6 +147,7 @@
                     <EditText
                         android:id="@+id/passwort"
                         android:hint="Passwort"
+                        android:textColor="#333"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

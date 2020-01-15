@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/timer"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:orientation="vertical"
         android:weightSum="10"
         android:background="@color/colorAccent">
@@ -43,16 +43,16 @@
                 android:onClick="startTimer"
                 android:src="@drawable/ic_play_arrow_black_24dp"
                 android:background="@drawable/btn_timer"
-                android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
                 android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"/>
             <ImageButton
                 android:onClick="stopTimer"
                 android:src="@drawable/ic_pause_black_24dp"
                 android:background="@drawable/btn_timer"
-                android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"/>
