@@ -1,9 +1,7 @@
 package cookingconsultant.app.gui.activities;
 
-import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,20 +12,20 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
-import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.gui.fragments.EinkaufFragment;
 import cookingconsultant.app.gui.fragments.KochlexikonFragment;
 import cookingconsultant.app.gui.fragments.RezeptFragment;
 import cookingconsultant.app.gui.adapter.ViewPagerAdapter;
-import cookingconsultant.app.gui.receivers.NotificationReceiver;
+import cookingconsultant.app.gui.receivers.NotifyWorker;
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -83,7 +81,7 @@ public class ActivityMain extends AppCompatActivity {
 
         createNotificationChannel();
 
-        //if(!notificationSet) {
+        /*if(!notificationSet) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.set(Calendar.HOUR_OF_DAY, 15);
@@ -95,8 +93,10 @@ public class ActivityMain extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences("userData",MODE_PRIVATE).edit();
             editor.putBoolean("notification",true);
             editor.apply();
-        //}
+        }*/
 
+        PeriodicWorkRequest saveRequest = new PeriodicWorkRequest.Builder(NotifyWorker.class, 15, TimeUnit.MINUTES).build();
+        WorkManager.getInstance(this).enqueue(saveRequest);
     }
 
     private void createNotificationChannel() {
@@ -127,8 +127,24 @@ public class ActivityMain extends AppCompatActivity {
 
     }
 
-    public void test(View view){
-        Intent intent = new Intent(this, ActivityMaps.class);
-        //startActivity(intent);
+    public void kochutensilien(View view){
+        Intent intent = new Intent(this, ActivityKochlexikon.class);
+        intent.putExtra("kategorie","kochutensilien");
+        startActivity(intent);
+    }
+    public void warenkunde(View view){
+        Intent intent = new Intent(this, ActivityKochlexikon.class);
+        intent.putExtra("kategorie","warenkunde");
+        startActivity(intent);
+    }
+    public void kochtechniken(View view){
+        Intent intent = new Intent(this, ActivityKochlexikon.class);
+        intent.putExtra("kategorie","kochtechniken");
+        startActivity(intent);
+    }
+    public void kochen(View view){
+        Intent intent = new Intent(this, ActivityKochlexikon.class);
+        intent.putExtra("kategorie","kochen");
+        startActivity(intent);
     }
 }
