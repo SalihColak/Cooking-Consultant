@@ -101,11 +101,11 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/kaffetafel"
+                        android:src="@drawable/kaffeetafel"
                         android:tag="kaffeetafel"
-                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_color="@color/transparent"
                         app:civ_border_width="1sp"
-                        app:civ_border_color="@color/transparent"/>
+                        app:civ_circle_background_color="#E4E4E4" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -454,9 +454,9 @@
                         android:layout_gravity="center"
                         android:src="@drawable/asiatisch"
                         android:tag="asiatisch"
-                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_color="@color/transparent"
                         app:civ_border_width="1sp"
-                        app:civ_border_color="@color/transparent"/>
+                        app:civ_circle_background_color="#E4E4E4" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -626,9 +626,9 @@
                         android:layout_gravity="center"
                         android:src="@drawable/hausmannskost"
                         android:tag="hausmannskost"
-                        app:civ_circle_background_color="#E4E4E4"
+                        app:civ_border_color="@color/transparent"
                         app:civ_border_width="1sp"
-                        app:civ_border_color="@color/transparent"/>
+                        app:civ_circle_background_color="#E4E4E4" />
 
                     <TextView
                         android:layout_width="wrap_content"
