@@ -69,7 +69,9 @@ public class KochlexikonServiceImplTest {
             }
         }
         assertNotSame(rueckgabe, classToTest.getBeitraege());
-        assertEquals(rueckgabe, classToTest.getBeitraege());
+        List<Beitrag> actual = classToTest.getBeitraege();
+        for(int i = 0; i < rueckgabe.size(); i++)
+            assertTrue(rueckgabe.get(i).equals(actual.get(i)));
     }
 
     /**
@@ -111,7 +113,7 @@ public class KochlexikonServiceImplTest {
             rueckgabe = new Beitrag(jobj.getInt("beitid"), jobj.getString("titel"), jobj.getString("inhalt"), jobj.getString("kategorie"));
         }
         assertNotSame(rueckgabe, classToTest.getBeitragByID(1));
-        assertEquals(rueckgabe, classToTest.getBeitragByID(1));
+        assertTrue(rueckgabe.equals(classToTest.getBeitragByID(1)));
     }
 
     /**
@@ -130,8 +132,8 @@ public class KochlexikonServiceImplTest {
      * Ergebnis
      * Null-Referenz, da Beitrag mit ID 5 nicht in der Datenbank vorhanden ist
      */
-    @Test
+    @Test(expected = JSONException.class)
     public void fehlerhaftesAnzeigenBeitrag() throws IOException, JSONException {
-        assertNull(classToTest.getBeitragByID(5));
+        classToTest.getBeitragByID(5);
     }
 }
