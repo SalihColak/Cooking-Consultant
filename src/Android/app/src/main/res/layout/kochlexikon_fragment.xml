@@ -13,20 +13,9 @@
         android:weightSum="10">
 
         <RelativeLayout
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
-
-            <TextView
-                android:id="@+id/yoklamaView"
-                android:text="KOCHLEXIKON"
-                android:textSize="34sp"
-                android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"/>
-
-        </RelativeLayout>
+            android:layout_height="0dp"/>
 
         <GridLayout
             android:layout_width="match_parent"
@@ -34,7 +23,7 @@
             android:columnOrderPreserved="false"
             android:padding="14dp"
             android:layout_height="0dp"
-            android:layout_weight="7"
+            android:layout_weight="8"
             android:columnCount="2"
             android:rowCount="2">
 
@@ -49,7 +38,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="8dp"
+                android:onClick="kochutensilien">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -59,11 +49,17 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:src="@drawable/platzhalter"
+                        android:src="@drawable/kochutensilien"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="120dp" />
-
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Kochutensilien">
+                    </TextView>
 
                 </LinearLayout>
 
@@ -79,7 +75,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="8dp"
+                android:onClick="warenkunde">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -89,11 +86,17 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:src="@drawable/platzhalter"
+                        android:src="@drawable/ic_warenkunde"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="120dp" />
-
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Warenkunde">
+                    </TextView>
 
                 </LinearLayout>
 
@@ -111,7 +114,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="8dp"
+                android:onClick="kochtechniken">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -126,7 +130,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="120dp" />
 
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Kochtechniken">
 
+                    </TextView>
                 </LinearLayout>
 
 
@@ -141,7 +152,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="8dp"
+                android:onClick="kochen">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -156,7 +168,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="120dp"
                         />
+                    <TextView
+                        android:paddingTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Kochen">
 
+                    </TextView>
 
                 </LinearLayout>
 

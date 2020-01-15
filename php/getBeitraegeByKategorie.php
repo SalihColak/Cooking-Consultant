@@ -10,7 +10,7 @@ if (mysqli_connect_errno())
 $kategorie = $_GET['kategorie'];
 
 //Example: http://localhost/getBeitragByID.php?beitid=2
-$sql = "SELECT * FROM beitrag WHERE kategorie = $kategorie";
+$sql = "SELECT * FROM beitrag WHERE kategorie = '$kategorie' ORDER BY titel ASC";
  
 // Confirm there are results
 if ($result = mysqli_query($con, $sql))
