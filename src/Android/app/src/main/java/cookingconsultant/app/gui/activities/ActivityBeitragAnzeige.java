@@ -1,6 +1,7 @@
 package cookingconsultant.app.gui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import cookingconsultant.app.R;
 
 import android.os.Bundle;
 
