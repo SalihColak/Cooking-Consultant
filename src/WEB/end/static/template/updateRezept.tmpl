@@ -1,0 +1,221 @@
+{{define  "updateRezept"}}
+
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+
+<section class="section has-background-light">
+      <div class="container gruenControl">
+        <div class="columns">
+          <div class="column">
+            <div class="notification has-background-white">
+              <form action="/updateRezept" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="{{.Rezept.ID}}">
+              <input type="hidden" name="member" value="{{len .IndexZutaten}}">
+              <input type="hidden" name="memberText" value="{{len .IndexSchritte}}">
+              <input type="hidden" name="bild" value="{{.Rezept.Bild}}">
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Name:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <input
+                      name="name"
+                      type="text"
+                      class="input is-rounded"
+                      type="text"
+                      placeholder="Pfannkuchen"
+                      value="{{.Rezept.Name}}"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Art:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <div class="select is-rounded is-fullwidth">
+                      <select name="art" id="sel">
+                        <option value="FRUEHSTUECK">Frühstück</option>
+                        <option value="BRUNCH">Brunch</option>
+                        <option value="MITTAGESSEN">Mittagessen</option>
+                        <option value="KAFFEETAFEL">Kaffeetafel</option>
+                        <option value="ABENDESSEN">Abendessen</option>
+                        <option value="SNACK">Snack</option>
+                        <input type="hidden" id="artDB" value="{{.Rezept.Art}}">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Anlass:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <div class="select is-rounded is-fullwidth">
+                      <select name="anlass" id="sel1">
+                        <option value="FAMILIENESSEN">Familienessen</option>
+                        <option value="FEIER">Feier</option>
+                        <option value="KINDERGEBURTSTAG"
+                          >Kindergeburtstag</option
+                        >
+                        <option value="GEBURTSTAG">Geburtstag</option>
+                        <option value="ESSEN ZU ZWEIT">Essen zu Zweit</option>
+                        <option value="FREUNDE">Freunde</option>
+                        <input type="hidden" id="anlassDB" value="{{.Rezept.Anlass}}">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Präferenz:</div>
+                    </div>
+                  </div>
+                  <div class="column is-7">
+                    <div class="select is-rounded is-fullwidth">
+                      <select name="praeferenz" id="sel2">
+                        <option value="ITALIENISCH">Italienisch</option>
+                        <option value="ASIATISCH">Asiatisch</option>
+                        <option value="ORIENTALISCH">Orientalisch</option>
+                        <option value="TUERKISCH">Türkisch</option>
+                        <option value="DEUTSCH">Deutsch</option>
+                        <option value="AMERIKANISCH">Amerikanisch</option>
+                        <option value="INDISCH">Indisch</option>
+                        <option value="HAUSMANNSKOST">Hausmannskost</option>
+                        <option value="INTERNATIONAL">International</option>
+                        <input type="hidden" id="praeferenzDB" value="{{.Rezept.Praeferenz}}">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                    <div class="column is-3">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Kochzeit in Minuten:</div>
+                      </div>
+                    </div>
+                    <div class="column is-7">
+                      <input
+                        name="zeit"
+                        type="text"
+                        class="input is-rounded"
+                        type="text"
+                        placeholder="60"
+                        value="{{.Rezept.Kochzeit}}"
+                        required
+                      />
+                    </div>
+                  </div>
+                <div class="columns">
+                    <div class="column is-3">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Beschreibung:</div>
+                      </div>
+                    </div>
+                    <div class="column is-7">
+                            <textarea class="textarea" name="beschreibung" placeholder="Kurzbeschreibung des Rezeptes" rows="3" id="bechreibung" required>{{.Rezept.Beschreibung}}</textarea> 
+                    </div>
+                  </div>
+               
+               {{range $i, $e := .Rezept.Zutaten}}
+                      
+                <div class="columns is-vcentered">
+                    <div class="column is-3">
+                        <div class="content has-text-right">
+                            <div class="title is-5">Zutat {{index $.IndexZutaten $i}}:</div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <input 
+                        type="text"                         
+                        class="input is-rounded" 
+                        placeholder="Milch" 
+                        id="zutatName{{index $.IndexZutaten $i}}" 
+                        name="zutatName{{index $.IndexZutaten $i}}"
+                        value="{{.Name}}" 
+                        required="">
+                    </div>
+                    <div class="column is-2">
+                        <input 
+                        type="text" 
+                        class="input is-rounded" 
+                        placeholder="Menge" 
+                        id="zutatMenge{{index $.IndexZutaten $i}}" 
+                        name="zutatMenge{{index $.IndexZutaten $i}}"
+                        value="{{.Menge}}" 
+                        required="">
+                    </div>
+                    <div class="column is-2">
+                        <input 
+                        type="text" 
+                        class="input is-rounded" 
+                        placeholder="Einheit" 
+                        id="zutatEinheit{{index $.IndexZutaten $i}}" 
+                        name="zutatEinheit{{index $.IndexZutaten $i}}"
+                        value="{{.Einheit}}" 
+                        required="">
+                    </div>
+                    <input type="hidden" name="zutatID{{index $.IndexZutaten $i}}" value="{{.ID}}">
+                </div>
+
+                {{end}}
+
+                {{range $i, $e := .Rezept.Schritte}}
+                <!--Feld-->
+                <div class="columns ">
+                    <div class="column is-3">
+                        <div class="content has-text-right">
+                            <div class="title is-5">Schritt {{index $.IndexSchritte $i}}:</div>
+                        </div>
+                    </div>
+                    <div class="column is-5">
+                        <textarea class="textarea" placeholder="Schritt" rows="5" id="schritt{{index $.IndexSchritte $i}}" name="schritt{{index $.IndexSchritte $i}}" required="">{{.}}</textarea>
+                    </div>
+                </div>
+                <!--Feld Ende-->
+                {{end}}
+
+                <div class="columns is-centered has-text-centred">
+                  <div class="column is-offset-1 ">
+                    <input id='fileid' type='file' name="uploadfile" />
+                      <label id=".inputfile" for="fileid" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Bild Upload
+                      </label>                            
+                  </div>
+                </div>
+
+                <div class="columns has-text-centered is-vcentered">
+                    <div class="column">
+                      <button
+                        class="button is-rounded gruen has-text-white"
+                        type="submit"
+                      >
+                        Absenden
+                      </button>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    
+
+
+  </body>
+<script src="script/rezeptBearbeiten.js"></script>
+<script src="script/upload.js"></script>
+</html>
+{{ end }}

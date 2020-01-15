@@ -1,0 +1,58 @@
+{{define "alleBeitraege"}}
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+
+    <section class="section has-background-light">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-4 is-offset-8 gruenControl">
+            <input
+              type="text"
+              id="myInput"
+              class="input is-rounded"
+              onkeyup="search()"
+              placeholder="Search for names.."
+            />
+          </div>
+        </div>
+        <!--Start Columns-->
+        <div class="columns is-multiline">
+          <!--Anfang des Template Rezept-->
+          {{range .}}
+          {{template "alleBeitraegeKachel" .}}
+          {{ end }}
+          <!--Ende Template-->
+        </div>
+        <!--Ende Columns-->
+      </div>
+    </section>
+    <div class="modal" id="delete-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content centerModal">
+        <div class="notification has-background-white">
+          <h1 class="title has-text-left is-spaced">Löschen</h1>
+          <h1 class="subtitle has-text-left">
+            Bist du sicher, dass du den Beitrag löschen möchtest?
+          </h1>
+          <span class="center">
+            <button class="button gruen has-text-white" id="behalten">
+              Beitrag behalten
+            </button>
+            &emsp;
+            <button class="button is-danger" id="löschen">
+              Beitrag löschen
+            </button>
+          </span>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </body>
+  <script src="script/modalbeitrag.js"></script>
+  <script src="script/search.js"></script>
+</html>
+{{ end }}

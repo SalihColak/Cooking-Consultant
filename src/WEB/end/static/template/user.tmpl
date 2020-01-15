@@ -1,0 +1,128 @@
+{{define  "user"}}
+
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+<section class="section has-background-light">
+      <div class="container gruenControl">
+        
+        <div class="columns">
+          <div class="column is-3">
+            <div class="columns is-multiline">
+              <div class="column is-full">
+                <div class="notification is-white has-text-centered">
+                  <figure class="image container is-128x128">
+                    <img src="images/logo.png" alt="" />
+                  </figure>
+                  <br>
+                  <p><b>App Download</b></p>
+                </div>
+              </div>
+              <div class="column is-full is-hidden">
+                <div class="notification is-white">
+                  <div class="content">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-9">
+            <div class="columns is-multiline">
+                <div class="column is-full">
+                <div class="notification is-white">
+                  <form action="/updateUser" method="POST">
+                  <div class="content">
+                    <input type="hidden" name="id" value="{{.UseID}}">
+                    <div class="columns is-vcentered">
+                      <div class="column is-2 has-text-right">
+                        <div class="content has-text-right">
+                          <div class="title is-5">Name:</div>
+                        </div>
+                      </div>
+                      <div class="column is-9">
+                        <input
+                        name="name"
+                        class="input is-rounded"
+                        type="text"
+                        value="{{.Name}}"
+                        required
+                        />
+                      </div>
+                    </div>
+                    <div class="columns is-vcentered">
+                      <div class="column is-2 has-text-right">
+                        <div class="content has-text-right">
+                          <div class="title is-5">Vorname:</div>
+                        </div>
+                      </div>
+                      <div class="column is-9">
+                        <input
+                        name="vorname"
+                        class="input is-rounded"
+                        type="text"
+                        value="{{.Vorname}}"
+                        required
+                        />
+                      </div>
+                    </div>
+                    <div class="columns is-vcentered">
+                      <div class="column is-2 has-text-right">
+                        <div class="content has-text-right">
+                          <div class="title is-5">Email:</div>
+                        </div>
+                      </div>
+                      <div class="column is-9">
+                        <input
+                        name="email"
+                        class="input is-rounded"
+                        type="text"
+                        value="{{.Email}}"
+                        required
+                        />
+                      </div>
+                    </div>
+                    <div class="columns is-vcentered">
+                      <div class="column is-2 has-text-right">
+                        <div class="content has-text-right">
+                          <div class="title is-5">Passwort:</div>
+                        </div>
+                      </div>
+                      <div class="column is-9">
+                        <input
+                        name="passwort"
+                        placeholder="Wenn Sie das Passwort ändern wollen geben Sie bitte ein neues ein"
+                        class="input is-rounded"
+                        type="password"
+                        />
+                      </div>
+                    </div>
+                    <div class="columns has-text-centered is-vcentered">
+                      <div class="column">
+                        <button
+                          class="button is-rounded gruen has-text-white"
+                          type="submit"
+                        >
+                          Absenden
+                        </button>
+                      
+                      </div>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </body>
+</html>
+{{ end }}

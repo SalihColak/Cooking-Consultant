@@ -1,0 +1,94 @@
+{{define "login"}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cooking Consultant</title>
+    <link rel="stylesheet" href="styles/bulma.css" />
+    <link rel="stylesheet" href="styles/design.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Heebo&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2eecd33853.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <section class="hero gruen">
+      <div class="hero-body">
+        <div class="container center has-text-white">
+          <span id="spoon">
+            <img src="../images/logoheader.png" alt="" width="80px" />
+          </span>
+          <p class="is-size-1 has-text-right texthead">Cooking Consultant</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-background-light" id="test">
+      <div class="container gruenControl">
+        <div class="columns">
+          <div class="column">
+            <div
+              class="notification has-background-white"
+              id="notificationlogin"
+            >
+              <br />
+              <br />
+              <form action="/loginUser" method="post">
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Email:</div>
+                    </div>
+                  </div>
+                  <div class="column is-8">
+                    <input
+                      name="email"
+                      type="email"
+                      class="input is-rounded"
+                      placeholder="MaxMustermann@muster.de"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="columns is-vcentered">
+                  <div class="column is-3">
+                    <div class="content has-text-right">
+                      <div class="title is-5">Passwort:</div>
+                    </div>
+                  </div>
+                  <div class="column is-8">
+                    <input
+                      name="passwort"
+                      type="password"
+                      class="input is-rounded"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="columns has-text-centered is-vcentered">
+                  <div class="column">
+                    <button
+                      class="button is-rounded gruen has-text-white"
+                      type="submit"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </div>
+                <br />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+{{ end }}

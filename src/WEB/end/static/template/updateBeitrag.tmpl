@@ -1,0 +1,76 @@
+{{define  "updateBeitrag"}}
+
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+
+    <section class="section has-background-light">
+      <div class="container gruenControl">
+        <div class="columns">
+          <div class="column">
+            <div class="notification has-background-white">
+              <form action="/updateBeitrag" method="post">
+              <input type="hidden" name="id" value="{{.BeitID}}">
+                <div class="content">
+                  <div class="columns is-vcentered">
+                    <div class="column is-2">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Überschrift:</div>
+                      </div>
+                    </div>
+                    <div class="column is-9">
+                      <input
+                        type="text"
+                        class="input is-rounded"
+                        type="text"
+                        placeholder="Name des Beitrag"
+                        name="titel"
+                        value="{{.Titel}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="columns is-vcentered">
+                    <div class="column is-2">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Kategorie:</div>
+                      </div>
+                    </div>
+                    <div class="column is-9">
+                            <div class="select" id="sel">
+                                    <select name="kategorie">
+                                      <option value="Lebensmittel">Lebensmittel</option>
+                                      <option value="Küchenuntensilien">Küchenutensilien</option>
+                                      <input type="hidden" id="kategorieDB" value="{{.Kategorie}}">
+                                    </select>
+                                  </div>
+                    </div>
+                  </div>
+                  <div class="columns is-vcentered">
+                    <div class="column is-2">
+                      <div class="content has-text-right">
+                        <div class="title is-5">Text:</div>
+                      </div>
+                    </div>
+                    <div class="column is-9">
+                            <textarea name="inhalt" class="textarea" placeholder="Inhalt" rows="15" >{{.Inhalt}}</textarea>
+                      </textarea>
+                    </div>
+                  </div>
+                  <div class="column has-text-centered">
+                      <button class="button is-rounded gruen has-text-white">Absenden</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</body>
+<script src="script/beitragBearbeiten.js"></script>
+</html>
+{{ end }}

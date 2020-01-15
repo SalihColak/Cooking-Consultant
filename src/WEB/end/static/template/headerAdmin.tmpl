@@ -1,0 +1,39 @@
+{{define "headerAdmin"}}
+<section class="hero gruen">
+  <div class="hero-body headEnd">
+    <div class="container center has-text-white">
+      <img src="../images/logoheader.png" alt="" width="80px" />
+      <p class="is-size-1 has-text-right texthead">Cooking Consultant</p>
+    </div>
+    <nav>
+      <div class="dropdown">
+        <button><a href="/admin" class="home">Home</a></button>
+        <div class="projects">
+          <button>Nutzer <img src="./images/down.svg" alt="down" /></button>
+          <ul class="nutzer">
+            <li><a href="/registerAdmin">Admin anlegen</a></li>
+            <li><a href="/alleUser">Alle Nutzer anzeigen</a></li>
+            <li><a href="/alleAdmin">Alle Admin anzeigen</a></li>
+          </ul>
+        </div>
+        <div class="products">
+          <button>Rezept <img src="./images/down.svg" alt="down" /></button>
+          <ul>
+            <li><a href="/rezeptEintragen">Rezept anlegen</a></li>
+            <li><a href="/alleRezepte">Alle Rezepte anzeigen</a></li>
+          </ul>
+        </div>
+        <div class="products">
+          <button>Beitrag <img src="./images/down.svg" alt="down" /></button>
+          <ul>
+            <li><a href="/beitragEintragen">Beitrag anlegen</a></li>
+            <li><a href="/alleBeitraege">Alle Beiträge anzeigen</a></li>
+          </ul>
+        </div>
+        <button><a href="/logout" class="home">Logout</a></button>
+      </div>
+    </nav>
+  </div>
+</section>
+
+{{ end }}

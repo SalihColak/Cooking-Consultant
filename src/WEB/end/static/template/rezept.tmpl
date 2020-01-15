@@ -1,0 +1,90 @@
+{{define  "rezept"}}
+
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+
+<section class="section has-background-light">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <div class="notification is-white">
+              <div class="container">
+                <div class="columns">
+                  <div class="column is-offset-1">
+                    <div class="content">
+                      <p><b>Name:</b> {{.Rezept.Name}}</p>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="content">
+                      <p><b>Anlass:</b> {{.Rezept.Anlass}}</p>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="content">
+                      <p><b>Präferenz:</b> {{.Rezept.Praeferenz}}</p>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="content">
+                      <p><b>Art:</b> {{.Rezept.Art}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-3">
+            <div class="columns is-multiline">
+              <div class="column is-full">
+                <div class="notification is-white">
+                  <figure class="image container is-128x128">
+                    <img src="images/{{.Rezept.Bild}}" alt="" />
+                  </figure>
+                </div>
+              </div>
+              <div class="column is-full">
+                <div class="notification is-white">
+                  <div class="content">
+                    <p><b>Zutaten:</b></p>
+                    <ul>
+                      {{range .Rezept.Zutaten}}
+                      <li>{{.Menge}} {{.Einheit}} {{.Name}}</li>
+                      {{end}}
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-9">
+            <div class="columns is-multiline">
+              {{range $i, $e := .Rezept.Schritte}}
+                <div class="column is-full">
+                <div class="notification is-white">
+                  <div class="content">
+                    <div class="title is-5">Schritt {{index $.Index $i}}:</div>
+                    <p>
+                      {{.}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </body>
+</html>
+{{ end }}

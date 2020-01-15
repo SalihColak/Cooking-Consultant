@@ -1,0 +1,66 @@
+{{define "indexAdmin"}}
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+    <section class="section has-background-light">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column">
+            <div class="notification is-white">
+              <div class="content has-text-centered">
+                <div class="title">
+                  Herzlich Wilkommen {{.Vorname}} {{.Nachname}}
+                </div>
+                <div class="p is-size-4">
+                  Zurzeit befinden sich {{.Rezept}} Rezepte und
+                  {{.Beitrag}} Beiträge in der Datenbank. <br />
+                  <br />
+                  Es sind Zurzeit {{.User}} Nutzer in der Cooking Consultant
+                  Datenbank registriert
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns has-text-centered">
+          <div class="column ">
+            <article class="notification is-white">
+              <div class="content ranking">
+                <div class="title is-5">Neuste Rezepte</div>
+                <ul>
+                  <li>1. <a href="">{{index .Rezepte 0}}</a></li>
+                  <li>2. <a href="">{{index .Rezepte 1}}</a></li>
+                  <li>3. <a href="">{{index .Rezepte 2}}</a></li>
+                  <li>4. <a href="">{{index .Rezepte 3}}</a></li>
+                  <li>5. <a href="">{{index .Rezepte 4}}</a></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+          <div class="column ranking">
+            <article class="notification is-white">
+              <div class="content">
+                <div class="title is-5">Neuste Beiträge</div>
+                <ul>
+                  <li>1. <a href="">{{index .Beitraege 0}}</a></li>
+                  <li>2. <a href="">{{index .Beitraege 1}}</a></li>
+                  <li>3. <a href="">{{index .Beitraege 2}}</a></li>
+                  <li>4. <a href="">{{index .Beitraege 3}}</a></li>
+                  <li>5. <a href="">{{index .Beitraege 4}}</a></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+{{ end }}

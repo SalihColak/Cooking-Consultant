@@ -1,0 +1,116 @@
+html {
+  background-color: white;
+}
+
+body {
+  font-family: "Heebo", sans-serif;
+}
+
+button {
+  font-family: "Heebo", sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.texthead {
+  margin-left: 25px;
+}
+
+.startnotification {
+  height: 181px;
+}
+
+.gruen {
+  background-color: #6bad67;
+}
+
+.icongruen {
+  color: #6bad67;
+}
+
+.headEnd {
+  padding-bottom: 0px;
+}
+
+.ranking ul {
+  list-style: none;
+  margin-left: 0px;
+}
+
+.ranking a {
+  text-decoration: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.gruenControl select,
+.gruenControl input,
+.gruenControl textarea {
+  border-color: #6bad67 !important;
+}
+
+input {
+  outline: none;
+}
+
+.gruenControl .select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #6bad67;
+  right: 1.125em;
+  z-index: 4;
+}
+
+.gruenControlitem:hover {
+  background-color: #6bad67;
+}
+
+#loginbutton {
+  width: 249px !important;
+}
+
+#test {
+  height: 70vh;
+}
+
+#notificationlogin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1344px;
+  height: 304px;
+}
+
+.icon a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.headicon {
+  width: 80px !important;
+}
+
+.centerModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 100px;
+  color: #ffffff;
+  background-color: #6bad67;
+}

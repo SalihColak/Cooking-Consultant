@@ -1,0 +1,79 @@
+{{define "alleUser"}}
+<!DOCTYPE html>
+<html>
+  {{template "headAdmin" }}
+
+  <body>
+    {{template "headerAdmin"}}
+
+    <section class="section has-background-light">
+      <div class="container">
+        <!--Start Columns-->
+        <div class="columns is-centered">
+          <div class="column is-narrow">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Vorname</th>
+                  <th>Nachname</th>
+                  <th>Email</th>
+                  <th>Bearbeiten</th>
+                  <th>Löschen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Anfang Template User -->
+                {{range .}}
+                <tr>
+                  <th>{{.UseId}}</th>
+                  <td>{{.Vorname}}</td>
+                  <td>{{.Name}}</td>
+                  <td>{{.Email}}</td>
+                  <td class="has-text-centered">
+                    <span class="icon">
+                      <a href="/userBearbeiten?id={{.UseId}}"
+                        ><i class="fas fa-pencil-alt"></i
+                      ></a>
+                    </span>
+                  </td>
+                  <td class="has-text-centered">
+                    <span class="icon has-text-danger">
+                        <a id="{{.UseId}}" onclick="modalanzeigen(this)"><i class="fas fa-trash"></i></a>
+                      </span>
+                  </td>
+                </tr>
+                {{end}}
+                <!-- Ende Template User -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--Ende Columns-->
+      </div>
+    </section>
+    <div class="modal" id="delete-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content centerModal">
+        <div class="notification has-background-white">
+          <h1 class="title has-text-left is-spaced">Löschen</h1>
+          <h1 class="subtitle has-text-left">
+            Bist du sicher, dass du den Benutzer löschen möchtest?
+          </h1>
+          <span class="center">
+            <button class="button gruen has-text-white" id="behalten">
+              Benutzer behalten
+            </button>
+            &emsp;
+            <button class="button is-danger" id="löschen">
+              Benutzer löschen
+            </button>
+          </span>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </body>
+  <script src="script/modaluser.js"></script>
+</html>
+{{ end }}
