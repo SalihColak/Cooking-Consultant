@@ -13,13 +13,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import cookingconsultant.app.datenhaltung.entities.User;
+import cookingconsultant.app.datenhaltung.impl.UserServiceImpl;
+import cookingconsultant.app.datenhaltung.services.UserService;
 import cookingconsultant.app.fachlogik.services.Constants;
 
 import static org.junit.Assert.*;
 
 public class UserServiceImplTest {
 
-    private static UserServiceImpl classToTest = new UserServiceImpl();
+    private static UserService classToTest = new UserServiceImpl();
     private static final String URL_GET_USER_BY_LOGIN= Constants.IP_SERVER+"getBenutzerByEmailPasswort.php";
     /**
      * /TF01/ Korrektes Einloggen
@@ -69,7 +71,7 @@ public class UserServiceImplTest {
                     admin,jobj.getString("email"));
         }
         assertNotSame(rueckgabe, classToTest.getUserByLogin("test@mail.de", "test"));
-        assertEquals(rueckgabe, classToTest.getUserByLogin("test@mail.de", "test"));
+        assertTrue(rueckgabe.equals(classToTest.getUserByLogin("test@mail.de", "test")));
     }
 
     /**
@@ -86,8 +88,8 @@ public class UserServiceImplTest {
      * Ergebnis
      * Der Benutzer erhält die Null-Referenz
      */
-    @Test
+    @Test(expected = JSONException.class)
     public void fehlerhaftesEinloggen() throws IOException, JSONException {
-        assertNull(classToTest.getUserByLogin("test", "test"));
+        classToTest.getUserByLogin("test@fehlermail", "test");
     }
 }

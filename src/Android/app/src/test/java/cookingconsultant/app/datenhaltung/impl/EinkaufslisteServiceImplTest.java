@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -81,7 +82,9 @@ public class EinkaufslisteServiceImplTest {
             }
         }
         assertNotSame(rueckgabe, classToTest.getEinkaufslistenByUserID(1));
-        assertEquals(rueckgabe, classToTest.getEinkaufslistenByUserID(1));
+        List<Einkaufsliste> actual = classToTest.getEinkaufslistenByUserID(1);
+        for(int i = 0; i < rueckgabe.size(); i++)
+            assertTrue(rueckgabe.get(i).equals(actual.get(i)));
     }
 
     /**
@@ -119,6 +122,10 @@ public class EinkaufslisteServiceImplTest {
     @Test
     public void korrektesAbarbeitenEinkaufsliste() throws IOException, JSONException {
         List<ZutatState> testObjekt = classToTest.getEinkaufslisteZutatState(1);
+        for(ZutatState z : testObjekt)
+            classToTest.changeZutatState(z.getId(), false);
+
+        testObjekt = classToTest.getEinkaufslisteZutatState(1);
         for(ZutatState z : testObjekt)
         {
             assertFalse(z.getState());
@@ -177,6 +184,8 @@ public class EinkaufslisteServiceImplTest {
     @Test
     public void korrektesEinfuegenEinkaufsliste() throws IOException, JSONException {
         Einkaufsliste testObjekt = new Einkaufsliste(null, "status", 3);
+        testObjekt.setRezept(new RezeptServiceImpl().getRezeptByID(1));
+        testObjekt.setUser(new UserServiceImpl().getUserByID(1));
         assertTrue(classToTest.addEinkaufsliste(testObjekt));
     }
 
@@ -196,9 +205,9 @@ public class EinkaufslisteServiceImplTest {
      * Ergebnis
      * False
      */
-    @Test
+    @Test(expected = NullPointerException.class)
     public void fehlerhaftesEinfuegenEinkaufsliste() throws IOException, JSONException {
         Einkaufsliste testObjekt = new Einkaufsliste(5, "status", 3);
-        assertFalse(classToTest.addEinkaufsliste(testObjekt));
+        classToTest.addEinkaufsliste(testObjekt);
     }
 }
