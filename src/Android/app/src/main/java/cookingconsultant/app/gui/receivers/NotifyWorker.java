@@ -62,9 +62,9 @@ public class NotifyWorker extends Worker {
             switch (random) {
                 case 0:   content = "Es ist wieder mal Zeit " + rezeptGrenzList.get(random).getName().toLowerCase() + " zu kochen!";
                     break;
-                case 1: content = "Na mal wieder Lust auf was "+rezeptGrenzList.get(random).getPraeferenz()+"es?";
+                case 1: content = "Na mal wieder Lust auf was "+rezeptGrenzList.get(random).getPraeferenz().toLowerCase()+"es?";
                         break;
-                case 2: content = "Mal wieder Besuch da? Koche jetzt etwas "+rezeptGrenzList.get(random).getPraeferenz()+"es!";
+                case 2: content = "Mal wieder Besuch da? Koche jetzt etwas "+rezeptGrenzList.get(random).getPraeferenz().toLowerCase()+"es!";
                                 break;
                 default: content = "Entdecke neue leckere Rezepte nach deinen Wünschen!";
             }
