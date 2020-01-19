@@ -61,7 +61,7 @@ C:\> cd %USERPROFILE%\go\src\hello
 %USERPROFILE%\go\src\syp
 ```
 
-2. Kopiere Sie den Ordner "proto" in den zuvor erstellten Ordner
+2. Kopiere Sie den Ordner "end" in den zuvor erstellten Ordner
 
 3. Wechsel in folgenden Ordner
 
