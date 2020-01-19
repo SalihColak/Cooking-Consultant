@@ -72,6 +72,7 @@ C:\> cd %USERPROFILE%\go\src\hello
 4. Führen Sie dort folgende Befehle aus
 
 ```CLI
+go get github.com/gorilla/sessions
 go build
 go install
 ```
