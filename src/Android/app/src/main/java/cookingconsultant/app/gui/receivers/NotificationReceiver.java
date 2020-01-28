@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import org.json.JSONException;
 
@@ -73,7 +72,6 @@ public class NotificationReceiver extends BroadcastReceiver {
                     .setContentTitle("Hallo "+vorname)
                     .setContentText(content)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    // Set the intent that will fire when the user taps the notification
                     .setContentIntent(pendingIntent)
                     .setAutoCancel(true);
 

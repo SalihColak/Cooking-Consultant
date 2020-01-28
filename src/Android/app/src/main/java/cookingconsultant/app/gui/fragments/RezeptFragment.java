@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,8 +162,6 @@ public class RezeptFragment extends Fragment implements View.OnClickListener {
             circleImageView.setBorderColor(Color.parseColor("#ffffff"));
             circleImageView.setCircleBackgroundColor(Color.parseColor(BACKGROUND_COLOR));
         }
-        //Kontrollausgabe
-        //Toast.makeText(getContext(),rezeptartList.toString()+" | "+rezeptAnlassList.toString()+" | "+rezeptPraeferenzList.toString(),Toast.LENGTH_SHORT).show();
         if(!rezeptartList.isEmpty() && !rezeptAnlassList.isEmpty() && !rezeptPraeferenzList.isEmpty()){
             pressable = true;
             search.setBackgroundColor(search.getResources().getColor(R.color.colorAccent));

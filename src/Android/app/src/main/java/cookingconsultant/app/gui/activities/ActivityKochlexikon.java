@@ -84,7 +84,6 @@ public class ActivityKochlexikon extends AppCompatActivity implements OnNoteList
 
         @Override
         protected Void doInBackground(Void... voids) {
-            //android.os.Debug.waitForDebugger();
             KochlexikonVerwaltung kochlexikonVerwaltung = new KochlexikonVerwaltungImpl();
             try {
                 beitragGrenzList = kochlexikonVerwaltung.getBeitraegeByKategorie(kategorie);

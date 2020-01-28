@@ -45,10 +45,6 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*  ENDVERSION*/
-
-        //getSharedPreferences("userData", 0).edit().clear().commit();
-        //getSharedPreferences("userData", 0).edit().putBoolean("notification",false).commit();
         SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
 
         userid = sharedPreferences.getInt("userid",-1);
@@ -82,21 +78,17 @@ public class ActivityMain extends AppCompatActivity {
         createNotificationChannel();
 
 
-        PeriodicWorkRequest saveRequest = new PeriodicWorkRequest.Builder(NotifyWorker.class, 15, TimeUnit.MINUTES).build();
+        PeriodicWorkRequest saveRequest = new PeriodicWorkRequest.Builder(NotifyWorker.class, 3, TimeUnit.DAYS).build();
         WorkManager.getInstance(this).enqueue(saveRequest);
     }
 
     private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "mychannelname";
             String description = "mychanneldescription";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }

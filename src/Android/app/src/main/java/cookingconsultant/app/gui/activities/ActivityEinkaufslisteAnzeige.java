@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,10 +15,7 @@ import java.util.List;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.fachlogik.grenz.EinkaufslisteGrenz;
-import cookingconsultant.app.fachlogik.grenz.ZutatGrenz;
-import cookingconsultant.app.fachlogik.grenz.ZutatStateGrenz;
 import cookingconsultant.app.gui.adapter.EinkaufslisteZutatenAdapter;
-import cookingconsultant.app.gui.adapter.RezeptZutatenAdapter;
 import cookingconsultant.app.gui.services.OnNoteListener;
 
 public class ActivityEinkaufslisteAnzeige extends AppCompatActivity implements OnNoteListener {
@@ -65,8 +61,6 @@ public class ActivityEinkaufslisteAnzeige extends AppCompatActivity implements O
 
     @Override
     public void onNoteClick(int position) {
-        ZutatStateGrenz zutatStateGrenz = einkaufslisteGrenz.getZutatStateList().get(position);
-        Toast.makeText(this,zutatStateGrenz.getZutatGrenz().getName()+" "+zutatStateGrenz.isStatus(),Toast.LENGTH_SHORT).show();
 
     }
 

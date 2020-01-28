@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,7 +89,6 @@ public class ActivityLogin extends AppCompatActivity {
                 editor.putString("username",userGrenz.getName());
                 editor.apply();
                 Intent intent = new Intent(ActivityLogin.this,ActivityMain.class);
-                //Toast.makeText(getApplicationContext(),userGrenz.getUserid()+" "+userGrenz.getVorname(),Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();
             }else{

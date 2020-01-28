@@ -5,19 +5,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.time.LocalDate;
 
 import cookingconsultant.app.datenhaltung.entities.User;
-import cookingconsultant.app.datenhaltung.services.EinkaufslisteService;
 import cookingconsultant.app.datenhaltung.services.UserService;
 import cookingconsultant.app.fachlogik.services.Constants;
 
@@ -63,10 +57,7 @@ public class UserServiceImpl implements UserService {
                     jobj.getString("vorname"),jobj.getString("geschlecht"),jobj.getString("geburtsdatum"),
                     admin,jobj.getString("email"));
         }
-
-
         return user;
-        //return new User(userid,"Herr","Mustermann","Max","maennlich","1997/03/14",true,"max.mustermann@th-koeln.de");
     }
 
     @Override
@@ -105,6 +96,5 @@ public class UserServiceImpl implements UserService {
 
 
         return user;
-        //return new User(3,"Herr","Mustermann","Max","maennlich","1997/03/14",true,email);
     }
 }

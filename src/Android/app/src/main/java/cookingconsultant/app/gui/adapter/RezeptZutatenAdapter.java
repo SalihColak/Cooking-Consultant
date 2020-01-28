@@ -4,18 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import cookingconsultant.app.R;
-import cookingconsultant.app.fachlogik.grenz.RezeptGrenz;
 import cookingconsultant.app.fachlogik.grenz.ZutatGrenz;
 
 public class RezeptZutatenAdapter extends RecyclerView.Adapter<RezeptZutatenAdapter.ViewHolder> {

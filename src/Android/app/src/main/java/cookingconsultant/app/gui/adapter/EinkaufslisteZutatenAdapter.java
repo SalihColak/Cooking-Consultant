@@ -18,7 +18,6 @@ import java.util.List;
 
 import cookingconsultant.app.R;
 import cookingconsultant.app.fachlogik.grenz.EinkaufslisteGrenz;
-import cookingconsultant.app.fachlogik.grenz.ZutatStateGrenz;
 import cookingconsultant.app.fachlogik.impl.EinkaufslisteVerwaltungImpl;
 import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
 import cookingconsultant.app.gui.services.OnNoteListener;
@@ -68,13 +67,13 @@ public class EinkaufslisteZutatenAdapter extends RecyclerView.Adapter<Einkaufsli
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(menge.getPaintFlags() == (menge.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG)){ //noch zu kaufen
+                if(menge.getPaintFlags() == (menge.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG)){
                     background.setBackgroundColor(background.getResources().getColor(R.color.colorAccent));
                     menge.setPaintFlags(menge.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
                     name.setPaintFlags(name.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
                     final ChangeState changeState1 = new ChangeState();
                     changeState1.execute(einkaufslisteGrenz.getZutatStateList().get(position).getId(),0);
-                }else { //gekauft
+                }else {
                     imageView.setImageResource(R.drawable.ic_done_black_24dp);
                     menge.setPaintFlags(menge.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     name.setPaintFlags(name.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -85,13 +84,6 @@ public class EinkaufslisteZutatenAdapter extends RecyclerView.Adapter<Einkaufsli
 
             }
         });
-
-        /*if(position % 2 == 0){
-            background.setBackgroundColor(background.getResources().getColor(R.color.card_background5));
-        }
-        else {
-            background.setBackgroundColor(background.getResources().getColor(R.color.white));
-        }*/
     }
 
     @Override
