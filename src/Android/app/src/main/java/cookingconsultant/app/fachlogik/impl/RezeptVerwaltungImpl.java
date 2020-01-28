@@ -16,6 +16,12 @@ import cookingconsultant.app.fachlogik.grenz.RezeptGrenz;
 import cookingconsultant.app.fachlogik.grenz.ZutatGrenz;
 import cookingconsultant.app.fachlogik.services.RezeptVerwaltung;
 
+/**
+ * RezeptVerwaltungImpl ist die Systemlogik für die Rezepte der Applikation.
+ * Sie greift auf Klassen der Datenhaltung zu.
+ *
+ * @author Salih Colak
+ */
 public class RezeptVerwaltungImpl implements RezeptVerwaltung {
 
     private RezeptService rezeptService;
@@ -26,6 +32,14 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
         rezeptService = new RezeptServiceImpl();
     }
 
+    /**
+     * Diese Methode liefert eine Liste von RezeptGrenz-Instanzen die nach Art, Anlass, und Kategorie gefiltert sind.
+     *
+     * @param query Filter-String für Rezeptsuche.
+     * @return Liste von RezeptGrenz-Instanzen.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public List<RezeptGrenz> getRezeptByQuery(String query) throws IOException, JSONException {
         List<RezeptGrenz> rezeptGrenzList = new ArrayList<>();
@@ -39,6 +53,15 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
         return rezeptGrenzList;
     }
 
+    /**
+     * Diese Methode sucht nach einem Rezept in der DB und liefert eine äquivalente RezeptGrenz-Instanz.
+     *
+     * @param rezid ID des Rezeptes.
+     * @return RezeptGrenz-Instanz, falls das Rezept in der DB existiert;
+     *         null, falls das Rezept in der DB nicht existiert.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public RezeptGrenz getRezeptByID(Integer rezid) throws IOException, JSONException {
         Rezept rezept = rezeptService.getRezeptByID(rezid);
@@ -56,6 +79,14 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
         return null;
     }
 
+    /**
+     * Liefert eine Liste von ZutatGrenz-Instanzen für für ein Rezept.
+     *
+     * @param rezid ID des Rezeptes, dessen Zutaten geliefert werden soll.
+     * @return Liste von ZutatGrenz-Instanzen
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public List<ZutatGrenz> getZutatenVonRezeptByID(Integer rezid) throws IOException, JSONException {
         List<ZutatGrenz> zutatGrenzList = new ArrayList<>();
@@ -68,6 +99,14 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
         return zutatGrenzList;
     }
 
+    /**
+     * Liefert eine Liste von RezeptGrenz-Instanzen, die ein User schonmal gekocht hat.
+     *
+     * @param userid Id des Users, dessen gekochten Rezepte geliefert werden soll.
+     * @return Liste von RezeptGrenz-Instanzen.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public List<RezeptGrenz> getRezeptByUserId(Integer userid) throws IOException, JSONException {
         List<RezeptGrenz> rezeptGrenzList = new ArrayList<>();
@@ -81,6 +120,14 @@ public class RezeptVerwaltungImpl implements RezeptVerwaltung {
         return rezeptGrenzList;
     }
 
+    /**
+     * Fügt ein Rezept, dass ein User gekocht hat in seine Rezepteliste hinzu.
+     *
+     * @param userid ID des Users.
+     * @param rezid ID des Rezeptes.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public void insertRezeptForUser(Integer userid, Integer rezid) throws IOException, JSONException {
         rezeptService.insertRezeptForUser(rezid,userid);

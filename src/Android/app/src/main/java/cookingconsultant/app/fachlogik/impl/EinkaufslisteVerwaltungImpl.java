@@ -20,6 +20,13 @@ import cookingconsultant.app.fachlogik.grenz.ZutatGrenz;
 import cookingconsultant.app.fachlogik.grenz.ZutatStateGrenz;
 import cookingconsultant.app.fachlogik.services.EinkaufslisteVerwaltung;
 
+
+/**
+ * EinkaufslisteVerwaltungImpl ist die Systemlogik für die Einkaufslisten der Applikation.
+ * Sie greift auf Klassen der Datenhaltung zu.
+ *
+ * @author Salih Colak
+ */
 public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
 
 
@@ -29,6 +36,15 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         einkaufslisteService = new EinkaufslisteServiceImpl();
     }
 
+    /**
+     * Diese Methode liefert eine EinkaufslisteGrenz-Instanz, die äquivalent mit einer Einkaufsliste-Instanz ist.
+     *
+     * @param einkid Die ID der Einkaufsliste, welche gesucht werden soll.
+     * @return EinkaufslisteGrenz-Instanz mit allen Informationen zu der EInkaufsliste mit der ID <<einkid>>; null falls die
+     * Einkaufsliste nicht existiert.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public EinkaufslisteGrenz getEinkaufslisteByID(Integer einkid) throws IOException, JSONException {
         Einkaufsliste einkaufsliste = einkaufslisteService.getEinkaufslisteByID(einkid);
@@ -49,6 +65,14 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         return null;
     }
 
+    /**
+     * Diese Methode liefert eine Liste von EinkaufslisteGrenz-Instanzen, die äquivalent mit einer Liste von Einkaufsliste-Instanzen ist.
+     *
+     * @param userid Die ID des Benutzers dessen Eikaufslisten aufgerufen werden sollen
+     * @return Liste von EinkaufslisteGrenz-Instanzen des Users mit der ID <<userid>>>
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public List<EinkaufslisteGrenz> getEinkaufslistenByUserID(Integer userid) throws IOException, JSONException {
         List<Einkaufsliste> einkaufslisteList = einkaufslisteService.getEinkaufslistenByUserID(userid);
@@ -82,6 +106,16 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         return einkaufslisteGrenzList;
     }
 
+    /**
+     * Diese Methode entfernt eine Einkaufsliste aus der DB, welche die ID <<einkid>> hat.
+     *
+     * @param einkid Die ID der Einkaufsliste, welche aus der DB entfernt werden soll.
+     * @return true, falls die Einkaufsliste aus der DB entfernt wurde;
+     *         false, falls die Einkaufsliste nicht aus der DB entfernt wurde oder falls Sie garnicht in der DB vorhanden ist.
+     * @throws IOException
+     * @throws JSONException
+     */
+
     @Override
     public boolean deleteEinkaufslisteByID(Integer einkid) throws IOException, JSONException {
         if(einkaufslisteService.deleteEinkaufslisteByID(einkid)){
@@ -90,6 +124,16 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         return false;
     }
 
+    /**
+     * Diese Methode ändert den Zustand einer Einkaufsliste in der DB.
+     *
+     * @param einkid ID der EInkaufsliste, dessen Zustand geändert werden soll.
+     * @param neuerZustand Zustand, den die Einkaufsliste in der DB einnehmen soll.
+     * @return true, falls der Zustand erfolgreich gesetzt wurde;
+     *         false, falls die EInkaufsliste nicht in der DB existiert oder der Zustand nicht gesetzt wird.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public boolean changeZustandEinkaufslisteByID(Integer einkid, String neuerZustand) throws IOException, JSONException {
         if(einkaufslisteService.changeZustandEinkaufslisteByID(einkid,neuerZustand)){
@@ -98,6 +142,15 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         return false;
     }
 
+    /**
+     * Fügt zu der übergebenen EinkaufslisteGrenz-Instanz eine äquivalente Einkaufsliste-Instanz in die DB ein.
+     *
+     * @param einkaufslisteGrenz EinkaufslisteGrenz-Instanz, die der DB hinzugefügt werden soll.
+     * @return true, falls die Einkaufsliste der DB hinzugefügt wurde;
+     *         false, falls die EInkaufsliste nicht der DB hinzugefügt wurde.
+     * @throws IOException
+     * @throws JSONException
+     */
     @Override
     public boolean addEinkaufsliste(EinkaufslisteGrenz einkaufslisteGrenz) throws IOException, JSONException {
         Einkaufsliste einkaufsliste = new Einkaufsliste(einkaufslisteGrenz.getEinkid(),einkaufslisteGrenz.getZustand(),einkaufslisteGrenz.getPortion());
@@ -121,6 +174,13 @@ public class EinkaufslisteVerwaltungImpl implements EinkaufslisteVerwaltung {
         return false;
     }
 
+    /**
+     * Ändert den Zustand einer Zutat in der Einkaufsliste.
+     *
+     * @param ein2zutid ID der Zutatposition in der Einkaufsliste, dessen Zustand geändert wird.
+     * @param state neuer Zustand der Zutat der Einkaufsliste.
+     * @throws IOException
+     */
     @Override
     public void changeZutatState(Integer ein2zutid, boolean state) throws IOException {
         einkaufslisteService.changeZutatState(ein2zutid,state);
